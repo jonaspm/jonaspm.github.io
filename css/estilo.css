@@ -1,0 +1,163 @@
+/*
+ * 1. Header
+ * 2. Navigation
+ * 3. Body
+ * 4. Content
+*/
+
+/* 1. Header */
+
+body > header {
+	background-color: brown;
+	width: 100%;
+	align-content: center;
+	align-items: center;
+	height: auto;
+	text-align: center;
+	color: white;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+body > header > h1 {
+	display: inline-block;
+	margin-right: 1.5rem;
+}
+
+/* 2. Navigation */
+
+nav {
+	background: black;
+	display: inline-flex;
+	width: auto;
+	position: relative;
+}
+nav > ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+	display: block;
+	height: 50px;
+}
+nav > ul li {
+	display: inline-block;
+	height: 100%;
+
+}
+nav > ul li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+nav > ul li:hover {
+	text-shadow: 2px 2px black;
+	animation: animacion;
+	animation-duration: 1s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+}
+@keyframes animacion {
+    from {background-color: black;}
+    to {background-color: grey;}
+}
+
+/* 3. Body */
+
+body {
+	background-color: burlywood;
+	margin-left: 10rem;
+	margin-right: 10rem;
+	margin-bottom: auto;
+	font-family: sans-serif;
+}
+
+/* 4. Content */
+
+.content {
+	background-color: cadetblue;
+	height: auto;
+}
+
+.content > section {
+	display: inline-block;
+}
+
+.content > section > main {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	overflow-y: scroll;
+	display: inline-block;
+	width: 70%;
+	background-color: aliceblue;
+	box-sizing: border-box;
+	vertical-align: top;
+	height:  420px;
+}
+.content > section > aside {
+	width: 29%;
+	margin-right: 0px;
+	display: inline-block;
+	box-sizing: border-box;
+	height: 420px;
+	box-sizing: border-box;
+}
+.content > section > aside div {
+	text-align: center;
+	margin: 5px;
+	margin-bottom: 10px;
+	background-color: wheat;
+	display: block;
+	height: 29%;
+	box-sizing: border-box;
+}
+
+.aside_content {
+	display: block;
+	text-align: center;
+	width: 100%;
+	padding: 0;
+	overflow: hidden;
+}
+
+.aside_content div {
+	display: inline-block;
+	box-sizing: border-box;
+	background-color: white;
+	width: 31%;
+	margin: 5px;
+	height: 250px;
+	vertical-align: middle;
+}
+.aside_content img {
+	width: 20%;
+	height: auto;
+}
+ul.nodeco {
+	list-style-type: none;
+	text-align: left;
+}
+section.center {
+	display: block;
+	text-align: center;
+}
+
+/* 5. footer */
+
+footer {
+	margin: 0;
+	background-color: black;
+	color: white;
+	text-align: center;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	height: 2rem;
+}
+footer p {
+	display: inline;
+	text-align: center;
+	vertical-align: middle;
+	margin-bottom: 1rem;
+}
