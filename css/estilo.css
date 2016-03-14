@@ -10,13 +10,9 @@
 body > header {
 	background-color: brown;
 	width: 100%;
-	align-content: center;
-	align-items: center;
-	height: auto;
 	text-align: center;
 	color: white;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
+	border-radius: 15px 15px 0 0;
 }
 
 body > header > h1 {
@@ -28,28 +24,26 @@ body > header > h1 {
 
 nav {
 	background: black;
-	display: inline-flex;
+	display: inline-block;
 	width: auto;
 	position: relative;
 }
 nav > ul {
 	list-style-type: none;
     margin: 0;
-    padding: 0;
+	padding: 0;
     background-color: black;
-	display: block;
-	height: 50px;
+	display: inline-block;
 }
 nav > ul li {
 	display: inline-block;
 	height: 100%;
-
 }
 nav > ul li a {
-    display: inline-block;
+    display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 15px;
     text-decoration: none;
 }
 nav > ul li:hover {
@@ -151,13 +145,10 @@ footer {
 	background-color: black;
 	color: white;
 	text-align: center;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
+	border-radius: 0 0 15px 15px;
 	height: 2rem;
 }
 footer p {
-	display: inline;
-	text-align: center;
+	margin: 0;
 	vertical-align: middle;
-	margin-bottom: 1rem;
 }
