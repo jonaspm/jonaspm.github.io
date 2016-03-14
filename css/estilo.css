@@ -27,7 +27,6 @@ nav {
 	background: black;
 	display: inline-block;
 	width: auto;
-	position: relative;
 }
 nav > ul {
 	list-style-type: none;
@@ -63,9 +62,9 @@ nav > ul li:hover {
 
 body {
 	background-color: burlywood;
-	margin-left: 10rem;
-	margin-right: 10rem;
-	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: 65rem;
 	font-family: sans-serif;
 }
 
@@ -73,31 +72,29 @@ body {
 
 .content {
 	background-color: cadetblue;
-	height: auto;
 }
 
 .content > section {
-	display: inline-block;
+	display: block;
 }
 
 .content > section > main {
 	padding-left: 1rem;
 	padding-right: 1rem;
+	box-sizing: border-box;
 	overflow-y: scroll;
 	display: inline-block;
-	width: 70%;
 	background-color: aliceblue;
 	box-sizing: border-box;
 	vertical-align: top;
 	height:  420px;
+	width: 70%;
 }
 .content > section > aside {
-	width: 29%;
-	margin-right: 0px;
+	box-sizing: border-box;
+	vertical-align: top;
 	display: inline-block;
-	box-sizing: border-box;
-	height: 420px;
-	box-sizing: border-box;
+	width: 29%;
 }
 .content > section > aside div {
 	text-align: center;
@@ -105,7 +102,6 @@ body {
 	margin-bottom: 10px;
 	background-color: wheat;
 	display: block;
-	height: 29%;
 	box-sizing: border-box;
 }
 
