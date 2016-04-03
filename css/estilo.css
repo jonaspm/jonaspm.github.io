@@ -8,12 +8,17 @@
 
 /* 1. Header */
 
+a {
+    color: grey;
+}
+
 body > header {
-	background-color: brown;
+	background-color: #3D3C3A;
 	width: 100%;
 	text-align: center;
-	color: white;
+	color: grey;
 	border-radius: 15px 15px 0 0;
+    border: 0px;
 }
 
 body > header > h1 {
@@ -61,7 +66,7 @@ nav > ul li:hover {
 /* 3. Body */
 
 body {
-	background-color: burlywood;
+	background-color: black;
 	margin-left: auto;
 	margin-right: auto;
 	width: 65rem;
@@ -71,7 +76,8 @@ body {
 /* 4. Content */
 
 .content {
-	background-color: cadetblue;
+	background-color: #3D3C3A;
+    border:0px;
 }
 
 .content > section {
@@ -84,25 +90,32 @@ body {
 	box-sizing: border-box;
 	overflow-y: scroll;
 	display: inline-block;
-	background-color: aliceblue;
+	background-color: #313131;
 	box-sizing: border-box;
 	vertical-align: top;
 	height:  420px;
 	width: 70%;
+    border:0px;
+    color:grey;
+    border-radius: 15px;
 }
 .content > section > aside {
 	box-sizing: border-box;
 	vertical-align: top;
 	display: inline-block;
 	width: 29%;
+    color:gray;
 }
 .content > section > aside div {
 	text-align: center;
 	margin: 5px;
 	margin-bottom: 10px;
-	background-color: wheat;
+	background-color: #313131;
 	display: block;
 	box-sizing: border-box;
+    border-radius: 15px;
+    padding: 5px;
+    border:0px;
 }
 
 .aside_content {
@@ -116,11 +129,14 @@ body {
 .aside_content div {
 	display: inline-block;
 	box-sizing: border-box;
-	background-color: white;
+	background-color: #313131;
 	width: 31%;
 	margin: 5px;
 	height: 250px;
 	vertical-align: middle;
+    color:gray;
+    border-radius: 15px;
+    border:0px;
 }
 .aside_content img {
 	width: 20%;
@@ -139,8 +155,8 @@ section.center {
 
 footer {
 	margin: 0;
-	background-color: black;
-	color: white;
+	background-color: #3D3C3A;
+	color: grey;
 	text-align: center;
 	border-radius: 0 0 15px 15px;
 	height: 2rem;
