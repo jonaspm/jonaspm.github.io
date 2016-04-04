@@ -102,6 +102,11 @@ body {
     border-radius: 15px;
 }
 
+table,th,td {
+    border: 1px solid #3D3C3A;
+    padding: 0.05cm;
+}
+
 .content > section > main img {
     width: 150px;
     height: auto;
