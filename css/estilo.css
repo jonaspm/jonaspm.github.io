@@ -66,6 +66,7 @@ nav > ul li:hover {
 /* 3. Body */
 
 body {
+    background-image: url(../images/bg.gif);
 	background-color: black;
 	margin-left: auto;
 	margin-right: auto;
@@ -78,6 +79,7 @@ body {
 .content {
 	background-color: #3D3C3A;
     border:0px;
+    margin-top: -1px;
 }
 
 .content > section {
@@ -99,6 +101,12 @@ body {
     color:grey;
     border-radius: 15px;
 }
+
+.content > section > main img {
+    width: 150px;
+    height: auto;
+}
+
 .content > section > aside {
 	box-sizing: border-box;
 	vertical-align: top;
@@ -119,6 +127,7 @@ body {
 }
 
 .aside_content {
+    margin-top: 15px;
 	display: block;
 	text-align: center;
 	width: 100%;
