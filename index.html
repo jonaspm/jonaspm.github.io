@@ -1,93 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="UTF-8" />
-	<title>Jonas Perusquia Morales</title>
-	<link rel="stylesheet" href="css/estilo.css" />
-</head>
-<body>
 
-	<header>
-		<h1>Mi sitio web personal</h1>
-		<nav>
-			<ul>
-				<li>
-					<a href="index.html">Inicio</a>
-				</li>
-				<li>
-					<a href="biografia.html">Biografía</a>
-				</li>
-				<li>
-					<a href="academico.html">Académico</a>
-				</li>
-				<li>
-					<a href="contacto.html">Contacto</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Jonas Perusquia Morales</title>
+		<link rel="stylesheet" href="css/{{linkCss}}" />
+		<link rel="stylesheet" href="css/bulma.css" />
+	</head>
 
-	<div class="content">
-		<section>
-			<main>
-				<article>
-					<h2>ReactOS</h2>
-					<img src="images/reactos_logo.png" alt="Reactos logo">
-					<p>
-						ReactOS (React Operating System) es <strong>un sistema operativo</strong> de código abierto destinado a lograr la compatibilidad binaria con aplicaciones de software y controladores de dispositivos hechos para Microsoft Windows NT versiones 5x en adelante (Windows XP y sus sucesores). Surgió como un intento de compatibilidad con Windows 95. El desarrollo comenzó a principios de 1998, y ha continuado con la incorporación gradual de las características que ya se encuentran en Windows.
-					</p>
-					<p>
-						ReactOS está principalmente escrito en C, con algunos elementos, como el Explorador de ReactOS, escritos en C++. El proyecto se está portando a las arquitecturas de procesador ARM y AMD64, y en parte implementa la funcionalidad de la API de Windows. Este último cuenta con la asistencia mediante la inclusión de partes de la capa de compatibilidad Wine para sistemas operativos tipo Unix, pero otra funcionalidad se lleva a cabo por los propios desarrolladores. Sin embargo, el progreso se ha visto obstaculizado por la falta de desarrolladores experimentados.
-					</p>
-				</article>
-			</main>
-			<aside>
-				<div>
-					<h3>Noticias</h3>
-					<p>Últimas noticias relacionadas con ReactOS y el mundo FOSS!</p>
-				</div>
-				<div>
-					<h3>Blog</h3>
-					<p>Nuevas entradas del blog aqui! :D</p>
-				</div>
-				<div>
-					<h3>Páginas amigas</h3>
+	<body>
+		<div id="main"></div>
+	</body>
 
-					<ul class="nodeco">
-						<li><a href="#facebook">Facebook</a></li>
-						<li><a href="#twitter">Twitter</a></li>
-					</ul>
-				</div>
-			</aside>
+	<script src="/js/{{scriptLibs}}"></script>
+	<script src="/js/{{scriptApp}}"></script>
+	<script>
+		runMainApp()
+	</script>
 
-		</section>
-
-		<section class="aside_content">
-			<div>
-				<h3>Comentarios recientes</h3>
-				<br>
-				<ul class="nodeco">
-					<li>
-						<i>Me ha gustado mucho el sistema operativo, grandioso! <br>-Jonás</i>
-					</li>
-				</ul>
-			</div>
-			<div>
-                <a class="twitter-timeline"  href="https://twitter.com/ReactOS_es" data-widget-id="716691622906322945">Tweets por el @ReactOS_es</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
-			<div>
-				<h3>RSS Feed</h3>
-				<br>
-				<p>¡Suscríbete!</p>
-				<img src="https://www.bing.com/th?id=Ab3d90ad9e174e8b16babe6caf725d225&w=110&h=110&c=7&rs=1&qlt=80&pcl=f9f9f9&cdv=1&pid=16.1" alt="">
-			</div>
-		</section>
-	</div>
-
-	<footer>
-		<p>Derechos Reservados</p>
-	</footer>
-
-</body>
 </html>
