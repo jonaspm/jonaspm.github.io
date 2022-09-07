@@ -4,13 +4,12 @@ const rename = require("gulp-rename")
 const uglify = require('gulp-uglify-es').default
 const sourcemaps = require('gulp-sourcemaps')
 const htmlmin = require('gulp-htmlmin')
-const sass = require('gulp-sass')
+const sass = require('gulp-sass')(require('sass'))
 const http = require('http')
 const st = require('st')
 const babel = require('gulp-babel')
 const concat = require('gulp-concat')
 const replace = require('gulp-replace')
-sass.compiler = require('node-sass')
 
 const indexFile = 'index.html'
 const port = 3000
@@ -23,7 +22,7 @@ function _replaceHtml(match, p1, offset, string) {
 }
 
 function _beforeAll(env) {
-    
+
     _envSwitch(env, () => {
         htmlVars.scriptApp = 'app.min.js'
         htmlVars.scriptLibs = 'libs.min.js'
@@ -38,7 +37,14 @@ function _beforeAll(env) {
             replace(/{{(.+)}}/gm, _replaceHtml),
             htmlmin({ collapseWhitespace: true }),
             rename(indexFile),
-            dest('build')
+            dest('build'),
+            (err) => {
+                if (err) {
+                    console.error('Pipeline failed.', err);
+                } else {
+                    console.log('Pipeline succeeded.');
+                }
+            }
         )
     }
 }
@@ -53,7 +59,14 @@ function minifyCss(cb) {
         sourcemaps.init(),
         sass().on('error', sass.logError),
         sourcemaps.write(),
-        dest('build/css')
+        dest('build/css'),
+        (err) => {
+            if (err) {
+                console.error('Pipeline failed.', err);
+            } else {
+                console.log('Pipeline succeeded.');
+            }
+        }
     )
 }
 
@@ -70,10 +83,8 @@ function watcher(cb) {
     })
 }
 
-function _envSwitch(env, prod, dev)
-{
-    switch (env)
-    {
+function _envSwitch(env, prod, dev) {
+    switch (env) {
         case 'prod': {
             if (prod) prod()
             break;
@@ -102,10 +113,17 @@ function _copyLibs(env) {
             sourcemaps.init(),
             concat(htmlVars.scriptLibs),
             sourcemaps.write(),
-            dest('build/js/')
+            dest('build/js/'),
+            (err) => {
+                if (err) {
+                    console.error('Pipeline failed.', err);
+                } else {
+                    console.log('Pipeline succeeded.');
+                }
+            }
         )
     }
-} 
+}
 
 function _minifyJs(env) {
     return function minifyJs(cb) {
@@ -124,7 +142,14 @@ function _minifyJs(env) {
             }),
             uglify(),
             sourcemaps.write(),
-            dest('build/js/')
+            dest('build/js/'),
+            (err) => {
+                if (err) {
+                    console.error('Pipeline failed.', err);
+                } else {
+                    console.log('Pipeline succeeded.');
+                }
+            }
         )
     }
 }
@@ -135,7 +160,7 @@ function afterAll(cb) {
 
 function server(cb) {
     http.createServer(
-        st({ path: __dirname + '/build', index: indexFile, cache: false})
+        st({ path: __dirname + '/build', index: indexFile, cache: false })
     ).listen(port, () => {
         console.log(`Listening on port ${port}`)
         cb()
@@ -167,9 +192,9 @@ function devRun() {
 }
 
 let globals = {
-    build: build('prod'),
-    'dev-build': build('dev'),
-    'dev-run': devRun()
+    'build': build('prod'),
+    'build-dev': build('dev'),
+    'run-dev': devRun()
 }
 
 module.exports = exports = globals
