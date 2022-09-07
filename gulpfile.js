@@ -78,7 +78,7 @@ function watcher(cb) {
         indexFile,
         '*.js',
         '*.json'
-    ], globals['dev-build']).on('change', (evt) => {
+    ], globals['build-dev']).on('change', (evt) => {
         console.log('Rebuilding...')
     })
 }
@@ -191,7 +191,7 @@ function devRun() {
     )
 }
 
-let globals = {
+const globals = {
     'build': build('prod'),
     'build-dev': build('dev'),
     'run-dev': devRun()
