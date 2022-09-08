@@ -8,8 +8,9 @@ class MainApp extends React.Component {
     render() {
         return (
             <div className="mainApp">
-                <NavBar></NavBar>
+                <Header />
                 <MainBody></MainBody>
+                <Footer />
             </div>
         )
     }

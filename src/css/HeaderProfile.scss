@@ -1,0 +1,19 @@
+.header-profile {
+    
+    grid-area: "profile";
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    min-width: min-content;
+    direction: ltr;
+    
+    .profile {
+        align-self: center;
+        background-image: url('/images/profile.jpeg');
+        background-size: cover;
+        min-width: min(100%, 15rem);
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+    }
+}

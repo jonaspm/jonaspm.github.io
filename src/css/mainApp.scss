@@ -1,0 +1,23 @@
+.mainApp {
+    display: grid;
+    gap: 0.5rem;
+    // grid-template-columns: minmax(min-content, 1fr);
+    grid-template-columns: auto;
+}
+
+.box {
+    border: 1px solid black;
+    background-color: rgba(0, 135, 213, 0.594);
+}
+
+.header {
+    grid-column: span 1;
+}
+
+.body {
+    grid-column: span 1;
+}
+
+.footer {
+    grid-column: span 1;
+}

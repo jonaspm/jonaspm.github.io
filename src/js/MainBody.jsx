@@ -6,7 +6,7 @@ class MainBody extends React.Component {
 
     render() {
         return (
-            <div className="container">WELCOME TO MY WEBSITE...</div>
+            <div className="box body">BODY</div>
         )
     }
 }
