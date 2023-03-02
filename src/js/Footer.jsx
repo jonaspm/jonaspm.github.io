@@ -8,7 +8,7 @@ class Footer extends React.Component {
         return (
             <div className="box flex footer">
                 <div>
-                    <h1>Find me in</h1>
+                    <h1>Find me on</h1>
                 </div>
                 <div className="flex social-networks">
                     <a className='flex flex-column align-center' href="https://facebook.com/jperusm">
