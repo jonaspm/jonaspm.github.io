@@ -16,7 +16,7 @@ class Footer extends React.Component {
                     </a>
                     <a href="https://twitter.com/jperusm">Twitter</a>
                     <a href="https://instagram.com/jperusm">Instagram</a>
-                    <a href="https://tikTok.com/@jonaspm">TikTok</a>
+                    <a href="https://tikTok.com/@jperusm">TikTok</a>
                     <a href="https://linkedin.com/in/jonaspm">LinkedIn</a>
                     <a href="mailto:jonaspm_99@outlook.com">Email</a>
                 </div>
