@@ -7,7 +7,10 @@ class HeaderResume extends React.Component {
     render() {
         return (
             <div className="box header-resume">
-                <span>Header Resume</span>
+                <p>
+                    <h1>Jonás Perusquía Morales</h1>
+                    <span>Senior Software Associate at Concentrix Catalyst</span>
+                </p>
             </div>
         )
     }

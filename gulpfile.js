@@ -1,4 +1,4 @@
-const { series, parallel, src, dest, watch } = require('gulp');
+const { series, parallel, src, dest, watch } = require('gulp')
 const { pipeline } = require('stream')
 const rename = require("gulp-rename")
 const uglify = require('gulp-uglify-es').default
@@ -149,6 +149,9 @@ function _minifyJs(env) {
                 presets: [
                     '@babel/preset-env',
                     '@babel/preset-react'
+                ],
+                plugins: [
+                    'macros'
                 ]
             }),
             uglify(),

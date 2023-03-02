@@ -3,21 +3,17 @@
     gap: 0.5rem;
     // grid-template-columns: minmax(min-content, 1fr);
     grid-template-columns: auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .box {
-    border: 1px solid black;
-    background-color: rgba(0, 135, 213, 0.594);
+    border: 0px solid black;
+    border-radius: 10px;
+    background-color: rgba(0, 135, 213, 0);
+    padding: 0.5rem;
 }
 
 .header {
-    grid-column: span 1;
-}
-
-.body {
-    grid-column: span 1;
-}
-
-.footer {
     grid-column: span 1;
 }

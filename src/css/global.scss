@@ -12,6 +12,7 @@
     $font-weight: 400;
     $font-shadow: 2px 2px 4px rgb(0, 0, 0);
     $font-color-primary: rgba(255, 255, 255, 0.8);
+    $font-color-secondary: rgba(255, 255, 255, 0.6);
 
 // CSS VARIABLES
 
@@ -23,6 +24,10 @@
         --font-weight: #{$font-weight};
         --font-shadow: #{$font-shadow};
         --font-color-primary: #{$font-color-primary};
+        --font-color-secondary: #{$font-color-secondary};
+
+        // SIZES
+        --font-size: 1rem;
 }
 
 body {
@@ -31,4 +36,21 @@ body {
     font-family: var(--font-family);
     font-weight: var(--font-weight);
     text-shadow: var(--font-shadow);
+    font-size: var(--font-size);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.align-center {
+    align-items: center;
 }

@@ -1,6 +1,6 @@
 function runMainApp() {
-    const mainApp = ReactDOM.render(
-        <MainApp/>,
+    const mainApp = ReactDOM.createRoot(
         document.getElementById('main')
     );
+    mainApp.render(<MainApp />)
 }

@@ -8,7 +8,6 @@ class HeaderProfile extends React.Component {
         return (
             <div className="box header-profile">
                 <div className="profile"></div>
-                <span>Jonas Perusquia Morales</span>
             </div>
         )
     }
