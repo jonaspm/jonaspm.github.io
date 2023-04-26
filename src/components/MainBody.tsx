@@ -31,10 +31,8 @@ function MainBody() {
             </Box>
             <Box className='body flex flex-col items-center shadow-lg'>
                 <h2 className='text-xl font-bold'>Background</h2>
-                <div className="flex flex-col align-center m-4">
-                    <span>
-                    With more than 5 years of work experience improving the digital experience of people through innovative & edge tecnology solutions. Has working with various clients and technological cloud-based projects, ranging from websites to mobile and desktop applications.
-                    </span>
+                <div className="flex flex-col align-center m-4 text-justify">
+                        With more than 5 years of work experience improving the digital experience of people through innovative & edge tecnology solutions. Has working with various clients and technological cloud-based projects, ranging from websites to mobile and desktop applications.
                 </div>
             </Box>
             <Box className='body flex flex-col mb-6 items-center shadow-lg'>
