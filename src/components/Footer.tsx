@@ -1,5 +1,6 @@
 import '../styles/Footer.scss'
 import Box from './Box'
+import HeartIcon from './HeartIcon'
 
 function Footer() {
 

@@ -42,8 +42,8 @@ function HeaderResume() {
         <Box className='header-resume items-center justify-center text-center grid gap-6'>
             <div></div>
             <h1 className='text-2xl font-bold'>
-                <span className='overflow-hidden whitespace-nowrap animate-typewriter inline-block max-w-[11em] align-bottom'>Jonás Perusquía Morales</span>
-                <span className='border-r-4 border-r-transparent animate-blinking'></span>
+                <span className='overflow-hidden whitespace-nowrap animate-typewriter inline-block max-w-[11em] align-bottom md:text-4xl'>Jonás Perusquía Morales</span>
+                <span className='border-r-4 border-r-transparent animate-blinking md:text-4xl'></span>
             </h1>
             <span className='text-lg'>Senior Software Associate at Concentrix Catalyst</span>
             <div className='flex flex-row justify-center gap-6 flex-wrap items-center'>
@@ -51,7 +51,7 @@ function HeaderResume() {
                     socialNetworks.map((socialNetwork, index) => {
                         return (
                             <a key={index} href={socialNetwork.url} target="_blank" rel="noreferrer">
-                                <Icon className='inline-block w-8 h-8 fill-white transition duration-500 ease-in-out hover:scale-125 hover:fill-gray-500'>
+                                <Icon className='inline-block w-8 h-8 hover:fill-primary/50 fill-primary/90 transition duration-500 ease-in-out hover:scale-125'>
                                     {socialNetwork.image}
                                 </Icon>
                             </a>

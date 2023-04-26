@@ -1,7 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		colors: {
+			'primary': 'rgba(42, 0, 61, 1)',
+			'secondary': 'rgba(255, 255, 255, 1)'
+		},
 		extend: {
 			animation: {
 				'typewriter': 'typewriter 5s steps(23) 0s infinite alternate both',
@@ -16,7 +22,7 @@ module.exports = {
 				},
 				blinkTextCursor: {
 					from: {
-						borderRightColor: 'rgba(255,255,255,0.8)',
+						borderRightColor: 'rgba(42, 0, 61, 1)',
 					},
 					to: {
 						borderRightColor: 'transparent',
