@@ -7,14 +7,16 @@
     display: flex;
     flex-direction: column;
     min-width: min-content;
+
+    .profile-container {
+        min-width: min(100%, 15rem);
+    }
     direction: ltr;
     
-    .profile {
-        align-self: center;
+    & .profile {
         background-image: url('/images/profile.jpeg');
-        background-size: cover;
-        min-width: min(100%, 15rem);
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
+        background-size: 150%;
+        background-position: top center;
+        opacity: 90%;
     }
 }
