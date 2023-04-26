@@ -33,7 +33,7 @@ function Footer() {
     return (
         <Box className="flex flex-col items-center footer rounded-none">
             <div>
-                <h2 className='text-lg'>Made with ❤ from Chihuahua using:</h2>
+                <h2 className='text-lg text-center'>Made with ❤ from Chihuahua using:</h2>
             </div>
             <div className="flex flex-row justify-center items-center flex-wrap gap-8 m-4 social-networks">
                 {
