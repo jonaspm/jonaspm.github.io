@@ -36,6 +36,7 @@ function MainBody() {
                 setDelays([0,0,0])
             for (const entry of intersectingEntries) {
                 entry.target.classList.add('animate-fade-in')
+                observer.unobserve(entry.target)
             }
         }, {threshold: 0.5, root: null, rootMargin: '0px'})
         for (const box of boxes)
@@ -48,19 +49,19 @@ function MainBody() {
     return (
         <div className='mainBody max-w-7xl'>
             <Box style={{'--delay-index': delays[0]}} className='body opacity-0 flex flex-col mt-6 items-center shadow-lg hover:bg-secondary/60 transition-all duration-700'>
-                <h2 className='text-xl font-bold'>About me</h2>
+                <h2 className='text-center text-xl font-bold'>About me</h2>
                 <div className="text-justify m-4">
                     {aboutText}
                 </div>
             </Box>
             <Box style={{'--delay-index': delays[1]}} className='body opacity-0 flex flex-col items-center shadow-lg hover:bg-secondary/60 transition-all duration-700'>
-                <h2 className='text-xl font-bold'>Background</h2>
-                <div className="flex flex-col align-center m-4 text-justify">
+                <h2 className='text-center text-xl font-bold'>Background</h2>
+                <div className="m-4 text-justify">
                     {backgroundText}
                 </div>
             </Box>
             <Box style={{'--delay-index': delays[2]}} className='body opacity-0 flex flex-col mb-6 items-center shadow-lg hover:bg-secondary/60 transition-all duration-700'>
-                <h2 className='text-xl font-bold'>Technologies</h2>
+                <h2 className='text-center text-xl font-bold'>Technologies</h2>
                 <div className='m-4'>
                     <ul className="flex flex-row list items-center justify-center gap-8 flex-wrap">
                         {
