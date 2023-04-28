@@ -1,7 +1,7 @@
 import Icon from "./Icon";
-import type { Props } from "./interfaces";
+import type Props from "../types/Props";
 
-function HeartIcon({ className, size: innerClass, fill }: Props): JSX.Element {
+function HeartIcon({ className, innerClass, fill }: Props): JSX.Element {
     return (
         <Icon className={className}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={fill || 'currentColor'} className={innerClass || `w-6 h-6`}>

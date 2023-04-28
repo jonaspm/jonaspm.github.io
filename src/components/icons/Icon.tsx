@@ -1,4 +1,4 @@
-import type { Props } from "./interfaces";
+import type Props from "../types/Props";
 
 function Icon({ children, className }: Props) {
   return <i className={className}>

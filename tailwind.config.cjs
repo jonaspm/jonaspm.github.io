@@ -11,9 +11,20 @@ module.exports = {
 		extend: {
 			animation: {
 				'typewriter': 'typewriter 5s steps(23) 0s infinite alternate both',
-				'blinking': 'blinkTextCursor 800ms infinite normal'
+				'blinking': 'blinkTextCursor 800ms infinite normal',
+				'fade-in': 'fadeIn 800ms calc(var(--delay-index) * 0.5s) ease-out forwards',
 			},
 			keyframes: {
+				fadeIn: {
+					'0%': {
+						opacity: 0,
+						transform: 'translateY(-30px)'
+					},
+					'100%': {
+						opacity: 1,
+						transform: 'translateY(0px)'
+					}
+				},
 				typewriter: {
 					'0%': { width: '0' },
 					'20%': { width: '0' },
