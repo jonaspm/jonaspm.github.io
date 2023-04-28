@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/HeaderResume.scss'
 import Box from './Box'
-import Icon from './Icon'
+import Icon from './icons/Icon'
 
 function HeaderResume() {
 
@@ -39,7 +39,7 @@ function HeaderResume() {
     ]
 
     return (
-        <Box className='header-resume items-center justify-center text-center grid gap-6'>
+        <Box className='header-resume items-center justify-center text-center grid gap-6 hover:bg-secondary/60 transition-all duration-700'>
             <div></div>
             <h1 className='text-2xl font-bold'>
                 <span className='overflow-hidden whitespace-nowrap animate-typewriter inline-block max-w-[11em] align-bottom md:text-4xl'>Jonás Perusquía Morales</span>
