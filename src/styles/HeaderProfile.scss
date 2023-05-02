@@ -1,22 +1,21 @@
 .header-profile {
-    
-    padding: 0.5rem 0rem;
-    grid-area: "profile";
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    min-width: min-content;
+  padding: 0.5rem 0rem;
+  grid-area: "profile";
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-width: min-content;
 
-    .profile-container {
-        min-width: min(100%, 15rem);
-    }
-    direction: ltr;
-    
-    & .profile {
-        background-image: url('/images/profile.jpeg');
-        background-size: 150%;
-        background-position: top center;
-        opacity: 90%;
-    }
+  .profile-container {
+    min-width: min(100%, 15rem);
+  }
+  direction: ltr;
+
+  & .profile {
+    background-image: url("/images/profile.png");
+    background-size: 125%;
+    background-position: top center;
+    opacity: 90%;
+  }
 }

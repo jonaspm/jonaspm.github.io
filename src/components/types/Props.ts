@@ -1,10 +1,10 @@
 import type { PropsWithChildren } from "react";
 
 interface Props extends PropsWithChildren {
-    className?: string;
-    innerClass?: string;
-    fill?: string;
-    style?: React.CSSProperties;
+  className?: string;
+  innerClass?: string;
+  fill?: string;
+  style?: React.CSSProperties;
 }
 
-export default Props
+export default Props;
