@@ -69,7 +69,7 @@ function MainBody() {
         style={{ "--delay-index": delays[2] }}
         className="body opacity-0 flex flex-col mb-6 items-center shadow-lg hover:bg-secondary/60 transition-all duration-700"
       >
-        <h2 className="text-center text-xl font-bold">Technologies</h2>
+        <h2 className="text-center text-xl font-bold">Skills</h2>
         <div className="m-4">
           <ul className="flex flex-row list items-center justify-center gap-8 flex-wrap">
             {technologies.map((technology, index) => {
