@@ -25,7 +25,7 @@ function MainBody() {
   const aboutText =
     "Software Engineer whose passion for technology and web development drives him to constantly learn and use the latest tools and trends in the industry. Has strong leadership, self-learning, problem-solving and perfectionism skills, as well as a positive, motivating and integrative attitude. He enjoys working in a team and sharing my knowledge and experiences with other professionals. In addition to technology, he has interests in music, sports, family, friends, movies, tv series and video games. Feel free to contact him if it is your desire to know more about his projects.";
   const backgroundText =
-    "With over 5 years of work experience enhancing the digital experience of people through innovative & cutting-edge technology solutions. Has collaborated with various clients and delivered cloud-based technology projects, including web, mobile and desktop applications.";
+    "With over 7 years of work experience enhancing the digital experience of people through innovative & cutting-edge technology solutions. Has collaborated with various clients and delivered cloud-based technology projects, including web, mobile and desktop applications.";
   const [delays, setDelays] = useState([1, 2, 3]);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ function MainBody() {
         style={{ "--delay-index": delays[2] }}
         className="body opacity-0 flex flex-col mb-6 items-center shadow-lg hover:bg-secondary/60 transition-all duration-700"
       >
-        <h2 className="text-center text-xl font-bold">Technologies</h2>
+        <h2 className="text-center text-xl font-bold">Skills</h2>
         <div className="m-4">
           <ul className="flex flex-row list items-center justify-center gap-8 flex-wrap">
             {technologies.map((technology, index) => {
