@@ -3,7 +3,7 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://jonasperusquia.com",
+  site: "https://jonaspm.github.io",
   integrations: [react(), tailwind()],
   server: {
     host: true,
