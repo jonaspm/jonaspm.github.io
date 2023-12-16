@@ -44,7 +44,7 @@ function MainBody() {
         const intersectingEntries = entries.filter(
           (entry) => entry.isIntersecting
         );
-        if (intersectingEntries.length < 3) setDelays([0, 0, 0, 0]);
+        if (intersectingEntries.length < 2) setDelays([0, 0, 0, 0]);
         for (const entry of intersectingEntries) {
           entry.target.classList.add("animate-fade-in");
           observer.unobserve(entry.target);
