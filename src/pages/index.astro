@@ -1,8 +1,26 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import MainBody from "../components/MainBody";
+import Layout from "@/layouts/Layout.astro"
+import MainBody from "@/components/MainBody"
+import sorteosClickImage from "@/images/sorteos.click.png"
+import autosolutionsImage from "@/images/autosolutions.app.png"
+import { getImage } from "astro:assets"
+
+const projects = [
+		{
+			name: 'Sorteos Click',
+			url: 'https://sorteos.click',
+			description: 'Create and manage your own raffles for FREE.',
+			image: await getImage({src: sorteosClickImage, format: 'avif'}),
+		},
+		{
+			name: 'Autosolutions',
+			url: 'https://autosolutions.app',
+			description: 'On-demand services for your vehicle & more.',
+			image: await getImage({src: autosolutionsImage, format: 'avif'}),
+		}
+	]
 ---
 
 <Layout title="Jonas Perusquia Morales">
-  <MainBody client:load />
+  <MainBody projects={projects} client:load />
 </Layout>
