@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
+// const colors = require("tailwindcss/colors")
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -7,6 +8,10 @@ module.exports = {
     colors: {
       primary: "rgba(42, 0, 61, 1)",
       secondary: "rgba(255, 255, 255, 1)",
+    },
+    screens: {
+      xs: '475px',
+      ...defaultTheme.screens,
     },
     extend: {
       animation: {
