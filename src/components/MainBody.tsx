@@ -13,21 +13,22 @@ type Project = {
 function MainBody({ projects }: { projects: Project[] }) {
 
 	const skills = [
-		'HTML',
-		'JavaScript',
-		'CSS',
+		'HTML-CSS-JavaScript',
+		'TypeScript',
+		'Svelte',
 		'React',
-		'Node.js',
-		'Express',
-		'MySQL',
-		'Git',
-		'Scrum',
-		'ServiceNOW',
-		'MongoDB',
-		'Angular.js',
+		'AngularJS',
 		'Next.js',
 		'Astro',
-		'TypeScript',
+		'Node.js',
+		'Express',
+		'SQL Databases',
+		'MongoDB',
+		'ServiceNOW',
+		'Version Control',
+		'Agile Methodologies',
+		'Project Management',
+		'Cloud Computing',
 	]
 
 	const aboutText =

@@ -15,8 +15,7 @@ module.exports = {
     },
     extend: {
       animation: {
-        typewriter: "typewriter 5s steps(23) 0s infinite alternate both",
-        blinking: "blinkTextCursor 800ms infinite normal",
+        typewriter: "typewriter 8s steps(23) -6s infinite alternate both, blinkTextCursor 800ms infinite normal",
         "fade-in":
           "fadeIn 800ms calc(var(--delay-index) * 0.5s) ease-out forwards",
       },
@@ -32,9 +31,9 @@ module.exports = {
           },
         },
         typewriter: {
-          "0%": { width: "0" },
-          "20%": { width: "0" },
-          "80%": { width: "100%" },
+          "0%": { width: "0%" },
+          "37.5%": { width: "0%" },
+          "62.5%": { width: "100%" },
           "100%": { width: "100%" },
         },
         blinkTextCursor: {
