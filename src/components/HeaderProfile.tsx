@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/HeaderProfile.scss";
 import Box from "./Box";
 

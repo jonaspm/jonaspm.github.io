@@ -4,6 +4,8 @@ import Box from "./Box";
 import Icon from "./icons/Icon";
 
 function HeaderResume() {
+  const name = 'Jonás Perusquía Morales';
+  const job = 'Chief Technology Officer at Enerlinq Innovations';
   const socialNetworks = [
     {
       name: "Facebook",
@@ -73,27 +75,26 @@ function HeaderResume() {
           <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
         </svg>
       ),
-      url: "mailto:jonaspm_99@outlook.com",
+      url: "mailto:jperusm@outlook.com",
     },
   ];
 
   return (
     <Box className="header-resume items-center justify-center text-center grid gap-6 hover:bg-secondary/60 transition-all duration-700">
-      <div></div>
+      <div />
       <h1 className="text-2xl font-bold">
-        <span className="overflow-hidden whitespace-nowrap animate-typewriter inline-block max-w-[11em] align-bottom md:text-4xl">
-          Jonás Perusquía Morales
+        <span className="overflow-hidden whitespace-nowrap inline-block align-bottom md:text-4xl relative border-r-4 animate-typewriter">
+          {name}
         </span>
-        <span className="border-r-4 border-r-transparent animate-blinking md:text-4xl"></span>
       </h1>
       <span className="text-lg">
-        Senior Software Associate at Concentrix Catalyst
+        {job}
       </span>
       <div className="flex flex-row justify-center gap-6 flex-wrap items-center">
-        {socialNetworks.map((socialNetwork, index) => {
+        {socialNetworks.map(socialNetwork => {
           return (
             <a
-              key={index}
+              key={socialNetwork.name}
               href={socialNetwork.url}
               target="_blank"
               rel="noreferrer"
