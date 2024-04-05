@@ -1,16 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import MainBody from "@/components/MainBody"
-import sorteosClickImage from "@/images/sorteos.click.png"
-import autosolutionsImage from "@/images/autosolutions.app.png"
-import enerlinqImage from "@/images/enerlinq.com.png"
+import sorteosClickImage from "@/assets/images/sorteos.click.png"
+import autosolutionsImage from "@/assets/images/autosolutions.app.png"
+import enerlinqImage from "@/assets/images/enerlinq.com.png"
+import gerardoAncerImage from "@/assets/images/gerardoancer.com.png"
 import { getImage } from "astro:assets"
 
 const projects = [
 	{
 		name: 'Enerlinq',
 		url: 'https://enerlinq.com',
-		description: 'Technology and innovation lab. Startup company.',
+		description: 'Technology and innovation startup company.',
 		image: await getImage({src: enerlinqImage, format: 'avif'}),
 	},
 	{
@@ -25,6 +26,12 @@ const projects = [
 		description: 'Create and manage your own raffles for FREE.',
 		image: await getImage({src: sorteosClickImage, format: 'avif'}),
 	},
+	{
+		name: 'Gerardo Ancer portfolio',
+		url: 'https://gerardoancer.com',
+		description: 'Portfolio website for Gerardo Ancer.',
+		image: await getImage({src: gerardoAncerImage, format: 'avif'}),
+	}
 ]
 ---
 

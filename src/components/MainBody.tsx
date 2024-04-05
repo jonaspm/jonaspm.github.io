@@ -92,7 +92,7 @@ function MainBody({ projects }: { projects: Project[] }) {
 										>
 											<span>{project.name}</span>
 											<img
-												className="w-full rounded-sm object-contain transition-transform duration-200 delay-150 my-2"
+												className="w-full rounded-[4px] object-contain transition-transform duration-200 delay-150 my-2"
 												src={project.image.src}
 												alt={project.name}
 											/>
