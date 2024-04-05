@@ -4,6 +4,7 @@
 // SASS VARIABLES
 
 // COLORS
+$color-bg: rgba(255, 255, 255, 0.1);
 $color-primary: rgb(255, 255, 255);
 $color-secondary: rgb(49, 49, 49);
 $font-family: "Nunito", sans-serif;
@@ -16,6 +17,7 @@ $font-color-secondary: rgba(255, 255, 255, 1);
 
 :root {
   // COLORS
+  --color-bg: #{$color-bg};
   --color-primary: #{$color-primary};
   --color-secondary: #{$color-secondary};
   --font-family: #{$font-family};
@@ -42,10 +44,43 @@ $font-color-secondary: rgba(255, 255, 255, 1);
 }
 
 body {
-  background-color: var(--color-primary);
+  background-color: var(--color-bg);
   color: var(--font-color-primary);
   font-family: var(--font-family);
   font-weight: var(--font-weight);
   text-shadow: var(--font-shadow);
   font-size: var(--font-size);
+}
+
+.app-container {
+  animation-name: background-show;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+@keyframes background-show {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Projects
+.project {
+
+  &:hover {
+    & a {
+      @apply scale-110;
+    }
+    & img {
+      @apply scale-110;
+    }
+  }
 }

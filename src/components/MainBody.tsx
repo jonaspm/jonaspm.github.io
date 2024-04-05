@@ -85,14 +85,14 @@ function MainBody({ projects }: { projects: Project[] }) {
 					<ul className="flex justify-center gap-8 flex-row flex-wrap">
 						{
 							projects.map((project, index) => (
-									<li key={index} className="flex w-5/6 xs:w-48 flex-col align-center">
+									<li key={index} className="project flex w-5/6 xs:w-48 flex-col align-center">
 										<a
-											className="link flex flex-col items-center text-center p-4 shadow-md rounded-md hover:scale-110 transition-transform duration-200 bg-secondary/30"
+											className="link flex flex-col items-center text-center p-4 shadow-md rounded-md tra transition-transform duration-200 bg-secondary/30"
 											href={project.url}
 										>
 											<span>{project.name}</span>
 											<img
-												className="w-full rounded-sm object-contain hover:scale-110 transition-transform duration-200 delay-150 my-2"
+												className="w-full rounded-[4px] object-contain transition-transform duration-200 delay-150 my-2"
 												src={project.image.src}
 												alt={project.name}
 											/>
