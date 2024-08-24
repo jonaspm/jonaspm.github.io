@@ -46,7 +46,7 @@ const projects = [
 const navItems = ['Home', 'Skills', 'Projects', 'Contact']
 
 const skills = [
-	'Wed Design',
+	'Web Design',
 	'Full Stack Dev',
 	'ServiceNOW',
 	'Version Control',
@@ -169,7 +169,7 @@ const socialNetworks = [
             <h2 class="mb-12 text-center text-3xl font-medium">Skills & Expertise</h2>
             <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
                 {skills.map((skill) => (
-                    <div class="rounded-lg bg-grayblue-800 p-6 text-center shadow-lg transition-transform hover:scale-105">
+                    <div class="rounded-lg bg-grayblue-800 p-6 text-center shadow-lg transition-transform duration-300 hover:scale-105">
                         <p class="text-lg font-medium">{skill}</p>
                     </div>
                 ))}
@@ -180,20 +180,20 @@ const socialNetworks = [
             <h2 class="mb-12 text-center text-3xl font-medium">Featured Projects</h2>
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {
-                    projects.map(project => (
-                        <div class="rounded-lg bg-grayblue-800 p-6 shadow-lg transition-transform hover:-translate-y-1">
+                    projects.map(project => 
+                        <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg transition-transform duration-300 hover:scale-105">
                             <h3 class="mb-3 text-xl font-semibold text-blue-300">{ project.name }</h3>
                             <p class="text-grayblue-300">{ project.description }</p>
                             <img src={ project.image.src } alt={ project.name }></img>
-                        </div>
-                    ))
+                        </a>
+                    )
                 }
             </div>
         </section>
 
         <section id="contact" class="py-20">
             <h2 class="mb-12 text-center text-3xl text-grayblue-100 font-medium">Get in Touch</h2>
-            <div class="flex justify-center space-x-8">
+            <div class="flex justify-center flex-wrap gap-8">
                 {
                     socialNetworks.map(socialNetwork => (
                         <a href={socialNetwork.url} class="text-grayblue-300 h-8 w-8 hover:text-blue-300 transition-transform hover:scale-110">
