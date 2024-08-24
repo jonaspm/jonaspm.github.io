@@ -57,7 +57,6 @@ function HeaderResume() {
       ),
       url: "https://linkedin.com/in/jonaspm",
     },
-    // github
     {
       name: "GitHub",
       image: (
