@@ -58,6 +58,7 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       animation: {
+        'skill-background': 'skill-background-change 300ms ease-in-out 0s 1 both',
         typewriter: "typewriter 8s steps(23) -6s infinite alternate both, blinkTextCursor 800ms infinite normal",
         "fade-in":
           "fadeIn 800ms calc(var(--delay-index) * 0.5s) ease-out forwards",

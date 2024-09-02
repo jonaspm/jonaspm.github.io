@@ -9,9 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@types/react": "^18.3.4",
-    "@types/react-dom": "^18.3.0",
-    "astro": "^4.14.5",
+    "astro": "4.15.1",
     "material-symbols": "^0.22.2"
   },
   "devDependencies": {
