@@ -40,7 +40,7 @@ const projects = [
 		url: 'https://hackcuu.com',
 		description: 'HackCUU 2017 MLH hackathon lead organizer.',
 		image: await getImage({ src: hackcuuImage, format: 'avif' }),
-	}
+	},
 ]
 
 const navItems = ['Home', 'Skills', 'Projects', 'Contact']
@@ -125,12 +125,12 @@ const socialNetworks = [
 
 <Layout title="Jonas Perusquia Morales">
 
-    <header class="fixed top-0 left-0 right-0 z-10 bg-grayblue-800 bg-opacity-90">
+    <header class="fixed top-0 left-0 right-0 z-20 bg-grayblue-800 bg-opacity-90">
         <nav class="container mx-auto px-6 py-3">
-            <ul class="flex justify-center space-x-8">
+            <ul class="flex justify-center gap-6">
                 {navItems.map((item) => (
                     <li>
-                        <a href={`#${item.toLowerCase()}`} class="text-sm font-medium uppercase tracking-wider transition-colors text-grayblue-300 hover:text-blue-300">
+                        <a href={`#${item.toLowerCase()}`} class="text-sm font-light uppercase tracking-wider transition-colors text-grayblue-300 hover:text-blue-300">
                             {item}
                         </a>
                     </li>
@@ -139,8 +139,8 @@ const socialNetworks = [
         </nav>
     </header>
 
-    <main class="container mx-auto px-6 pt-20">
-        <section id="home" class="py-20">
+    <main class="container mx-auto px-6 pt-14 xs:pt-20">
+        <section id="home" class="py-14 sm:py-20">
             <div class="flex flex-col items-center lg:flex-row lg:justify-between">
                 <div class="mb-8 text-center lg:mb-0 lg:text-left lg:w-1/2">
                     <h1 class="mb-4 text-5xl font-medium">Jonas Perusquia Morales</h1>
@@ -161,37 +161,39 @@ const socialNetworks = [
                 </div>
             </div>
             <div class="mt-12 animate-bounce text-center">
-                            <span class="material-symbols-rounded mx-auto !text-5xl text-blue-300 rotate-90">chevron_right</span>
+                <span class="material-symbols-rounded mx-auto !text-5xl text-blue-300 rotate-90">chevron_right</span>
             </div>
         </section>
 
-        <section id="skills" class="py-20">
+        <section id="skills" class="py-14 sm:py-20">
             <h2 class="mb-12 text-center text-3xl font-medium">Skills & Expertise</h2>
             <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
                 {skills.map((skill) => (
-                    <div class="rounded-lg bg-grayblue-800 p-6 text-center shadow-lg transition-transform duration-300 hover:scale-105">
-                        <p class="text-lg font-medium">{skill}</p>
+                    <div class="rounded-lg bg-grayblue-800 p-6 text-center shadow-lg transition-all duration-300 hover:bg-slate-700 hover:scale-110">
+                        <p class="text-lg text-center break-words hyphens-auto font-medium">{skill}</p>
                     </div>
                 ))}
             </div>
         </section>
 
-        <section id="projects" class="py-20">
+        <section id="projects" class="py-14 sm:py-20">
             <h2 class="mb-12 text-center text-3xl font-medium">Featured Projects</h2>
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {
                     projects.map(project => 
-                        <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg transition-transform duration-300 hover:scale-105">
+                        <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg scale-image">
                             <h3 class="mb-3 text-xl font-semibold text-blue-300">{ project.name }</h3>
-                            <p class="text-grayblue-300">{ project.description }</p>
-                            <img src={ project.image.src } alt={ project.name }></img>
+                            <p class="text-grayblue-300 mb-6">{ project.description }</p>
+                            <div class="overflow-hidden aspect-video rounded-lg">
+                                <img class="duration-300 transition-all aspect-video" src={ project.image.src } alt={ project.name }></img>
+                            </div>
                         </a>
                     )
                 }
             </div>
         </section>
 
-        <section id="contact" class="py-20">
+        <section id="contact" class="py-14 sm:py-20">
             <h2 class="mb-12 text-center text-3xl text-grayblue-100 font-medium">Get in Touch</h2>
             <div class="flex justify-center flex-wrap gap-8">
                 {
@@ -206,47 +208,7 @@ const socialNetworks = [
     </main>
 
     <footer class="bg-grayblue-800 py-6 text-center text-sm text-grayblue-400">
-        <p>Made with <span class="material-symbols-rounded text-red-500 [font-variation-settings:'FILL'_1]">favorite</span> from Chihuahua, Mexico.</p>
+        <p>Made with ♥️ from Chihuahua, Mexico.</p>
     </footer>
-
-    <style>
-        /* Add any global styles here */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-
-    <script>
-        // Add any client-side JavaScript here
-        document.addEventListener('astro:page-load', () => {
-            // This runs on initial page load and on view transitions
-            const header = document.querySelector('header');
-            const navItems = document.querySelectorAll('nav a');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.7,
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        navItems.forEach((item) => {
-                            if (item.getAttribute('href') === `#${entry.target.id}`) {
-                                item.classList.add('text-blue-300');
-                            } else {
-                                item.classList.remove('text-blue-300');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('section').forEach((section) => {
-                observer.observe(section);
-            });
-        });
-    </script>
 
 </Layout>
