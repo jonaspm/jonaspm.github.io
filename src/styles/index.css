@@ -1,0 +1,25 @@
+/* @import url("https://fonts.googleapis.com/css?family=Nunito"); */
+@charset "utf-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'material-symbols';
+
+html {
+  scroll-behavior: smooth;
+}
+
+.scale-image:hover {
+  & img {
+    @apply scale-110;
+  }
+}
+
+@keyframes skill-background-change {
+  from {
+    @apply bg-grayblue-800;
+  }
+  to {
+    @apply bg-slate-300;
+  }
+}
