@@ -1,6 +1,6 @@
 import HeaderResume from "./HeaderResume";
 import HeaderProfile from "./HeaderProfile";
-import "../styles/Header.scss";
+import "@/styles/Header.css";
 
 function Header() {
   return (

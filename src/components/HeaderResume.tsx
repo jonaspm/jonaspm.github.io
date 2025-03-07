@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/HeaderResume.scss";
+import "../styles/HeaderResume.css";
 import Box from "./Box";
 import Icon from "./icons/Icon";
 
