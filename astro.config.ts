@@ -8,7 +8,8 @@ export default defineConfig({
   site: "https://jonaspm.github.io",
   integrations: [react()],
   server: {
-    host: true
+    host: true,
+    port: 3434
   },
   vite: {
     plugins: [tailwindcss()]

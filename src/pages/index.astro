@@ -127,8 +127,11 @@ const socialNetworks = [
             <div class="flex justify-center flex-wrap gap-8">
                 {
                     socialNetworks.map(socialNetwork => (
-                        <a href={socialNetwork.url} class="text-grayblue-300 h-8 w-8 hover:text-blue-300 transition-transform hover:scale-110">
-                            <Fragment set:html={socialNetwork.image} />
+                        <a href={socialNetwork.url} class="flex flex-col items-center text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110 gap-2">
+                            <div class="h-8 w-8">
+                                <Fragment set:html={socialNetwork.image} />
+                            </div>
+                            <span class="text-xs font-medium bg-grayblue-800 px-2 py-1 rounded-md">{socialNetwork.name}</span>
                         </a>
                     ))
                 }
