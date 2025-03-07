@@ -49,7 +49,7 @@ function Footer() {
   ];
 
   return (
-    <Box className="flex flex-col items-center footer !rounded-none hover:bg-secondary/60 transition-all duration-700 p-2">
+    <Box className="flex flex-col items-center footer rounded-none! hover:bg-secondary/60 transition-all duration-700 p-2">
       <div>
         <h2 className="text-lg text-center">
           Made with ❤ from Chihuahua using:

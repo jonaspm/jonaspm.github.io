@@ -1,4 +1,4 @@
-import '@/styles/MainBody.scss'
+import '@/styles/MainBody.css'
 import Box from '@/components/Box.tsx'
 import { useEffect, useState } from 'react'
 import type { GetImageResult } from 'astro'
