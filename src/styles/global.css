@@ -370,3 +370,7 @@ html {
     @apply scale-110;
   }
 }
+
+#mobile-menu {
+  interpolate-size: allow-keywords;
+}
