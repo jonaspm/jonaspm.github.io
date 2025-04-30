@@ -16,31 +16,31 @@ const projects = [
 		name: 'Enerlinq',
 		url: 'https://enerlinq.com',
 		description: 'Technology and innovation startup company.',
-		image: await getImage({ src: enerlinqImage, format: 'avif' }),
+		image: await getImage({ src: enerlinqImage }),
 	},
 	{
 		name: 'Autosolutions',
 		url: 'https://autosolutions.app',
 		description: 'On-demand services for your vehicle & more.',
-		image: await getImage({ src: autosolutionsImage, format: 'avif' }),
+		image: await getImage({ src: autosolutionsImage }),
 	},
 	{
 		name: 'Sorteos Click',
 		url: 'https://sorteos.click',
 		description: 'Create and manage your own raffles for free.',
-		image: await getImage({ src: sorteosClickImage, format: 'avif' }),
+		image: await getImage({ src: sorteosClickImage }),
 	},
 	{
 		name: 'Gerardo Ancer',
 		url: 'https://gerardoancer.com',
 		description: 'Portfolio website for graphic designer Gerardo Ancer.',
-		image: await getImage({ src: gerardoAncerImage, format: 'avif' }),
+		image: await getImage({ src: gerardoAncerImage }),
 	},
 	{
 		name: 'HackCUU 2017',
 		url: 'https://hackcuu.com',
 		description: 'HackCUU 2017 MLH hackathon lead organizer.',
-		image: await getImage({ src: hackcuuImage, format: 'avif' }),
+		image: await getImage({ src: hackcuuImage }),
 	},
 ]
 
@@ -80,10 +80,9 @@ const navItems = ['Home', 'Skills', 'Projects', 'Contact']
                     <Image
                         src={profilePicture}
                         alt="Jonas Perusquia Morales"
-                        width={640}
-                        height={640}
+                        width={320}
+                        height={320}
                         class="rounded-full object-cover"
-                        format='avif'
                     />
                 </div>
             </div>
