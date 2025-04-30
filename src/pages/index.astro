@@ -44,28 +44,10 @@ const projects = [
 	},
 ]
 
-const navItems = ['Home', 'Bio', 'Skills', 'Projects', 'Contact']
-
 ---
 
 <Layout title="Jonas Perusquia Morales">
-
-    <header class="fixed top-0 left-0 right-0 z-20 bg-grayblue-800 bg-opacity-90">
-        <nav class="container mx-auto px-6 py-3">
-            <ul class="flex justify-center gap-6">
-                {navItems.map((item) => (
-                    <li>
-                        <a href={`#${item.toLowerCase()}`} class="text-sm font-light uppercase tracking-wider transition-colors text-grayblue-300 hover:text-blue-300">
-                            {item}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
-    </header>
-
     <main class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
-
         <!-- HOME SECTION -->
         <section id="home" class="py-14 sm:py-20">
             <div class="flex flex-col items-center lg:flex-row lg:justify-between">
@@ -78,7 +60,7 @@ const navItems = ['Home', 'Bio', 'Skills', 'Projects', 'Contact']
                     <div class="flex gap-4 mt-6 justify-center lg:justify-start">
                         {
                             socialNetworks.map(socialNetwork => (
-                                <a href={socialNetwork.url} class="text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110">
+                                <a aria-label={socialNetwork.name} href={socialNetwork.url} class="text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110">
                                     <div class="h-6 w-6">
                                         <Fragment set:html={socialNetwork.image} />
                                     </div>
@@ -94,6 +76,7 @@ const navItems = ['Home', 'Bio', 'Skills', 'Projects', 'Contact']
                         width={320}
                         height={320}
                         class="rounded-full object-cover"
+                        loading="eager"
                     />
                 </div>
             </div>
@@ -141,7 +124,7 @@ const navItems = ['Home', 'Bio', 'Skills', 'Projects', 'Contact']
                             </div>
                             <div class="project-image self-center">
                                 <div class="overflow-hidden aspect-video rounded-lg">
-                                    <img class="duration-300 transition-all aspect-video " src={ project.image.src } alt={ project.name }></img>
+                                    <img loading="lazy" class="duration-300 transition-all aspect-video " src={ project.image.src } alt={ project.name }></img>
                                 </div>
                             </div>
                         </a>
@@ -162,5 +145,4 @@ const navItems = ['Home', 'Bio', 'Skills', 'Projects', 'Contact']
     <footer class="bg-grayblue-800 py-6 text-center text-sm text-grayblue-400">
         <p>Made with ♥️ from Chihuahua, Mexico.</p>
     </footer>
-
 </Layout>
