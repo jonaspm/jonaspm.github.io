@@ -60,7 +60,7 @@ const projects = [
                     <div class="flex gap-4 mt-6 justify-center lg:justify-start">
                         {
                             socialNetworks.map(socialNetwork => (
-                                <a href={socialNetwork.url} class="text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110">
+                                <a aria-label={socialNetwork.name} href={socialNetwork.url} class="text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110">
                                     <div class="h-6 w-6">
                                         <Fragment set:html={socialNetwork.image} />
                                     </div>
