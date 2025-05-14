@@ -9,13 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "5.7.12",
+    "astro": "5.7.13",
     "material-symbols": "^0.31.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@tailwindcss/vite": "^4.1.6",
-    "tailwindcss": "^4.1.6"
+    "tailwindcss": "^4.1.6",
+    "tailwindcss-animated": "^2.0.0"
   },
   "trustedDependencies": [
     "@biomejs/biome",

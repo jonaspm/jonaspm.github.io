@@ -53,12 +53,12 @@ const projects = [
             <section id="home" class="py-8 scroll-mt-20">
                 <div class="flex flex-col items-center lg:flex-row lg:justify-between">
                     <div class="mb-8 text-center lg:mb-0 lg:text-left lg:w-1/2">
-                        <h1 class="mb-4 text-5xl font-medium">Jonas Perusquia Morales</h1>
-                        <h2 class="mb-6 text-2xl font-light text-blue-300">Chief Technology Officer</h2>
-                        <p class="max-w-2xl text-xl text-grayblue-300">
+                        <h1 class="mb-4 text-5xl font-medium animate-fade-up animate-delay-300">Jonas Perusquia Morales</h1>
+                        <h2 class="mb-6 text-2xl font-light text-blue-300 animate-fade-up animate-delay-600">Chief Technology Officer</h2>
+                        <p class="max-w-2xl text-xl text-grayblue-300 animate-fade-up animate-delay-900">
                             Innovative tech leader with a passion for building scalable solutions and fostering high-performing teams.
                         </p>
-                        <div class="flex gap-4 mt-6 justify-center lg:justify-start">
+                        <div class="flex gap-4 mt-6 justify-center lg:justify-start animate-fade-up animate-delay-1200">
                             {
                                 socialNetworks.map(socialNetwork => (
                                     <a aria-label={socialNetwork.name} href={socialNetwork.url} class="text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110">
@@ -70,7 +70,7 @@ const projects = [
                             }
                         </div>
                     </div>
-                    <div class="relative h-64 w-64 overflow-hidden rounded-full border-4 border-blue-300 lg:h-80 lg:w-80">
+                    <div class="relative h-64 w-64 overflow-hidden rounded-full border-4 border-blue-300 lg:h-80 lg:w-80 animate-fade-up animate-delay-1600">
                         <Image
                             src={profilePicture}
                             alt="Jonas Perusquia Morales"
