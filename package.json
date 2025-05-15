@@ -5,17 +5,18 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "cloudflare": "bun install --frozen-lockfile && bun run build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "5.7.13",
-    "material-symbols": "^0.31.2"
+    "material-symbols": "^0.31.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@tailwindcss/vite": "^4.1.6",
-    "tailwindcss": "^4.1.6",
+    "@tailwindcss/vite": "^4.1.7",
+    "tailwindcss": "^4.1.7",
     "tailwindcss-animated": "^2.0.0"
   },
   "trustedDependencies": [
