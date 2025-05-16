@@ -1,0 +1,59 @@
+---
+import { getImage } from 'astro:assets'
+import sorteosClickImage from '@/assets/images/sorteos.click.png'
+import autosolutionsImage from '@/assets/images/autosolutions.mx.png'
+import enerlinqImage from '@/assets/images/enerlinq.com.png'
+import gerardoAncerImage from '@/assets/images/gerardoancer.com.png'
+import hackcuuImage from '@/assets/images/hackcuu.com.png'
+
+const projects = [
+  {
+    name: 'Enerlinq',
+    url: 'https://enerlinq.com',
+    description: 'Technology and innovation consulting company.',
+    image: await getImage({ src: enerlinqImage }),
+  },
+  {
+    name: 'Autosolutions',
+    url: 'https://autosolutions.mx',
+    description: 'On-demand auto parts for your vehicle & more.',
+    image: await getImage({ src: autosolutionsImage }),
+  },
+  {
+    name: 'Sorteos Click',
+    url: 'https://sorteos.click',
+    description: 'Create and manage your own raffles for free.',
+    image: await getImage({ src: sorteosClickImage }),
+  },
+  {
+    name: 'Gerardo Ancer',
+    url: 'https://gerardoancer.com',
+    description: 'Portfolio website for graphic designer Gerardo Ancer.',
+    image: await getImage({ src: gerardoAncerImage }),
+  },
+  {
+    name: 'HackCUU 2017',
+    url: 'https://facebook.com/hackcuu2',
+    description: 'HackCUU 2017 MLH hackathon lead organizer.',
+    image: await getImage({ src: hackcuuImage }),
+  },
+]
+---
+<section id="projects" class="py-8 scroll-mt-20 visible-animate">
+  <h2 class="mb-12 text-center text-3xl font-medium visible-animate">Featured Projects</h2>
+  <div class="grid gap-8 md:grid-cols-2 visible-animate">
+    {projects.map(project => 
+      <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 visible-animate">
+        <div id="project-info" class="flex flex-col gap-3 visible-animate">
+          <h3 class="text-xl font-semibold text-blue-300 visible-animate">{ project.name }</h3>
+          <p class="text-grayblue-300 visible-animate">{ project.description }</p>
+        </div>
+        <div class="project-image self-center visible-animate">
+          <div class="overflow-hidden aspect-video rounded-lg visible-animate">
+            <img loading="lazy" class="duration-300 transition-all aspect-video visible-animate" src={ project.image.src } alt={ project.name } />
+          </div>
+        </div>
+      </a>
+    )}
+  </div>
+</section>

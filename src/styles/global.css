@@ -300,48 +300,6 @@
   --breakpoint-2xl: 1536px;
 
   --font-sans: Inter, sans-serif;
-
-  --animate-skill-background: skill-background-change 300ms ease-in-out 0s 1
-    both;
-  --animate-typewriter:
-    typewriter 8s steps(23) -6s infinite alternate both,
-    blinkTextCursor 800ms infinite normal;
-  --animate-fade-in: fadeIn 800ms calc(var(--delay-index) * 0.5s) ease-out
-    forwards;
-  --animate-bounce-slow: bounce 3s infinite;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
-  @keyframes typewriter {
-    0% {
-      width: 0%;
-    }
-    37.5% {
-      width: 0%;
-    }
-    62.5% {
-      width: 100%;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-  @keyframes blinkTextCursor {
-    from {
-      border-right-color: rgba(42, 0, 61, 1);
-    }
-    to {
-      border-right-color: transparent;
-    }
-  }
 }
 
 /*

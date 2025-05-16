@@ -1,0 +1,13 @@
+---
+import skills from '@/assets/data/skills.json'
+---
+<section id="skills" class="py-8 scroll-mt-20 visible-animate">
+  <h2 class="mb-12 text-center text-3xl font-medium visible-animate">Skills & Expertise</h2>
+  <div class="grid grid-cols-2 gap-8 md:grid-cols-4 visible-animate">
+    {skills.map((skill: string) => (
+      <div class="rounded-lg bg-grayblue-800 p-6 text-center shadow-lg transition-all duration-300 hover:bg-slate-700 hover:scale-110 flex items-center justify-center visible-animate">
+        <p class="text-lg text-center break-words hyphens-auto font-medium visible-animate">{skill}</p>
+      </div>
+    ))}
+  </div>
+</section>

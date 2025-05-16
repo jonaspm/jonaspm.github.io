@@ -1,150 +1,24 @@
 ---
-import { getImage, Image } from 'astro:assets'
 import Layout from '@/layouts/Layout.astro'
-import socialNetworks from '@/assets/data/social-networks.json'
-import skills from '@/assets/data/skills.json'
-
-import sorteosClickImage from '@/assets/images/sorteos.click.png'
-import autosolutionsImage from '@/assets/images/autosolutions.mx.png'
-import enerlinqImage from '@/assets/images/enerlinq.com.png'
-import gerardoAncerImage from '@/assets/images/gerardoancer.com.png'
-import hackcuuImage from '@/assets/images/hackcuu.com.png'
-import profilePicture from '@/assets/images/profile.png'
-
-const projects = [
-	{
-		name: 'Enerlinq',
-		url: 'https://enerlinq.com',
-		description: 'Technology and innovation consulting company.',
-		image: await getImage({ src: enerlinqImage }),
-	},
-	{
-		name: 'Autosolutions',
-		url: 'https://autosolutions.mx',
-		description: 'On-demand auto parts for your vehicle & more.',
-		image: await getImage({ src: autosolutionsImage }),
-	},
-	{
-		name: 'Sorteos Click',
-		url: 'https://sorteos.click',
-		description: 'Create and manage your own raffles for free.',
-		image: await getImage({ src: sorteosClickImage }),
-	},
-	{
-		name: 'Gerardo Ancer',
-		url: 'https://gerardoancer.com',
-		description: 'Portfolio website for graphic designer Gerardo Ancer.',
-		image: await getImage({ src: gerardoAncerImage }),
-	},
-	{
-		name: 'HackCUU 2017',
-		url: 'https://facebook.com/hackcuu2',
-		description: 'HackCUU 2017 MLH hackathon lead organizer.',
-		image: await getImage({ src: hackcuuImage }),
-	},
-]
-
+import HomeSection from '@/components/HomeSection.astro'
+import BioSection from '@/components/BioSection.astro'
+import SkillsSection from '@/components/SkillsSection.astro'
+import ProjectsSection from '@/components/ProjectsSection.astro'
+import ContactSection from '@/components/ContactSection.astro'
 ---
 
 <Layout title="Jonas Perusquia Morales">
     <main class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
         <div class="flex flex-col gap-y-20">
-            <!-- HOME SECTION -->
-            <section id="home" class="py-8 scroll-mt-20">
-                <div class="flex flex-col items-center lg:flex-row lg:justify-between">
-                    <div class="mb-8 text-center lg:mb-0 lg:text-left lg:w-1/2">
-                        <h1 class="mb-4 text-5xl font-medium animate-fade-up animate-delay-300">Jonas Perusquia Morales</h1>
-                        <h2 class="mb-6 text-2xl font-light text-blue-300 animate-fade-up animate-delay-600">Chief Technology Officer</h2>
-                        <p class="max-w-2xl text-xl text-grayblue-300 animate-fade-up animate-delay-900">
-                            Innovative tech leader with a passion for building scalable solutions and fostering high-performing teams.
-                        </p>
-                        <div class="flex gap-4 mt-6 justify-center lg:justify-start animate-fade-up animate-delay-1200">
-                            {
-                                socialNetworks.map(socialNetwork => (
-                                    <a aria-label={socialNetwork.name} href={socialNetwork.url} class="text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110">
-                                        <div class="h-6 w-6">
-                                            <Fragment set:html={socialNetwork.image} />
-                                        </div>
-                                    </a>
-                                ))
-                            }
-                        </div>
-                    </div>
-                    <div class="relative h-64 w-64 overflow-hidden rounded-full border-4 border-blue-300 lg:h-80 lg:w-80 animate-fade-up animate-delay-1600">
-                        <Image
-                            src={profilePicture}
-                            alt="Jonas Perusquia Morales"
-                            width={320}
-                            height={320}
-                            class="rounded-full object-cover"
-                            loading="eager"
-                        />
-                    </div>
-                </div>
-                <div class="mt-12 animate-bounce text-center">
-                    <span class="material-symbols-rounded mx-auto text-5xl! text-blue-300 rotate-90">chevron_right</span>
-                </div>
-            </section>
-
-            <!-- BIO SECTION -->
-            <section id="bio" class="py-8 scroll-mt-20">
-                <h2 class="mb-12 text-center text-3xl font-medium">About Me</h2>
-                <div class="mx-auto bg-grayblue-800 p-8 rounded-lg shadow-lg">
-                    <p class="text-lg leading-relaxed text-grayblue-300">
-                        With a passion for technology and over eight years of experience in web development, I've dedicated myself to adopting and implementing the latest industry trends and tools. My portfolio includes a diverse range of cloud projects spanning websites, mobile applications, and desktop software.
-                    </p>
-                    <p class="text-lg leading-relaxed text-grayblue-300 mt-4">
-                        As a self-taught perfectionist and natural leader, I bring strong problem-solving abilities to every project I undertake. My consistently positive, motivating, and inclusive approach enables me to thrive in collaborative environments where knowledge sharing is valued.
-                    </p>
-                    <p class="text-lg leading-relaxed text-grayblue-300 mt-4">
-                        Beyond the professional realm, I find balance through music, sports, and quality time with family.
-                    </p>
-                </div>
-            </section>
-
-            <section id="skills" class="py-8 scroll-mt-20">
-                <h2 class="mb-12 text-center text-3xl font-medium">Skills & Expertise</h2>
-                <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-                    {skills.map((skill) => (
-                        <div class="rounded-lg bg-grayblue-800 p-6 text-center shadow-lg transition-all duration-300 hover:bg-slate-700 hover:scale-110 flex items-center justify-center">
-                            <p class="text-lg text-center break-words hyphens-auto font-medium">{skill}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <section id="projects" class="py-8 scroll-mt-20">
-                <h2 class="mb-12 text-center text-3xl font-medium">Featured Projects</h2>
-                <div class="grid gap-8 md:grid-cols-2">
-                    {
-                        projects.map(project => 
-                            <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4">
-                                <div id="project-info" class="flex flex-col gap-3">
-                                    <h3 class="text-xl font-semibold text-blue-300">{ project.name }</h3>
-                                    <p class="text-grayblue-300">{ project.description }</p>
-                                </div>
-                                <div class="project-image self-center">
-                                    <div class="overflow-hidden aspect-video rounded-lg">
-                                        <img loading="lazy" class="duration-300 transition-all aspect-video " src={ project.image.src } alt={ project.name }></img>
-                                    </div>
-                                </div>
-                            </a>
-                        )
-                    }
-                </div>
-            </section>
-
-            <!-- GET IN TOUCH SECTION -->
-            <section id="contact" class="py-8 scroll-mt-20">
-                <h2 class="mb-12 text-center text-3xl text-grayblue-100 font-medium">Get in Touch</h2>
-                <div class="flex justify-center">
-                    <div class="tidycal-embed" data-path="jperusm/15-minute-meeting"></div><script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
-                </div>
-            </section>
+            <HomeSection />
+            <BioSection />
+            <SkillsSection />
+            <ProjectsSection />
+            <ContactSection />
         </div>
     </main>
-
     <footer class="bg-grayblue-800 py-6 text-center text-sm text-grayblue-400">
         <p>Made with ♥️ from Chihuahua, Mexico.</p>
     </footer>
+    <script type="module" src="/src/scripts/fade-in-observer.js"></script>
 </Layout>
