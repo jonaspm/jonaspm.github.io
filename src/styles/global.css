@@ -1,7 +1,6 @@
 /* @import url("https://fonts.googleapis.com/css?family=Nunito"); */
 @charset "utf-8";
 @import 'tailwindcss';
-@import "tailwindcss-animated";
 @import 'material-symbols' layer(utilities);
 
 @theme {

@@ -10,14 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "5.7.13",
+    "astro": "5.8.0",
     "material-symbols": "^0.31.3"
   },
   "devDependencies": {
+    "gsap": "^3.13.0",
+    "astro-mcp": "^0.3.2",
     "@biomejs/biome": "^1.9.4",
     "@tailwindcss/vite": "^4.1.7",
-    "tailwindcss": "^4.1.7",
-    "tailwindcss-animated": "^2.0.0"
+    "tailwindcss": "^4.1.7"
   },
   "trustedDependencies": [
     "@biomejs/biome",

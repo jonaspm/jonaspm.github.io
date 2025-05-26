@@ -39,18 +39,18 @@ const projects = [
   },
 ]
 ---
-<section id="projects" class="py-8 scroll-mt-20 visible-animate">
-  <h2 class="mb-12 text-center text-3xl font-medium visible-animate">Featured Projects</h2>
-  <div class="grid gap-8 md:grid-cols-2 visible-animate">
+<section id="projects" class="py-8 scroll-mt-20 gsap-section">
+  <h2 class="mb-12 text-center text-3xl font-medium gsap-fade-up">Featured Projects</h2>
+  <div class="grid gap-8 md:grid-cols-2 gsap-fade-up">
     {projects.map(project => 
-      <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 visible-animate">
-        <div id="project-info" class="flex flex-col gap-3 visible-animate">
-          <h3 class="text-xl font-semibold text-blue-300 visible-animate">{ project.name }</h3>
-          <p class="text-grayblue-300 visible-animate">{ project.description }</p>
+      <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 gsap-fade-up">
+        <div id="project-info" class="flex flex-col gap-3 gsap-fade-up">
+          <h3 class="text-xl font-semibold text-blue-300 gsap-fade-up">{ project.name }</h3>
+          <p class="text-grayblue-300 gsap-fade-up">{ project.description }</p>
         </div>
-        <div class="project-image self-center visible-animate">
-          <div class="overflow-hidden aspect-video rounded-lg visible-animate">
-            <img loading="lazy" class="duration-300 transition-all aspect-video visible-animate" src={ project.image.src } alt={ project.name } />
+        <div class="project-image self-center gsap-fade-up">
+          <div class="overflow-hidden aspect-video rounded-lg gsap-fade-up">
+            <img loading="lazy" class="duration-300 transition-all aspect-video" src={ project.image.src } alt={ project.name } />
           </div>
         </div>
       </a>
