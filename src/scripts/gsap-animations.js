@@ -22,7 +22,7 @@ export function initGSAPAnimations() {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: element,
-          start: 'top 90%',
+          start: 'top 100%',
           end: 'bottom 10%',
           toggleActions: 'play reverse play reverse'
         }
@@ -44,7 +44,7 @@ export function initGSAPAnimations() {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: element,
-          start: 'top 90%',
+          start: 'top 100%',
           end: 'bottom 10%',
           toggleActions: 'play none play none'
         }

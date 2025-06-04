@@ -1,59 +1,103 @@
 ---
-import { getImage } from 'astro:assets'
-import sorteosClickImage from '@/assets/images/sorteos.click.png'
-import autosolutionsImage from '@/assets/images/autosolutions.mx.png'
-import enerlinqImage from '@/assets/images/enerlinq.com.png'
-import gerardoAncerImage from '@/assets/images/gerardoancer.com.png'
-import hackcuuImage from '@/assets/images/hackcuu.com.png'
+import { getImage } from "astro:assets";
+import sorteosClickImage from "@/assets/images/sorteos.click.png";
+import autosolutionsImage from "@/assets/images/autosolutions.mx.png";
+import enerlinqImage from "@/assets/images/enerlinq.com.png";
+import gerardoAncerImage from "@/assets/images/gerardoancer.com.png";
+import hackcuuImage from "@/assets/images/hackcuu.com.png";
 
 const projects = [
   {
-    name: 'Enerlinq',
-    url: 'https://enerlinq.com',
-    description: 'Technology and innovation consulting company.',
+    name: "Enerlinq",
+    url: "https://enerlinq.com",
+    description: "Technology and innovation consulting company.",
     image: await getImage({ src: enerlinqImage }),
+    skills: [
+      "Astro",
+      "Frappe",
+      "ServiceNow",
+      "Vue",
+      "Leadership",
+      "Team work",
+      "Zeabur",
+    ],
   },
   {
-    name: 'Autosolutions',
-    url: 'https://autosolutions.mx',
-    description: 'On-demand auto parts for your vehicle & more.',
+    name: "Autosolutions",
+    url: "https://autosolutions.mx",
+    description: "On-demand auto parts for your vehicle & more.",
     image: await getImage({ src: autosolutionsImage }),
+    skills: [
+      "Astro",
+      "MongoDB",
+      "Svelte",
+      "Bun",
+      "Elysia",
+      "Team work",
+      "Leadership",
+      "Shopify",
+    ],
   },
   {
-    name: 'Sorteos Click',
-    url: 'https://sorteos.click',
-    description: 'Create and manage your own raffles for free.',
+    name: "Sorteos Click",
+    url: "https://sorteos.click",
+    description: "Create and manage your own raffles for free.",
     image: await getImage({ src: sorteosClickImage }),
+    skills: ["Astro", "Svelte", "libSQL", "DrizzleORM", "Cloudflare"],
   },
   {
-    name: 'Gerardo Ancer',
-    url: 'https://gerardoancer.com',
-    description: 'Portfolio website for graphic designer Gerardo Ancer.',
+    name: "Gerardo Ancer",
+    url: "https://gerardoancer.com",
+    description: "Portfolio website for graphic designer Gerardo Ancer.",
     image: await getImage({ src: gerardoAncerImage }),
+    skills: ["Astro", "Cloudflare"],
   },
   {
-    name: 'HackCUU 2017',
-    url: 'https://facebook.com/hackcuu2',
-    description: 'HackCUU 2017 MLH hackathon lead organizer.',
+    name: "HackCUU 2017",
+    url: "https://facebook.com/hackcuu2",
+    description: "HackCUU 2017 MLH hackathon lead organizer.",
     image: await getImage({ src: hackcuuImage }),
+    skills: ["Leadership", "Team work", "GitHub"],
   },
-]
+];
 ---
+
 <section id="projects" class="py-8 scroll-mt-20 gsap-section">
-  <h2 class="mb-12 text-center text-3xl font-medium gsap-fade-up">Featured Projects</h2>
-  <div class="grid gap-8 md:grid-cols-2 gsap-fade-up">
-    {projects.map(project => 
-      <a href={project.url} class="rounded-lg bg-grayblue-800 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 gsap-fade-up">
-        <div id="project-info" class="flex flex-col gap-3 gsap-fade-up">
-          <h3 class="text-xl font-semibold text-blue-300 gsap-fade-up">{ project.name }</h3>
-          <p class="text-grayblue-300 gsap-fade-up">{ project.description }</p>
-        </div>
-        <div class="project-image self-center gsap-fade-up">
-          <div class="overflow-hidden aspect-video rounded-lg gsap-fade-up">
-            <img loading="lazy" class="duration-300 transition-all aspect-video" src={ project.image.src } alt={ project.name } />
+  <h2 class="mb-12 text-center text-3xl font-medium gsap-fade-up">
+    Featured Projects
+  </h2>
+  <div class="grid gap-8 md:grid-cols-2">
+    {
+      projects.map((project) => (
+        <a
+          href={project.url}
+          class="rounded-lg bg-grayblue-800 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 gsap-fade-up"
+        >
+          <div id="project-info" class="flex flex-col gap-3 gsap-fade-up">
+            <h3 class="text-xl font-semibold text-blue-300 gsap-fade-up">
+              {project.name}
+            </h3>
+            <p class="text-grayblue-300 gsap-fade-up">{project.description}</p>{" "}
+            <div class="flex flex-wrap gap-2 mt-2 gsap-fade-up">
+              {project.skills.map((skill) => (
+                <span class="px-2 py-1 text-xs font-medium bg-blue-600/20 text-blue-200 rounded-full border border-blue-600/30">
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </a>
-    )}
+          <div class="project-image self-center gsap-fade-up">
+            <div class="overflow-hidden aspect-video rounded-lg gsap-fade-up">
+              <img
+                loading="lazy"
+                class="duration-300 transition-all aspect-video"
+                src={project.image.src}
+                alt={project.name}
+              />
+            </div>
+          </div>
+        </a>
+      ))
+    }
   </div>
 </section>
