@@ -43,14 +43,14 @@ const projects = [
     url: "https://sorteos.click",
     description: "Create and manage your own raffles for free.",
     image: await getImage({ src: sorteosClickImage }),
-    skills: ["Astro", "Svelte", "libSQL", "DrizzleORM", "Cloudflare"],
+    skills: ["Astro", "Svelte", "libSQL", "DrizzleORM", "Cloudflare", 'TailwindCSS', 'DaisyUI'],
   },
   {
     name: "Gerardo Ancer",
     url: "https://gerardoancer.com",
     description: "Portfolio website for graphic designer Gerardo Ancer.",
     image: await getImage({ src: gerardoAncerImage }),
-    skills: ["Astro", "Cloudflare"],
+    skills: ["Astro", "Cloudflare", 'TailwindCSS'],
   },
   {
     name: "HackCUU 2017",
@@ -62,7 +62,7 @@ const projects = [
 ];
 ---
 
-<section id="projects" class="py-8 scroll-mt-20 gsap-section opacity-0">
+<section id="projects" class="py-8 scroll-mt-20  opacity-0">
   <h2 class="mb-12 text-center text-3xl font-medium gsap-fade-up">
     Featured Projects
   </h2>
