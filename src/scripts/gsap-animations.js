@@ -1,4 +1,3 @@
-// src/scripts/gsap-animations.js
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
