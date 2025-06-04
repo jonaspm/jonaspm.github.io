@@ -10,10 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "5.8.1"
+    "astro": "5.8.2"
   },
   "devDependencies": {
-    "material-symbols": "^0.31.4",
+    "material-symbols": "^0.31.5",
     "@astrojs/ts-plugin": "^1.10.4",
     "@biomejs/biome": "^1.9.4",
     "@tailwindcss/vite": "^4.1.8",
