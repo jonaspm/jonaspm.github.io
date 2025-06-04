@@ -6,11 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export function initGSAPAnimations() {
-  if (typeof window === 'undefined') return;  // Animate elements with fade-up effect on scroll
+  
+  // Animate elements with fade-up effect on scroll
   gsap.utils.toArray('.gsap-fade-up').forEach((element) => {
-    // Check if the element is inside the contact section
-    const isInsideContactSection = element.closest('#contact') !== null;
-    const toggleActions = isInsideContactSection ? 'play none play none' : 'play reverse play reverse';
     
     gsap.fromTo(element, 
       {
@@ -24,9 +22,31 @@ export function initGSAPAnimations() {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: element,
-          start: 'top 80%',
+          start: 'top 90%',
           end: 'bottom 10%',
-          toggleActions: toggleActions
+          toggleActions: 'play reverse play reverse'
+        }
+      }
+    );
+  });
+
+  // Animate elements with fade-up noreverse effect on scroll
+  gsap.utils.toArray('.gsap-fade-up-noreverse').forEach((element) => {
+    gsap.fromTo(element, 
+      {
+        opacity: 0,
+        y: 30
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 90%',
+          end: 'bottom 10%',
+          toggleActions: 'play none play none'
         }
       }
     );
@@ -75,6 +95,6 @@ export function initGSAPAnimations() {
 }
 
 // Initialize animations when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
   initGSAPAnimations();
 });

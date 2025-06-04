@@ -28,6 +28,7 @@ import '@/styles/global.css'
 import Navigation from '@/components/Navigation.astro'
 import SEOManager from '@/components/SEOManager.astro'
 import Analytics from '@/components/Analytics.astro';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!DOCTYPE html>
@@ -51,6 +52,12 @@ import Analytics from '@/components/Analytics.astro';
     
     <!-- Analytics -->
     <Analytics />
+
+    <!-- Animations -->
+     <script src="@/scripts/gsap-animations.js"></script>
+
+    <!-- View Transitions -->
+    <ClientRouter />
   </head>
   <body class="min-h-screen h-full bg-grayblue-900 text-grayblue-100">
     <Navigation />
