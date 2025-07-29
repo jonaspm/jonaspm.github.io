@@ -61,6 +61,11 @@ import { ClientRouter } from 'astro:transitions';
   </head>
   <body class="min-h-screen h-full bg-grayblue-900 text-grayblue-100">
     <Navigation />
-    <slot />
+    <div id="main" class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
+      <slot />
+    </div>
+    <footer class="bg-grayblue-800 py-6 text-center text-sm text-grayblue-400">
+      <p>Made with ♥️ from Chihuahua, Mexico.</p>
+    </footer>
   </body>
 </html>
