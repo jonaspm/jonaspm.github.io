@@ -49,6 +49,17 @@
     toggleTheme() {
       const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Add rotation animation to the icon
+      if (this.themeIcon) {
+        this.themeIcon.classList.add('theme-icon-rotate');
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+          this.themeIcon.classList.remove('theme-icon-rotate');
+        }, 300);
+      }
+      
       this.setTheme(newTheme);
       localStorage.setItem(this.storageKey, newTheme);
     }
