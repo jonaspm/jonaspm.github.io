@@ -1,12 +1,12 @@
 ---
 import skills from '@/assets/data/skills.json'
 ---
-<section id="skills" class="py-8 scroll-mt-20  opacity-0">
-  <h2 class="mb-12 text-center text-3xl font-medium gsap-fade-up">Skills & Expertise</h2>
+<section id="skills" class="py-8 scroll-mt-20 opacity-0">
+  <h2 class="mb-12 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">Skills & Expertise</h2>
   <div class="grid grid-cols-2 gap-8 md:grid-cols-4 gsap-fade-up">
     {skills.map((skill: string) => (
-      <div class="rounded-lg bg-grayblue-800 p-6 text-center shadow-lg transition-all duration-300 hover:bg-slate-700 hover:scale-110 flex items-center justify-center gsap-fade-up">
-        <p class="text-lg text-center break-words hyphens-auto font-medium">{skill}</p>
+      <div class="rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 text-center shadow-lg transition-all duration-300 hover:bg-grayblue-50 dark:hover:bg-grayblue-700 hover:scale-110 flex items-center justify-center gsap-fade-up">
+        <p class="text-lg text-center break-words hyphens-auto font-medium text-grayblue-800 dark:text-grayblue-200">{skill}</p>
       </div>
     ))}
   </div>

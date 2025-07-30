@@ -1,0 +1,80 @@
+---
+// ThemeToggle component for dark/light theme switching
+---
+
+<button 
+  id="theme-toggle" 
+  class="flex items-center justify-center w-10 h-10 rounded-lg bg-grayblue-100 dark:bg-grayblue-700 text-grayblue-700 dark:text-grayblue-200 hover:bg-grayblue-200 dark:hover:bg-grayblue-600 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-grayblue-800"
+  aria-label="Toggle theme"
+  title="Toggle theme"
+>
+  <span class="material-symbols-rounded text-xl transition-transform duration-300" id="theme-icon">
+    light_mode
+  </span>
+</button>
+
+<script>
+  // Theme management functionality
+  class ThemeManager {
+    constructor() {
+      this.themeToggle = document.getElementById('theme-toggle');
+      this.themeIcon = document.getElementById('theme-icon');
+      this.storageKey = 'theme-preference';
+      
+      this.init();
+    }
+    
+    init() {
+      // Get initial theme from localStorage or system preference
+      const savedTheme = localStorage.getItem(this.storageKey);
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+      this.setTheme(initialTheme);
+      
+      // Listen for theme toggle clicks
+      if (this.themeToggle) {
+        this.themeToggle.addEventListener('click', () => this.toggleTheme());
+      }
+      
+      // Listen for system theme changes
+      window.matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', (e) => {
+          if (!localStorage.getItem(this.storageKey)) {
+            this.setTheme(e.matches ? 'dark' : 'light');
+          }
+        });
+    }
+    
+    toggleTheme() {
+      const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      this.setTheme(newTheme);
+      localStorage.setItem(this.storageKey, newTheme);
+    }
+    
+    setTheme(theme) {
+      const root = document.documentElement;
+      
+      if (theme === 'dark') {
+        root.classList.add('dark');
+        if (this.themeIcon) {
+          this.themeIcon.textContent = 'dark_mode';
+        }
+      } else {
+        root.classList.remove('dark');
+        if (this.themeIcon) {
+          this.themeIcon.textContent = 'light_mode';
+        }
+      }
+      
+      // Dispatch custom event for other components to listen to
+      window.dispatchEvent(new CustomEvent('theme-changed', { 
+        detail: { theme } 
+      }));
+    }
+  }
+  
+  // Also initialize on page navigation (for Astro's client-side routing)
+  document.addEventListener('astro:page-load', () => new ThemeManager());
+</script>

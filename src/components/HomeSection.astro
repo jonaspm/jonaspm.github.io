@@ -7,13 +7,13 @@ import profilePicture from "@/assets/images/profile.png";
 <section id="home" class="py-8 scroll-mt-20 opacity-0 gsap-fade-up-noreverse">
   <div class="flex flex-col items-center lg:flex-row lg:justify-between">
     <div class="mb-8 text-center lg:mb-0 lg:text-left lg:w-1/2">
-      <h1 class="mb-4 text-5xl font-medium gsap-hero-stagger">
+      <h1 class="mb-4 text-5xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-hero-stagger transition-colors duration-300">
         Jonas Perusquia Morales
       </h1>
-      <h2 class="mb-6 text-2xl font-light text-blue-300 gsap-hero-stagger">
+      <h2 class="mb-6 text-2xl font-light text-blue-500 dark:text-blue-300 gsap-hero-stagger transition-colors duration-300">
         Chief Technology Officer
       </h2>
-      <p class="max-w-2xl text-xl text-grayblue-300 gsap-hero-stagger">
+      <p class="max-w-2xl text-xl text-grayblue-600 dark:text-grayblue-300 gsap-hero-stagger transition-colors duration-300">
         Innovative tech leader with a passion for building scalable solutions
         and fostering high-performing teams.
       </p>
@@ -25,7 +25,7 @@ import profilePicture from "@/assets/images/profile.png";
             <a
               aria-label={socialNetwork.name}
               href={socialNetwork.url}
-              class="text-grayblue-300 hover:text-blue-300 transition-transform hover:scale-110"
+              class="text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-300 hover:scale-110"
             >
               <div class="h-6 w-6">
                 <Fragment set:html={socialNetwork.image} />

@@ -3,7 +3,14 @@
 @import 'tailwindcss';
 @import 'material-symbols' layer(utilities);
 
+/* Configure dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  /* Dark mode selector and transition configuration */
+  --default-transition-duration: 300ms;
+  --default-transition-timing-function: ease-in-out;
+  
   --color-*: initial;
   --color-inherit: inherit;
   --color-current: currentColor;
@@ -321,6 +328,25 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Dark mode styles */
+:root {
+  --bg-primary: var(--color-grayblue-50);
+  --bg-secondary: var(--color-grayblue-100);
+  --bg-tertiary: var(--color-grayblue-200);
+  --text-primary: var(--color-grayblue-900);
+  --text-secondary: var(--color-grayblue-700);
+  --text-tertiary: var(--color-grayblue-500);
+}
+
+html.dark {
+  --bg-primary: var(--color-grayblue-900);
+  --bg-secondary: var(--color-grayblue-800);
+  --bg-tertiary: var(--color-grayblue-700);
+  --text-primary: var(--color-grayblue-100);
+  --text-secondary: var(--color-grayblue-300);
+  --text-tertiary: var(--color-grayblue-400);
 }
 
 .scale-image:hover {

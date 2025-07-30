@@ -32,9 +32,24 @@ import { ClientRouter } from 'astro:transitions';
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="min-h-dvh bg-cover bg-center bg-no-repeat bg-fixed">  <head>
+<html lang="en" class="min-h-dvh bg-cover bg-center bg-no-repeat bg-fixed">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+
+    <!-- Theme initialization script (must be inline to prevent FOUC) -->
+    <script is:inline>
+      // Prevent flash of unstyled content (FOUC) by setting theme immediately
+      (function() {
+        const savedTheme = localStorage.getItem('theme-preference');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
 
     <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -59,12 +74,12 @@ import { ClientRouter } from 'astro:transitions';
     <!-- View Transitions -->
     <ClientRouter />
   </head>
-  <body class="min-h-screen h-full bg-grayblue-900 text-grayblue-100">
+  <body class="min-h-screen h-full bg-white dark:bg-grayblue-900 text-grayblue-900 dark:text-grayblue-100 transition-colors duration-300">
     <Navigation />
     <div id="main" class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
       <slot />
     </div>
-    <footer class="bg-grayblue-800 py-6 text-center text-sm text-grayblue-400">
+    <footer class="bg-grayblue-100 dark:bg-grayblue-800 py-6 text-center text-sm text-grayblue-600 dark:text-grayblue-400 transition-colors duration-300">
       <p>Made with ♥️ from Chihuahua, Mexico.</p>
     </footer>
   </body>
