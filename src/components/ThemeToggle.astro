@@ -16,11 +16,9 @@
 <script>
   // Theme management functionality
   class ThemeManager {
+    storageKey = 'theme-preference';
+    
     constructor() {
-      this.themeToggle = document.getElementById('theme-toggle');
-      this.themeIcon = document.getElementById('theme-icon');
-      this.storageKey = 'theme-preference';
-      
       this.init();
     }
     
@@ -32,10 +30,11 @@
       const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
       this.setTheme(initialTheme);
       
-      // Listen for theme toggle clicks
-      if (this.themeToggle) {
-        this.themeToggle.addEventListener('click', () => this.toggleTheme());
-      }
+      // Listen for theme toggle clicks on ALL theme toggle buttons
+      const themeToggles = document.querySelectorAll('[id="theme-toggle"]');
+      themeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => this.toggleTheme());
+      });
       
       // Listen for system theme changes
       window.matchMedia('(prefers-color-scheme: dark)')
@@ -47,18 +46,20 @@
     }
     
     toggleTheme() {
+      console.log('Toggling theme...');
       const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
-      // Add rotation animation to the icon
-      if (this.themeIcon) {
-        this.themeIcon.classList.add('theme-icon-rotate');
+      // Add rotation animation to all theme icons
+      const themeIcons = document.querySelectorAll('[id="theme-icon"]');
+      themeIcons.forEach(icon => {
+        icon.classList.add('theme-icon-rotate');
         
         // Remove animation class after animation completes
         setTimeout(() => {
-          this.themeIcon.classList.remove('theme-icon-rotate');
+          icon.classList.remove('theme-icon-rotate');
         }, 300);
-      }
+      });
       
       this.setTheme(newTheme);
       localStorage.setItem(this.storageKey, newTheme);
@@ -66,17 +67,18 @@
     
     setTheme(theme) {
       const root = document.documentElement;
+      const themeIcons = document.querySelectorAll('[id="theme-icon"]');
       
       if (theme === 'dark') {
         root.classList.add('dark');
-        if (this.themeIcon) {
-          this.themeIcon.textContent = 'dark_mode';
-        }
+        themeIcons.forEach(icon => {
+          icon.textContent = 'dark_mode';
+        });
       } else {
         root.classList.remove('dark');
-        if (this.themeIcon) {
-          this.themeIcon.textContent = 'light_mode';
-        }
+        themeIcons.forEach(icon => {
+          icon.textContent = 'light_mode';
+        });
       }
       
       // Dispatch custom event for other components to listen to
@@ -86,6 +88,20 @@
     }
   }
   
-  // Also initialize on page navigation (for Astro's client-side routing)
-  document.addEventListener('astro:page-load', () => new ThemeManager());
+  // Initialize theme manager only once
+  function initThemeManager() {
+    if (!window.themeManagerInstance) {
+      window.themeManagerInstance = new ThemeManager();
+    }
+  }
+  
+  // Initialize on page navigation (for Astro's client-side routing)
+  document.addEventListener('astro:page-load', initThemeManager);
+
+  // Initialize on initial page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeManager);
+  } else {
+    initThemeManager();
+  }
 </script>

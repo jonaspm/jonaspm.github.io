@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "5.12.5"
+    "astro": "5.12.8"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.4",
