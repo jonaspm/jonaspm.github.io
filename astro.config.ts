@@ -5,7 +5,7 @@ import mcp from "astro-mcp";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://jonaspm.github.io",
+  site: "https://jonasperusquia.com",
   integrations: [mcp()],
   server: {
     host: true,
