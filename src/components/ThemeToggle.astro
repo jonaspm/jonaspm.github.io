@@ -14,6 +14,14 @@
 </button>
 
 <script>
+  // Extend Window interface to include themeManagerInstance
+  // @ts-ignore
+  declare global {
+    interface Window {
+      themeManagerInstance?: ThemeManager;
+    }
+  }
+
   // Theme management functionality
   class ThemeManager {
     storageKey = 'theme-preference';
