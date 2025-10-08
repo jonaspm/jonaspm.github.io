@@ -12,6 +12,43 @@ export function initGSAPAnimations() {
     section.classList.remove('opacity-0');
   }
   
+  // Animate skill cards with batched ScrollTrigger and stagger
+  ScrollTrigger.batch('.skill-card', {
+    onEnter: batch => gsap.to(batch, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'power2.out'
+    }),
+    onLeave: batch => gsap.to(batch, {
+      opacity: 0,
+      y: 30,
+      stagger: 0.05,
+      duration: 0.5,
+      ease: 'power2.in'
+    }),
+    onEnterBack: batch => gsap.to(batch, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.05,
+      duration: 0.5,
+      ease: 'power2.out'
+    }),
+    onLeaveBack: batch => gsap.to(batch, {
+      opacity: 0,
+      y: 30,
+      stagger: 0.05,
+      duration: 0.5,
+      ease: 'power2.in'
+    }),
+    start: 'top 90%',
+    end: 'bottom 10%'
+  });
+  
+  // Set initial state for skill cards
+  gsap.set('.skill-card', { opacity: 0, y: 30 });
+  
   // Animate elements with fade-up effect on scroll
   gsap.utils.toArray('.gsap-fade-up').forEach((element) => {
     
