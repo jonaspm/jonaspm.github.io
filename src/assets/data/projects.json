@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Enerlinq",
+    "url": "https://enerlinq.com",
+    "description": "Technology and innovation consulting company.",
+    "image": "enerlinq.com.png",
+    "skills": [
+      "Astro",
+      "Frappe",
+      "ServiceNow",
+      "Vue",
+      "Leadership",
+      "Team work",
+      "Zeabur"
+    ]
+  },
+  {
+    "name": "Autosolutions",
+    "url": "https://autosolutions.mx",
+    "description": "On-demand auto parts for your vehicle & more.",
+    "image": "autosolutions.mx.png",
+    "skills": [
+      "Astro",
+      "MongoDB",
+      "Svelte",
+      "Bun",
+      "Elysia",
+      "Team work",
+      "Leadership",
+      "Shopify"
+    ]
+  },
+  {
+    "name": "Sorteos Click",
+    "url": "https://sorteos.click",
+    "description": "Create and manage your own raffles for free.",
+    "image": "sorteos.click.png",
+    "skills": [
+      "Astro",
+      "Svelte",
+      "libSQL",
+      "DrizzleORM",
+      "Cloudflare",
+      "TailwindCSS",
+      "DaisyUI"
+    ]
+  },
+  {
+    "name": "Gerardo Ancer",
+    "url": "https://gerardoancer.com",
+    "description": "Portfolio website for graphic designer Gerardo Ancer.",
+    "image": "gerardoancer.com.png",
+    "skills": [
+      "Astro",
+      "Cloudflare",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "name": "HackCUU 2017",
+    "url": "https://facebook.com/hackcuu2",
+    "description": "HackCUU 2017 MLH hackathon lead organizer.",
+    "image": "hackcuu.com.png",
+    "skills": [
+      "Leadership",
+      "Team work",
+      "GitHub"
+    ]
+  }
+]

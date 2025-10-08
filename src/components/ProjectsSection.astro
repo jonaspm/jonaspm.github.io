@@ -5,61 +5,24 @@ import autosolutionsImage from "@/assets/images/autosolutions.mx.png";
 import enerlinqImage from "@/assets/images/enerlinq.com.png";
 import gerardoAncerImage from "@/assets/images/gerardoancer.com.png";
 import hackcuuImage from "@/assets/images/hackcuu.com.png";
+import projectsData from "@/assets/data/projects.json";
 
-const projects = [
-  {
-    name: "Enerlinq",
-    url: "https://enerlinq.com",
-    description: "Technology and innovation consulting company.",
-    image: await getImage({ src: enerlinqImage }),
-    skills: [
-      "Astro",
-      "Frappe",
-      "ServiceNow",
-      "Vue",
-      "Leadership",
-      "Team work",
-      "Zeabur",
-    ],
-  },
-  {
-    name: "Autosolutions",
-    url: "https://autosolutions.mx",
-    description: "On-demand auto parts for your vehicle & more.",
-    image: await getImage({ src: autosolutionsImage }),
-    skills: [
-      "Astro",
-      "MongoDB",
-      "Svelte",
-      "Bun",
-      "Elysia",
-      "Team work",
-      "Leadership",
-      "Shopify",
-    ],
-  },
-  {
-    name: "Sorteos Click",
-    url: "https://sorteos.click",
-    description: "Create and manage your own raffles for free.",
-    image: await getImage({ src: sorteosClickImage }),
-    skills: ["Astro", "Svelte", "libSQL", "DrizzleORM", "Cloudflare", 'TailwindCSS', 'DaisyUI'],
-  },
-  {
-    name: "Gerardo Ancer",
-    url: "https://gerardoancer.com",
-    description: "Portfolio website for graphic designer Gerardo Ancer.",
-    image: await getImage({ src: gerardoAncerImage }),
-    skills: ["Astro", "Cloudflare", 'TailwindCSS'],
-  },
-  {
-    name: "HackCUU 2017",
-    url: "https://facebook.com/hackcuu2",
-    description: "HackCUU 2017 MLH hackathon lead organizer.",
-    image: await getImage({ src: hackcuuImage }),
-    skills: ["Leadership", "Team work", "GitHub"],
-  },
-];
+// Map image filenames to imported images
+const imageMap = {
+  "enerlinq.com.png": enerlinqImage,
+  "autosolutions.mx.png": autosolutionsImage,
+  "sorteos.click.png": sorteosClickImage,
+  "gerardoancer.com.png": gerardoAncerImage,
+  "hackcuu.com.png": hackcuuImage,
+};
+
+// Process projects with their images
+const projects = await Promise.all(
+  projectsData.map(async (project) => ({
+    ...project,
+    image: await getImage({ src: imageMap[project.image] }),
+  }))
+);
 ---
 
 <section id="projects" class="py-8 scroll-mt-20 opacity-0">
