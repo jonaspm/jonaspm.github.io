@@ -5,6 +5,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// Configure GSAP for optimal performance
+gsap.config({
+  force3D: true,
+  nullTargetWarn: false
+});
+
 export function initGSAPAnimations() {
 
   // Remove opacity-0 class from section elements
@@ -12,61 +18,63 @@ export function initGSAPAnimations() {
     section.classList.remove('opacity-0');
   }
   
+  // Set initial state for skill cards with hardware acceleration
+  gsap.set('.skill-card', { 
+    opacity: 0, 
+    y: 20,
+    force3D: true
+  });
+  
   // Animate skill cards with batched ScrollTrigger and stagger
   ScrollTrigger.batch('.skill-card', {
+    preventOverlaps: true, // Prevents animations from overlapping
     onEnter: batch => gsap.to(batch, {
       opacity: 1,
       y: 0,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: 'power2.out'
+      stagger: 0.08,
+      duration: 0.4,
+      ease: 'power1.out',
+      force3D: true,
+      overwrite: 'auto'
     }),
     onLeave: batch => gsap.to(batch, {
       opacity: 0,
-      y: 30,
-      stagger: 0.05,
-      duration: 0.5,
-      ease: 'power2.in'
+      overwrite: 'auto'
     }),
     onEnterBack: batch => gsap.to(batch, {
       opacity: 1,
       y: 0,
-      stagger: 0.05,
-      duration: 0.5,
-      ease: 'power2.out'
+      duration: 0.3,
+      ease: 'power1.out',
+      overwrite: 'auto'
     }),
     onLeaveBack: batch => gsap.to(batch, {
       opacity: 0,
-      y: 30,
-      stagger: 0.05,
-      duration: 0.5,
-      ease: 'power2.in'
+      overwrite: 'auto'
     }),
     start: 'top 90%',
     end: 'bottom 10%'
   });
   
-  // Set initial state for skill cards
-  gsap.set('.skill-card', { opacity: 0, y: 30 });
-  
   // Animate elements with fade-up effect on scroll
   gsap.utils.toArray('.gsap-fade-up').forEach((element) => {
-    
     gsap.fromTo(element, 
       {
         opacity: 0,
-        y: 30
+        y: 20
       },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
+        duration: 0.5,
+        ease: 'power1.out',
+        force3D: true,
         scrollTrigger: {
           trigger: element,
-          start: 'top 90%',
-          end: 'bottom 10%',
-          toggleActions: 'play reverse play reverse'
+          start: 'top 85%',
+          end: 'bottom 15%',
+          toggleActions: 'play reverse play reverse',
+          fastScrollEnd: true // Speeds up ending for fast scrolls
         }
       }
     );
@@ -77,40 +85,52 @@ export function initGSAPAnimations() {
     gsap.fromTo(element, 
       {
         opacity: 0,
-        y: 30
+        y: 20
       },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
+        duration: 0.5,
+        ease: 'power1.out',
+        force3D: true,
         scrollTrigger: {
           trigger: element,
-          start: 'top 90%',
-          end: 'bottom 10%',
-          toggleActions: 'play none play none'
+          start: 'top 85%',
+          end: 'bottom 15%',
+          toggleActions: 'play none play none',
+          fastScrollEnd: true
         }
       }
     );
   });
 
   // Animate elements with staggered delays for hero section
-    gsap.fromTo('.gsap-hero-stagger',
-      {
-        opacity: 0,
-        y: 30,
-      },
-      {
-        stagger: 0.2,
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out'
-      }
-    );
+  gsap.fromTo('.gsap-hero-stagger',
+    {
+      opacity: 0,
+      y: 20,
+    },
+    {
+      stagger: 0.12,
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power1.out',
+      force3D: true,
+      clearProps: 'transform' // Clears transform after animation
+    }
+  );
+}
+
+// Cleanup function to kill all animations and ScrollTriggers
+export function cleanupGSAPAnimations() {
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  gsap.globalTimeline.clear();
 }
 
 // Initialize animations when DOM is ready
 document.addEventListener('astro:page-load', () => {
+  // Clean up any existing animations first
+  cleanupGSAPAnimations();
   initGSAPAnimations();
 });
