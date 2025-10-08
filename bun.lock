@@ -13,7 +13,7 @@
         "@types/bun": "^1.2.23",
         "astro-mcp": "^0.4.2",
         "gsap": "^3.13.0",
-        "material-symbols": "^0.33.0",
+        "material-symbols": "^0.36.2",
         "tailwindcss": "^4.1.14",
       },
     },
@@ -656,7 +656,7 @@
 
     "markdown-table": ["markdown-table@3.0.4", "", {}, "sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw=="],
 
-    "material-symbols": ["material-symbols@0.33.0", "", {}, "sha512-t9/Gz+14fClRgN7oVOt5CBuwsjFLxSNP9BRDyMrI5el3IZNvoD94IDGJha0YYivyAow24rCS0WOkAv4Dp+YjNg=="],
+    "material-symbols": ["material-symbols@0.36.2", "", {}, "sha512-FbxzGgQSmAb53Kajv+jyqcZ3Ck0ebfTBSMwHkMoyThsbrINiJb5mzheoiFXA/9MGc3cIl9XbhW8JxPM5vEP6iA=="],
 
     "math-intrinsics": ["math-intrinsics@1.1.0", "", {}, "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="],
 
