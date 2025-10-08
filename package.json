@@ -10,17 +10,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "5.13.7"
+    "astro": "5.14.1"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.4",
-    "@biomejs/biome": "^2.2.4",
-    "@tailwindcss/vite": "^4.1.13",
-    "@types/bun": "^1.2.22",
+    "@biomejs/biome": "^2.2.5",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/bun": "^1.2.23",
     "astro-mcp": "^0.4.2",
     "gsap": "^3.13.0",
-    "material-symbols": "^0.33.0",
-    "tailwindcss": "^4.1.13"
+    "material-symbols": "^0.36.2",
+    "tailwindcss": "^4.1.14"
   },
   "trustedDependencies": [
     "@biomejs/biome",
@@ -31,6 +31,6 @@
   ],
   "engines": {
     "node": "^22.19.0",
-    "bun": "^1.2.22"
+    "bun": "^1.2.23"
   }
 }
