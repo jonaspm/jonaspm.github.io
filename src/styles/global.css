@@ -1,7 +1,7 @@
 /* @import url("https://fonts.googleapis.com/css?family=Nunito"); */
 @charset "utf-8";
 @import 'tailwindcss';
-@import 'material-symbols' layer(utilities);
+@import 'material-symbols/rounded' layer(utilities);
 
 /* Configure dark mode for Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
