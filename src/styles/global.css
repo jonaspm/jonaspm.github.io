@@ -1,6 +1,6 @@
 @charset "utf-8";
 @import 'tailwindcss';
-@import 'material-symbols/rounded' layer(utilities);
+@import '@material-symbols/font-400/rounded' layer(utilities);
 
 /* Configure dark mode for Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
