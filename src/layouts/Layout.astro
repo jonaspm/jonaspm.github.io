@@ -5,7 +5,7 @@ export interface Props {
   keywords?: string[];
   image?: string;
   imageAlt?: string;
-  type?: 'website' | 'article' | 'profile';
+  type?: "website" | "article" | "profile";
   author?: string;
   publishedTime?: string;
   modifiedTime?: string;
@@ -19,19 +19,16 @@ export interface Props {
   structuredData?: Record<string, any>;
 }
 
-const { 
-  title = "Jonas Perusquia Morales",
-  ...seoProps 
-} = Astro.props;
+const { title = "Jonas Perusquia Morales", ...seoProps } = Astro.props;
 
-import '@/styles/global.css'
-import Navigation from '@/components/Navigation.astro'
-import SEOManager from '@/components/SEOManager.astro'
-import Analytics from '@/components/Analytics.astro';
-import { ClientRouter } from 'astro:transitions';
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import SEOManager from "@/components/SEOManager.astro";
+import Analytics from "@/components/Analytics.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="min-h-dvh bg-cover bg-center bg-no-repeat bg-fixed">
   <head>
     <meta charset="UTF-8" />
@@ -40,46 +37,56 @@ import { ClientRouter } from 'astro:transitions';
     <!-- Theme initialization script (must be inline to prevent FOUC) -->
     <script is:inline>
       // Prevent flash of unstyled content (FOUC) by setting theme immediately
-      (function() {
-        const savedTheme = localStorage.getItem('theme-preference');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-        
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
+      (function () {
+        const savedTheme = localStorage.getItem("theme-preference");
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const theme = savedTheme || (systemPrefersDark ? "dark" : "light");
+
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
         }
       })();
     </script>
 
     <!-- FAVICON -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
     <!-- MANIFEST -->
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- SEO Manager -->
     <SEOManager title={title} {...seoProps} />
 
     <!-- External Resources -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
     <!-- Analytics -->
     <Analytics />
 
     <!-- Animations -->
-     <script src="@/scripts/gsap-animations.js"></script>
+    <script src="@/scripts/gsap-animations.js"></script>
 
     <!-- View Transitions -->
     <ClientRouter />
   </head>
-  <body class="min-h-screen h-full bg-white dark:bg-grayblue-900 text-grayblue-900 dark:text-grayblue-100 transition-colors duration-300">
+  <body
+    class="min-h-screen h-full bg-white dark:bg-grayblue-900 text-grayblue-900 dark:text-grayblue-100 transition-colors duration-300"
+  >
     <Navigation />
-    <div id="main" class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
+    <main id="main" role="main" class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
       <slot />
-    </div>
-    <footer class="bg-grayblue-100 dark:bg-grayblue-800 py-6 text-center text-sm text-grayblue-600 dark:text-grayblue-400 transition-colors duration-300">
+    </main>
+    <footer
+      role="contentinfo"
+      class="bg-grayblue-100 dark:bg-grayblue-800 py-6 text-center text-sm text-grayblue-600 dark:text-grayblue-400 transition-colors duration-300"
+    >
       <p>Made with ♥️ from Chihuahua, Mexico.</p>
     </footer>
   </body>
