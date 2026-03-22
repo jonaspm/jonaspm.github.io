@@ -68,5 +68,19 @@
             "Project management",
             "Sponsorship acquisition"
         ]
+    },
+    {
+        "name": "Petweby.com",
+        "url": "https://petweby.com",
+        "description": "Petweby is a pet health tracker & management platform for tutors and veterinarians.",
+        "image": "petweby.com.png",
+        "skills": [
+            "Astro",
+            "React",
+            "bknd",
+            "Cloudflare",
+            "bun",
+            "TailwindCSS"
+        ]
     }
 ]
