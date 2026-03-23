@@ -9,7 +9,84 @@ const { title } = Astro.props;
 <section id="contact" class="py-8 scroll-mt-20 opacity-0">
   <h2 class="mb-12 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">{title}</h2>
   <div class="flex justify-center gsap-fade-up-noreverse">
-    <div class="tidycal-embed" data-path="jperusm/15-minute-meeting"></div>
-    <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+    <div class="tidycal-embed" data-tidycal-placeholder data-path="jperusm/15-minute-meeting"></div>
+    <script is:inline>
+      (() => {
+        const tidycalSrc = "https://asset-tidycal.b-cdn.net/js/embed.js";
+
+        class TidyCalEmbedManager {
+          constructor() {
+            this.loaderPromise = null;
+            this.boundHydrate = this.hydrate.bind(this);
+            this.initialized = false;
+          }
+
+          init() {
+            if (!this.initialized) {
+              document.addEventListener("astro:page-load", this.boundHydrate);
+              document.addEventListener("astro:after-swap", this.boundHydrate);
+              this.initialized = true;
+            }
+
+            this.hydrate();
+          }
+
+          getPlaceholder() {
+            return document.querySelector(".tidycal-embed[data-tidycal-placeholder]");
+          }
+
+          async hydrate() {
+            const placeholder = this.getPlaceholder();
+            if (!(placeholder instanceof HTMLDivElement)) {
+              return;
+            }
+
+            await this.ensureScriptLoaded();
+
+            if (!window.TidyCal?.init) {
+              return;
+            }
+
+            if (!placeholder.hasAttribute("data-tidycal-placeholder")) {
+              return;
+            }
+
+            window.TidyCal.init(placeholder);
+          }
+
+          ensureScriptLoaded() {
+            if (window.TidyCal?.init) {
+              return Promise.resolve();
+            }
+
+            if (this.loaderPromise) {
+              return this.loaderPromise;
+            }
+
+            this.loaderPromise = new Promise((resolve, reject) => {
+              const existingScript = document.querySelector("script[data-tidycal-script='true']");
+              if (existingScript instanceof HTMLScriptElement) {
+                existingScript.addEventListener("load", () => resolve(), { once: true });
+                existingScript.addEventListener("error", reject, { once: true });
+                return;
+              }
+
+              const script = document.createElement("script");
+              script.src = tidycalSrc;
+              script.async = true;
+              script.dataset.tidycalScript = "true";
+              script.addEventListener("load", () => resolve(), { once: true });
+              script.addEventListener("error", reject, { once: true });
+              document.head.appendChild(script);
+            });
+
+            return this.loaderPromise;
+          }
+        }
+
+        window.tidycalEmbedManager ||= new TidyCalEmbedManager();
+        window.tidycalEmbedManager.init();
+      })();
+    </script>
   </div>
 </section>
