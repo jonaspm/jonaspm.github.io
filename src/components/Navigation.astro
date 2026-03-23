@@ -1,34 +1,64 @@
 ---
-const navItems = ["Home", "Bio", "Skills", "Projects", "Contact"];
+import { getRelativeLocaleUrl } from "astro:i18n";
 import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  currentLanguage: "en" | "es";
+  navigation: {
+    brand: string;
+    items: Array<{
+      id: string;
+      label: string;
+    }>;
+    ariaLabel: string;
+    languageLabel: string;
+  };
+}
+
+const { currentLanguage, navigation } = Astro.props;
+const { brand, items, ariaLabel, languageLabel } = navigation;
+const alternateLanguage = currentLanguage === "en" ? "es" : "en";
+const homeUrl = getRelativeLocaleUrl(currentLanguage, "");
+const alternateLanguageUrl = getRelativeLocaleUrl(alternateLanguage, "");
 ---
 
 <header
   id="main-header"
+  data-main-header
   role="banner"
   class="fixed top-0 left-0 right-0 z-20 bg-white/90 dark:bg-grayblue-800/90 backdrop-blur-md transition-all duration-300 ease-in-out border-b border-grayblue-200 dark:border-grayblue-700"
 >
   <nav
     role="navigation"
-    aria-label="Main navigation"
+    aria-label={ariaLabel}
     class="container mx-auto px-6 py-4"
   >
     <!-- Mobile menu button -->
     <div class="flex items-center justify-between md:hidden">
       <a
-        href="#home"
+        href={`${homeUrl}#home`}
         class="text-grayblue-900 dark:text-grayblue-100 font-medium text-lg"
-        >Jonas <span class="text-blue-500 dark:text-blue-300">PM</span></a
+        >{brand.split(" ")[0]}
+        <span class="text-blue-500 dark:text-blue-300"
+          >{brand.split(" ")[1]}</span
+        ></a
       >
       <div class="flex items-center gap-3">
+        <a
+          href={alternateLanguageUrl}
+          class="text-xs font-medium uppercase tracking-wider text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
+          aria-label={languageLabel}
+        >
+          {alternateLanguage}
+        </a>
         <ThemeToggle />
         <button
-          id="mobile-menu-button"
+          data-mobile-menu-button
           class="text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-colors focus:outline-none aspect-square"
         >
           <span
             class="material-symbols-rounded transition-transform duration-300"
-            id="menu-icon">menu</span
+            data-menu-icon>menu</span
           >
         </button>
       </div>
@@ -36,39 +66,57 @@ import ThemeToggle from "./ThemeToggle.astro";
 
     <!-- Desktop navigation -->
     <div class="hidden md:flex items-center justify-between">
-      <div class="flex-1"></div>
+      <div class="flex-1">
+        <a
+          href={`${homeUrl}#home`}
+          class="text-grayblue-900 dark:text-grayblue-100 font-medium text-lg"
+        >
+          {brand.split(" ")[0]}
+          <span class="text-blue-500 dark:text-blue-300"
+            >{brand.split(" ")[1]}</span
+          >
+        </a>
+      </div>
       <ul class="flex justify-center gap-6">
         {
-          navItems.map((item) => (
+          items.map((item) => (
             <li>
               <a
-                href={`#${item.toLowerCase()}`}
+                href={`#${item.id}`}
                 class="text-sm font-light uppercase tracking-wider transition-colors text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300"
               >
-                {item}
+                {item.label}
               </a>
             </li>
           ))
         }
       </ul>
-      <div class="flex-1 flex justify-end">
+      <div class="flex-1 flex justify-end items-center gap-4">
+        <a
+          href={alternateLanguageUrl}
+          class="text-xs font-medium uppercase tracking-wider text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
+          aria-label={languageLabel}
+        >
+          {alternateLanguage}
+        </a>
         <ThemeToggle />
       </div>
     </div>
 
     <!-- Mobile navigation menu -->
     <ul
-      id="mobile-menu"
+      data-mobile-menu
       class="max-h-0 overflow-hidden md:hidden flex-col flex gap-4 transition-all duration-300 ease-in-out"
     >
       {
-        navItems.map((item) => (
+        items.map((item) => (
           <li class="text-center">
             <a
-              href={`#${item.toLowerCase()}`}
+              href={`#${item.id}`}
+              data-mobile-menu-link
               class="block text-sm font-light uppercase tracking-wider transition-colors text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300"
             >
-              {item}
+              {item.label}
             </a>
           </li>
         ))
@@ -78,51 +126,113 @@ import ThemeToggle from "./ThemeToggle.astro";
 </header>
 
 <script>
-  // Mobile menu toggle functionality
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
+  class NavigationController {
+    constructor() {
+      this.boundClickHandler = this.handleDocumentClick.bind(this);
+      this.boundScrollHandler = this.syncHeaderState.bind(this);
+      this.initialized = false;
+    }
 
-  if (mobileMenuButton && mobileMenu && menuIcon) {
-    mobileMenuButton.addEventListener("click", () => {
-      // Toggle menu visibility with animation
-      if (mobileMenu.classList.contains("max-h-0")) {
+    init() {
+      if (!this.initialized) {
+        document.addEventListener("click", this.boundClickHandler);
+        window.addEventListener("scroll", this.boundScrollHandler, {
+          passive: true,
+        });
+        this.initialized = true;
+      }
+
+      this.hydrate();
+    }
+
+    hydrate() {
+      this.closeMobileMenu();
+      this.syncHeaderState();
+    }
+
+    handleDocumentClick(event) {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const toggleButton = target.closest("[data-mobile-menu-button]");
+      if (toggleButton) {
+        this.toggleMobileMenu();
+        return;
+      }
+
+      const mobileMenuLink = target.closest("[data-mobile-menu-link]");
+      if (mobileMenuLink) {
+        this.closeMobileMenu();
+      }
+    }
+
+    getElements() {
+      const header = document.querySelector("[data-main-header]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const menuIcon = document.querySelector("[data-menu-icon]");
+
+      return { header, mobileMenu, menuIcon };
+    }
+
+    toggleMobileMenu() {
+      const { mobileMenu, menuIcon } = this.getElements();
+      if (!(mobileMenu instanceof HTMLElement) || !(menuIcon instanceof HTMLElement)) {
+        return;
+      }
+
+      const isClosed = mobileMenu.classList.contains("max-h-0");
+
+      if (isClosed) {
         mobileMenu.classList.remove("max-h-0");
-        mobileMenu.classList.add("max-h-96", "py-2"); // Set a large enough height to accommodate content
+        mobileMenu.classList.add("max-h-96", "py-2");
         menuIcon.textContent = "close";
         menuIcon.classList.add("rotate-180");
-      } else {
-        mobileMenu.classList.add("max-h-0");
-        mobileMenu.classList.remove("max-h-96", "py-2");
-        menuIcon.textContent = "menu";
-        menuIcon.classList.remove("rotate-180");
+        return;
       }
-    });
 
-    // Close mobile menu when clicking on a link
-    const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-    mobileMenuLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("max-h-0");
-        mobileMenu.classList.remove("max-h-96", "py-2");
-        menuIcon.textContent = "menu";
-        menuIcon.classList.remove("rotate-180");
-      });
-    });
-  }
+      this.closeMobileMenu();
+    }
 
-  // Header scroll effect
-  const header = document.getElementById("main-header");
-  if (header) {
-    window.addEventListener("scroll", () => {
+    closeMobileMenu() {
+      const { mobileMenu, menuIcon } = this.getElements();
+      if (!(mobileMenu instanceof HTMLElement) || !(menuIcon instanceof HTMLElement)) {
+        return;
+      }
+
+      mobileMenu.classList.add("max-h-0");
+      mobileMenu.classList.remove("max-h-96", "py-2");
+      menuIcon.textContent = "menu";
+      menuIcon.classList.remove("rotate-180");
+    }
+
+    syncHeaderState() {
+      const { header } = this.getElements();
+      if (!(header instanceof HTMLElement)) {
+        return;
+      }
+
       if (window.scrollY > 50) {
-        // Adjust 50 to your preferred scroll distance
         header.classList.add("bg-white/80", "dark:bg-grayblue-800/80");
         header.classList.remove("bg-white/90", "dark:bg-grayblue-800/90");
-      } else {
-        header.classList.remove("bg-white/80", "dark:bg-grayblue-800/80");
-        header.classList.add("bg-white/90", "dark:bg-grayblue-800/90");
+        return;
       }
-    });
+
+      header.classList.remove("bg-white/80", "dark:bg-grayblue-800/80");
+      header.classList.add("bg-white/90", "dark:bg-grayblue-800/90");
+    }
   }
+
+  // @ts-ignore
+  window.navigationController ||= new NavigationController();
+
+  function initMobileMenu() {
+    // @ts-ignore
+    window.navigationController.init();
+  }
+
+  document.addEventListener("astro:page-load", initMobileMenu);
+  document.addEventListener("astro:after-swap", initMobileMenu);
+
 </script>

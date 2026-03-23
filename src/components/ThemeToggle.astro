@@ -3,12 +3,12 @@
 ---
 
 <button 
-  id="theme-toggle" 
+  data-theme-toggle
   class="flex items-center justify-center w-10 h-10 rounded-lg bg-grayblue-100 dark:bg-grayblue-700 text-grayblue-700 dark:text-grayblue-200 hover:bg-grayblue-200 dark:hover:bg-grayblue-600 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-grayblue-800"
   aria-label="Toggle theme"
   title="Toggle theme"
 >
-  <span class="material-symbols-rounded text-xl transition-transform duration-300" id="theme-icon">
+  <span class="material-symbols-rounded text-xl transition-transform duration-300" data-theme-icon>
     light_mode
   </span>
 </button>
@@ -25,41 +25,58 @@
   // Theme management functionality
   class ThemeManager {
     storageKey = 'theme-preference';
+    mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    boundToggles = new WeakSet();
+    systemThemeListenerAttached = false;
     
     constructor() {
-      this.init();
+      this.hydrate();
     }
     
-    init() {
-      // Get initial theme from localStorage or system preference
+    getPreferredTheme() {
       const savedTheme = localStorage.getItem(this.storageKey);
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return savedTheme || (this.mediaQuery.matches ? 'dark' : 'light');
+    }
+
+    hydrate() {
+      this.setTheme(this.getPreferredTheme());
+      this.bindThemeToggles();
+      this.attachSystemThemeListener();
+    }
+
+    bindThemeToggles() {
+      const themeToggles = document.querySelectorAll('[data-theme-toggle]');
       
-      const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-      this.setTheme(initialTheme);
-      
-      // Listen for theme toggle clicks on ALL theme toggle buttons
-      const themeToggles = document.querySelectorAll('[id="theme-toggle"]');
       themeToggles.forEach(toggle => {
+        if (this.boundToggles.has(toggle)) {
+          return;
+        }
+
         toggle.addEventListener('click', () => this.toggleTheme());
+        this.boundToggles.add(toggle);
       });
-      
-      // Listen for system theme changes
-      window.matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change', (e) => {
-          if (!localStorage.getItem(this.storageKey)) {
-            this.setTheme(e.matches ? 'dark' : 'light');
-          }
-        });
+    }
+
+    attachSystemThemeListener() {
+      if (this.systemThemeListenerAttached) {
+        return;
+      }
+
+      this.mediaQuery.addEventListener('change', (event) => {
+        if (!localStorage.getItem(this.storageKey)) {
+          this.setTheme(event.matches ? 'dark' : 'light');
+        }
+      });
+
+      this.systemThemeListenerAttached = true;
     }
     
     toggleTheme() {
-      console.log('Toggling theme...');
       const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
       // Add rotation animation to all theme icons
-      const themeIcons = document.querySelectorAll('[id="theme-icon"]');
+      const themeIcons = document.querySelectorAll('[data-theme-icon]');
       themeIcons.forEach(icon => {
         icon.classList.add('theme-icon-rotate');
         
@@ -75,7 +92,7 @@
     
     setTheme(theme) {
       const root = document.documentElement;
-      const themeIcons = document.querySelectorAll('[id="theme-icon"]');
+      const themeIcons = document.querySelectorAll('[data-theme-icon]');
       
       if (theme === 'dark') {
         root.classList.add('dark');
@@ -100,16 +117,13 @@
   function initThemeManager() {
     if (!window.themeManagerInstance) {
       window.themeManagerInstance = new ThemeManager();
+      return;
     }
+
+    window.themeManagerInstance.hydrate();
   }
   
   // Initialize on page navigation (for Astro's client-side routing)
   document.addEventListener('astro:page-load', initThemeManager);
-
-  // Initialize on initial page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThemeManager);
-  } else {
-    initThemeManager();
-  }
+  document.addEventListener('astro:after-swap', initThemeManager);
 </script>

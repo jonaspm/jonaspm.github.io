@@ -1,0 +1,51 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import HomeSection from "@/components/HomeSection.astro";
+import BioSection from "@/components/BioSection.astro";
+import SkillsSection from "@/components/SkillsSection.astro";
+import ProjectsSection from "@/components/ProjectsSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import { getPageSEO } from "@/utils/seo";
+import {
+  getTranslations,
+  type Language,
+  type ProjectViewModel,
+} from "@/utils/i18n";
+
+export interface Props {
+  language: Language;
+}
+
+const { language } = Astro.props;
+const translations = getTranslations(language);
+
+const projects = (await getCollection("projects"))
+  .sort((left, right) => left.data.order - right.data.order)
+  .map((project): ProjectViewModel => localizeProject(project, language));
+
+const seoConfig = getPageSEO("home", language);
+
+function localizeProject(
+  project: CollectionEntry<"projects">,
+  currentLanguage: Language,
+): ProjectViewModel {
+  return {
+    name: project.data.name,
+    url: project.data.url,
+    image: project.data.image,
+    description: project.data.description[currentLanguage],
+    skills: project.data.skills.map((skill) => skill[currentLanguage]),
+  };
+}
+---
+
+<Layout {...seoConfig} language={language} navigation={translations.navigation} footer={translations.footer}>
+  <div class="flex flex-col gap-y-18">
+    <HomeSection content={translations.home} />
+    <BioSection content={translations.bio} />
+    <SkillsSection title={translations.skills.title} />
+    <ProjectsSection title={translations.projects.title} projects={projects} />
+    <ContactSection title={translations.contact.title} />
+  </div>
+</Layout>

@@ -1,0 +1,19 @@
+{
+  "name": "Autosolutions",
+  "url": "https://autosolutions.mx",
+  "image": "autosolutions.mx.png",
+  "order": 1,
+  "description": {
+    "en": "On-demand auto parts for your vehicle and more.",
+    "es": "Autopartes bajo demanda para tu vehiculo y mas."
+  },
+  "skills": [
+    { "en": "Astro", "es": "Astro" },
+    { "en": "MongoDB", "es": "MongoDB" },
+    { "en": "Svelte", "es": "Svelte" },
+    { "en": "Bun", "es": "Bun" },
+    { "en": "ERPNext", "es": "ERPNext" },
+    { "en": "Team leadership", "es": "Liderazgo de equipos" },
+    { "en": "Shopify", "es": "Shopify" }
+  ]
+}

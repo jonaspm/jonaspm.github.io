@@ -18,6 +18,11 @@ export interface Props {
   siteName?: string;
   locale?: string;
   structuredData?: Record<string, any>;
+  language?: "en" | "es";
+  alternates?: Array<{
+    hrefLang: string;
+    href: string;
+  }>;
 }
 
 const {
@@ -38,7 +43,8 @@ const {
   canonical = url,
   siteName = 'Jonas Perusquia Morales',
   locale = 'en_US',
-  structuredData
+  structuredData,
+  alternates = []
 } = Astro.props;
 
 // Ensure absolute URLs for image and canonical
@@ -85,6 +91,9 @@ const finalStructuredData = structuredData || defaultStructuredData;
 <meta name="robots" content={robots} />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={absoluteCanonical} />
+{alternates.map((alternate) => (
+  <link rel="alternate" hreflang={alternate.hrefLang} href={new URL(alternate.href, Astro.site || Astro.url.origin).href} />
+))}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />

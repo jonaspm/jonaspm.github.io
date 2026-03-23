@@ -2,14 +2,35 @@
 const isDev = import.meta.env.DEV;
 ---
 
-<script>
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "l5tvca8qee");
+<script is:inline>
+    (() => {
+        const clarityId = "l5tvca8qee";
+        const claritySrc = `https://www.clarity.ms/tag/${clarityId}`;
+
+        if (document.querySelector(`script[data-clarity-id="${clarityId}"]`)) {
+            return;
+        }
+
+        window.clarity = window.clarity || function () {
+            (window.clarity.q = window.clarity.q || []).push(arguments);
+        };
+
+        const clarityScript = document.createElement("script");
+        clarityScript.async = true;
+        clarityScript.src = claritySrc;
+        clarityScript.dataset.clarityId = clarityId;
+
+        const firstScript = document.getElementsByTagName("script")[0];
+        if (firstScript?.parentNode) {
+            firstScript.parentNode.insertBefore(clarityScript, firstScript);
+            return;
+        }
+
+        document.head.appendChild(clarityScript);
+    })();
 </script>
 <script 
+ id="onedollarstats-script"
  defer 
  src="https://assets.onedollarstats.com/stonks.js"
  data-debug={isDev ? 'jonasperusquia.com' : undefined}

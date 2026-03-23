@@ -1,4 +1,6 @@
 ---
+import type { Translations } from "@/utils/i18n";
+
 export interface Props {
   title?: string;
   description?: string;
@@ -17,9 +19,18 @@ export interface Props {
   siteName?: string;
   locale?: string;
   structuredData?: Record<string, any>;
+  language?: "en" | "es";
+  navigation?: Translations["navigation"];
+  footer?: string;
 }
 
-const { title = "Jonas Perusquia Morales", ...seoProps } = Astro.props;
+const {
+  title = "Jonas Perusquia Morales",
+  language = "en",
+  navigation,
+  footer = "Made with love from Chihuahua, Mexico.",
+  ...seoProps
+} = Astro.props;
 
 import "@/styles/global.css";
 import Navigation from "@/components/Navigation.astro";
@@ -29,7 +40,7 @@ import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
-<html lang="en" class="min-h-dvh bg-cover bg-center bg-no-repeat bg-fixed">
+<html lang={language} class="min-h-dvh bg-cover bg-center bg-no-repeat bg-fixed">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -37,7 +48,7 @@ import { ClientRouter } from "astro:transitions";
     <!-- Theme initialization script (must be inline to prevent FOUC) -->
     <script is:inline>
       // Prevent flash of unstyled content (FOUC) by setting theme immediately
-      (function () {
+      (function applyPreferredTheme() {
         const savedTheme = localStorage.getItem("theme-preference");
         const systemPrefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
@@ -46,6 +57,8 @@ import { ClientRouter } from "astro:transitions";
 
         if (theme === "dark") {
           document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
         }
       })();
     </script>
@@ -59,7 +72,7 @@ import { ClientRouter } from "astro:transitions";
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- SEO Manager -->
-    <SEOManager title={title} {...seoProps} />
+    <SEOManager title={title} language={language} {...seoProps} />
 
     <!-- Analytics -->
     <Analytics />
@@ -73,7 +86,7 @@ import { ClientRouter } from "astro:transitions";
   <body
     class="min-h-screen h-full bg-white dark:bg-grayblue-900 text-grayblue-900 dark:text-grayblue-100 transition-colors duration-300"
   >
-    <Navigation />
+    {navigation && <Navigation transition:name="navigation" transition:persist currentLanguage={language} navigation={navigation} />}
     <main id="main" role="main" class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
       <slot />
     </main>
@@ -81,7 +94,7 @@ import { ClientRouter } from "astro:transitions";
       role="contentinfo"
       class="bg-grayblue-100 dark:bg-grayblue-800 py-6 text-center text-sm text-grayblue-600 dark:text-grayblue-400 transition-colors duration-300"
     >
-      <p>Made with ♥️ from Chihuahua, Mexico.</p>
+      <p>{footer}</p>
     </footer>
   </body>
 </html>

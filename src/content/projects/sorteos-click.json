@@ -1,0 +1,19 @@
+{
+  "name": "Sorteos Click",
+  "url": "https://sorteos.click",
+  "image": "sorteos.click.png",
+  "order": 2,
+  "description": {
+    "en": "Create and manage your own raffles for free.",
+    "es": "Crea y administra tus propias rifas gratis."
+  },
+  "skills": [
+    { "en": "Astro", "es": "Astro" },
+    { "en": "Svelte", "es": "Svelte" },
+    { "en": "Turso", "es": "Turso" },
+    { "en": "Cloudflare", "es": "Cloudflare" },
+    { "en": "TailwindCSS", "es": "TailwindCSS" },
+    { "en": "DaisyUI", "es": "DaisyUI" },
+    { "en": "PagandoCheck", "es": "PagandoCheck" }
+  ]
+}

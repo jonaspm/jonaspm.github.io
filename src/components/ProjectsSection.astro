@@ -6,7 +6,14 @@ import enerlinqImage from "@/assets/images/enerlinq.com.png";
 import gerardoAncerImage from "@/assets/images/gerardoancer.com.png";
 import hackcuuImage from "@/assets/images/hackcuu.com.png";
 import petwebyImage from "@/assets/images/petweby.com.png";
-import projectsData from "@/assets/data/projects.json";
+import type { ProjectViewModel } from "@/utils/i18n";
+
+interface Props {
+  title: string;
+  projects: ProjectViewModel[];
+}
+
+const { title, projects } = Astro.props;
 
 // Map image filenames to imported images
 const imageMap = {
@@ -18,22 +25,19 @@ const imageMap = {
   "petweby.com.png": petwebyImage,
 };
 
-// Process projects with their images
-const projects = await Promise.all(
-  projectsData.map(async (project) => ({
-    ...project,
-    image: imageMap[project.image],
-  }))
-);
+const resolvedProjects = projects.map((project) => ({
+  ...project,
+  image: imageMap[project.image as keyof typeof imageMap],
+}));
 ---
 
 <section id="projects" class="py-8 scroll-mt-20 opacity-0">
   <h2 class="mb-12 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">
-    Featured Projects
+    {title}
   </h2>
   <div class="grid gap-8 md:grid-cols-2">
     {
-      projects.map((project) => (
+      resolvedProjects.map((project) => (
         <a
           href={project.url}
           class="rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 gsap-fade-up transition-colors duration-300 hover:shadow-xl"
