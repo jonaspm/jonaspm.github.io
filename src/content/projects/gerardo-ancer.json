@@ -5,12 +5,13 @@
 	"order": 3,
 	"description": {
 		"en": "Portfolio website for graphic designer Gerardo Ancer.",
-		"es": "Sitio de portafolio para el disenador grafico Gerardo Ancer."
+		"es": "Sitio de portafolio para el disenador grafico Gerardo Ancer.",
+		"eo": "Portfolia retejo por grafika dezajnisto Gerardo Ancer."
 	},
 	"skills": [
-		{ "en": "Astro", "es": "Astro" },
-		{ "en": "Cloudflare", "es": "Cloudflare" },
-		{ "en": "TailwindCSS", "es": "TailwindCSS" },
-		{ "en": "Web development", "es": "Desarrollo web" }
+		{ "en": "Astro", "es": "Astro", "eo": "Astro" },
+		{ "en": "Cloudflare", "es": "Cloudflare", "eo": "Cloudflare" },
+		{ "en": "TailwindCSS", "es": "TailwindCSS", "eo": "TailwindCSS" },
+		{ "en": "Web development", "es": "Desarrollo web", "eo": "Reteja disvolvigo" }
 	]
 }

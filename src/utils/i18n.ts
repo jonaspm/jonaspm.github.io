@@ -1,4 +1,4 @@
-export type Language = 'en' | 'es'
+export type Language = 'en' | 'es' | 'eo'
 
 export interface NavigationItem {
 	id: string
@@ -199,6 +199,80 @@ const translations: Record<Language, Translations> = {
 				],
 				structuredDescription:
 					'MSc. en Ciencia de Datos e Ingeniero de Software y Chief Technology Officer con experiencia en desarrollo full stack, arquitectura en la nube y liderazgo de equipos.',
+			},
+		},
+	},
+	eo: {
+		language: 'eo',
+		locale: 'eo',
+		navigation: {
+			brand: 'Jonas PM',
+			items: [
+				{ id: 'home', label: 'Hejmo' },
+				{ id: 'bio', label: 'Biografio' },
+				{ id: 'skills', label: 'Kapabloj' },
+				{ id: 'projects', label: 'Projektoj' },
+				{ id: 'contact', label: 'Kontakto' },
+			],
+			ariaLabel: 'Cxefa navigado',
+			languageLabel: 'Lingvo',
+		},
+		home: {
+			title: 'Jonas Perusquia Morales',
+			role: 'MSc. Datumscienco & Programara Ingeniero',
+			subtitle: 'Chief Technology Officer',
+			description:
+				'Nova teknologia gvidanto kun pasio por konstrui skaleblajn solvojn kaj kreskigi alt-efikecajn teamojn.',
+			scrollToBioLabel: 'Rulumu al Biografio',
+		},
+		bio: {
+			title: 'Pri mi',
+			paragraphs: [
+				'Kun pasio por teknologio kaj pli ol ok jaroj da sperto en reteja disvolvigo, mi dedicxis min al adoptado kaj efektivigado de la plej novaj industriaj tendencoj kaj iloj. Mia portfolio inkluzivas diversan gamon da nubaj projektoj, inkluzive de retejoj, moveblaj aplikaĵoj kaj labortabla programaro.',
+				'Kiel memlernanta perfektisto kaj natura gvidanto, mi alportas fortajn problem-solvantajn kapablojn al ĉiu projekto. Mia konstante pozitiva, motiviga kaj inkluziva aliro ebligas min prosperi en kunlaboraj medioj kie dividi scion estas aprezata.',
+				'Ekster la profesia sfero, mi trovas ekvilibron per muziko, sporto kaj kvalita tempo kun familio.',
+			],
+		},
+		skills: {
+			title: 'Kapabloj & Sperto',
+		},
+		projects: {
+			title: 'Elstaraj Projektoj',
+		},
+		contact: {
+			title: 'Kontaktu min',
+		},
+		footer: 'Farita kun amo el Chihuahua, Meksiko.',
+		seo: {
+			home: {
+				title:
+					'Jonas Perusquia Morales - MSc. Datumscienco & Programara Ingeniero',
+				description:
+					'Bonvenon al la portfolio de Jonas Perusquia Morales, MSc. Datumscienco & Programara Ingeniero kaj Chief Technology Officer specialigxanta pri plen-staka disvolvigo, nuba arkitekturo kaj gvidado de alt-efikecaj ingenieraj teamoj.',
+				keywords: [
+					'Jonas Perusquia Morales',
+					'CTO',
+					'Chief Technology Officer',
+					'MSc',
+					'Datumscienco',
+					'MSc. Datumscienco',
+					'Programara Ingeniero',
+					'Reteja Disvolvisto',
+					'Plen-Staka Disvolvisto',
+					'Nuba Arkitekturo',
+					'Teama Gvidado',
+					'JavaScript',
+					'TypeScript',
+					'React',
+					'Node.js',
+					'Astro',
+					'Portfolio',
+					'Persona Retejo',
+					'Teknologia Gvidado',
+					'Programara Disvolvigo',
+				],
+				structuredDescription:
+					'MSc. Datumscienco & Programara Ingeniero kaj Chief Technology Officer kun sperto pri plen-staka disvolvigo, nuba arkitekturo kaj teama gvidado.',
 			},
 		},
 	},

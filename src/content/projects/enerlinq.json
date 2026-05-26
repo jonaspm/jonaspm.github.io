@@ -5,15 +5,16 @@
 	"order": 0,
 	"description": {
 		"en": "IT and digital transformation consulting company.",
-		"es": "Consultora de TI y transformacion digital."
+		"es": "Consultora de TI y transformacion digital.",
+		"eo": "IT kaj cifereca transforma konsilanta firmao."
 	},
 	"skills": [
-		{ "en": "ERPNext", "es": "ERPNext" },
-		{ "en": "ServiceNow", "es": "ServiceNow" },
-		{ "en": "Node.js", "es": "Node.js" },
-		{ "en": "Software development", "es": "Desarrollo de software" },
-		{ "en": "AI Agents", "es": "Agentes de IA" },
-		{ "en": "Cloud Computing", "es": "Computacion en la nube" },
-		{ "en": "Project management", "es": "Gestion de proyectos" }
+		{ "en": "ERPNext", "es": "ERPNext", "eo": "ERPNext" },
+		{ "en": "ServiceNow", "es": "ServiceNow", "eo": "ServiceNow" },
+		{ "en": "Node.js", "es": "Node.js", "eo": "Node.js" },
+		{ "en": "Software development", "es": "Desarrollo de software", "eo": "Programara disvolvigo" },
+		{ "en": "AI Agents", "es": "Agentes de IA", "eo": "AI Agentoj" },
+		{ "en": "Cloud Computing", "es": "Computacion en la nube", "eo": "Nuba komputado" },
+		{ "en": "Project management", "es": "Gestion de proyectos", "eo": "Projekta mastrumado" }
 	]
 }

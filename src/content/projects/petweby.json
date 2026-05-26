@@ -5,14 +5,15 @@
 	"order": 5,
 	"description": {
 		"en": "Petweby is a pet health tracker and management platform for tutors and veterinarians.",
-		"es": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios."
+		"es": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios.",
+		"eo": "Petweby estas san-spurado kaj mastrumada platformo por dorlotbestoj, por prizorgantoj kaj veterinaroj."
 	},
 	"skills": [
-		{ "en": "Astro", "es": "Astro" },
-		{ "en": "React", "es": "React" },
-		{ "en": "bknd", "es": "bknd" },
-		{ "en": "Cloudflare", "es": "Cloudflare" },
-		{ "en": "Bun", "es": "Bun" },
-		{ "en": "TailwindCSS", "es": "TailwindCSS" }
+		{ "en": "Astro", "es": "Astro", "eo": "Astro" },
+		{ "en": "React", "es": "React", "eo": "React" },
+		{ "en": "bknd", "es": "bknd", "eo": "bknd" },
+		{ "en": "Cloudflare", "es": "Cloudflare", "eo": "Cloudflare" },
+		{ "en": "Bun", "es": "Bun", "eo": "Bun" },
+		{ "en": "TailwindCSS", "es": "TailwindCSS", "eo": "TailwindCSS" }
 	]
 }

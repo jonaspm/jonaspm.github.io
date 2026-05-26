@@ -47,6 +47,7 @@ function getDefaultSEO(language: Language): SEOConfig {
 		alternates: [
 			{ hrefLang: 'en', href: getRelativeLocaleUrl('en', '') },
 			{ hrefLang: 'es', href: getRelativeLocaleUrl('es', '') },
+			{ hrefLang: 'eo', href: getRelativeLocaleUrl('eo', '') },
 			{ hrefLang: 'x-default', href: getRelativeLocaleUrl('en', '') },
 		],
 	}

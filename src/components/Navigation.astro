@@ -17,9 +17,13 @@ interface Props {
 
 const { currentLanguage, navigation } = Astro.props
 const { brand, items, ariaLabel, languageLabel } = navigation
-const alternateLanguage = currentLanguage === 'en' ? 'es' : 'en'
 const homeUrl = getRelativeLocaleUrl(currentLanguage, '')
-const alternateLanguageUrl = getRelativeLocaleUrl(alternateLanguage, '')
+
+const languages = [
+	{ code: 'en', label: 'EN', url: getRelativeLocaleUrl('en', '') },
+	{ code: 'es', label: 'ES', url: getRelativeLocaleUrl('es', '') },
+	{ code: 'eo', label: 'EO', url: getRelativeLocaleUrl('eo', '') },
+]
 ---
 
 <header
@@ -44,13 +48,16 @@ const alternateLanguageUrl = getRelativeLocaleUrl(alternateLanguage, '')
         ></a
       >
       <div class="flex items-center gap-3">
-        <a
-          href={alternateLanguageUrl}
-          class="text-xs font-medium uppercase tracking-wider text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
+        <select
+          class="text-xs bg-transparent border-none cursor-pointer uppercase tracking-wider text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-colors focus:outline-none appearance-none pr-4 bg-[length:8px] bg-[right_0_center] bg-no-repeat"
+          style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E&quot;)"
           aria-label={languageLabel}
+          onchange="window.location = this.value"
         >
-          {alternateLanguage}
-        </a>
+          {languages.map(l => (
+            <option value={l.url} selected={l.code === currentLanguage}>{l.label}</option>
+          ))}
+        </select>
         <ThemeToggle />
         <button
           data-mobile-menu-button
@@ -92,13 +99,16 @@ const alternateLanguageUrl = getRelativeLocaleUrl(alternateLanguage, '')
         }
       </ul>
       <div class="flex-1 flex justify-end items-center gap-4">
-        <a
-          href={alternateLanguageUrl}
-          class="text-xs font-medium uppercase tracking-wider text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
+        <select
+          class="text-xs bg-transparent border-none cursor-pointer uppercase tracking-wider text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-colors focus:outline-none appearance-none pr-4 bg-[length:8px] bg-[right_0_center] bg-no-repeat"
+          style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E&quot;)"
           aria-label={languageLabel}
+          onchange="window.location = this.value"
         >
-          {alternateLanguage}
-        </a>
+          {languages.map(l => (
+            <option value={l.url} selected={l.code === currentLanguage}>{l.label}</option>
+          ))}
+        </select>
         <ThemeToggle />
       </div>
     </div>

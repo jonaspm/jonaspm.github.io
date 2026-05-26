@@ -5,15 +5,16 @@
 	"order": 1,
 	"description": {
 		"en": "On-demand auto parts for your vehicle and more.",
-		"es": "Autopartes bajo demanda para tu vehiculo y mas."
+		"es": "Autopartes bajo demanda para tu vehiculo y mas.",
+		"eo": "Lauxpetaj auxtopartoj por via veturilo kaj pli."
 	},
 	"skills": [
-		{ "en": "Astro", "es": "Astro" },
-		{ "en": "MongoDB", "es": "MongoDB" },
-		{ "en": "Svelte", "es": "Svelte" },
-		{ "en": "Bun", "es": "Bun" },
-		{ "en": "ERPNext", "es": "ERPNext" },
-		{ "en": "Team leadership", "es": "Liderazgo de equipos" },
-		{ "en": "Shopify", "es": "Shopify" }
+		{ "en": "Astro", "es": "Astro", "eo": "Astro" },
+		{ "en": "MongoDB", "es": "MongoDB", "eo": "MongoDB" },
+		{ "en": "Svelte", "es": "Svelte", "eo": "Svelte" },
+		{ "en": "Bun", "es": "Bun", "eo": "Bun" },
+		{ "en": "ERPNext", "es": "ERPNext", "eo": "ERPNext" },
+		{ "en": "Team leadership", "es": "Liderazgo de equipos", "eo": "Teama gvidado" },
+		{ "en": "Shopify", "es": "Shopify", "eo": "Shopify" }
 	]
 }

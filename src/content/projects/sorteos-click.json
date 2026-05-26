@@ -5,15 +5,16 @@
 	"order": 2,
 	"description": {
 		"en": "Create and manage your own raffles for free.",
-		"es": "Crea y administra tus propias rifas gratis."
+		"es": "Crea y administra tus propias rifas gratis.",
+		"eo": "Kreu kaj administru viajn proprajn loteriojn senpage."
 	},
 	"skills": [
-		{ "en": "Astro", "es": "Astro" },
-		{ "en": "Svelte", "es": "Svelte" },
-		{ "en": "Turso", "es": "Turso" },
-		{ "en": "Cloudflare", "es": "Cloudflare" },
-		{ "en": "TailwindCSS", "es": "TailwindCSS" },
-		{ "en": "DaisyUI", "es": "DaisyUI" },
-		{ "en": "PagandoCheck", "es": "PagandoCheck" }
+		{ "en": "Astro", "es": "Astro", "eo": "Astro" },
+		{ "en": "Svelte", "es": "Svelte", "eo": "Svelte" },
+		{ "en": "Turso", "es": "Turso", "eo": "Turso" },
+		{ "en": "Cloudflare", "es": "Cloudflare", "eo": "Cloudflare" },
+		{ "en": "TailwindCSS", "es": "TailwindCSS", "eo": "TailwindCSS" },
+		{ "en": "DaisyUI", "es": "DaisyUI", "eo": "DaisyUI" },
+		{ "en": "PagandoCheck", "es": "PagandoCheck", "eo": "PagandoCheck" }
 	]
 }

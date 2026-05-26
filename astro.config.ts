@@ -7,7 +7,7 @@ import mcp from 'astro-mcp'
 export default defineConfig({
 	site: 'https://jonasperusquia.com',
 	i18n: {
-		locales: ['en', 'es'],
+		locales: ['en', 'es', 'eo'],
 		defaultLocale: 'en',
 		routing: {
 			prefixDefaultLocale: false,

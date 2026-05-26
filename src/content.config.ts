@@ -5,6 +5,7 @@ import { z } from 'astro/zod'
 const localizedString = z.object({
 	en: z.string(),
 	es: z.string(),
+	eo: z.string(),
 })
 
 const projects = defineCollection({

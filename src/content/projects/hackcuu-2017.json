@@ -5,13 +5,14 @@
 	"order": 4,
 	"description": {
 		"en": "Lead organizer for the HackCUU 2017 MLH hackathon.",
-		"es": "Organizador principal del hackathon MLH HackCUU 2017."
+		"es": "Organizador principal del hackathon MLH HackCUU 2017.",
+		"eo": "CXefa organizanto de la HackCUU 2017 MLH hackatono."
 	},
 	"skills": [
-		{ "en": "Team leadership", "es": "Liderazgo de equipos" },
-		{ "en": "GitHub", "es": "GitHub" },
-		{ "en": "Event organization", "es": "Organizacion de eventos" },
-		{ "en": "Project management", "es": "Gestion de proyectos" },
-		{ "en": "Sponsorship acquisition", "es": "Obtencion de patrocinios" }
+		{ "en": "Team leadership", "es": "Liderazgo de equipos", "eo": "Teama gvidado" },
+		{ "en": "GitHub", "es": "GitHub", "eo": "GitHub" },
+		{ "en": "Event organization", "es": "Organizacion de eventos", "eo": "Eventa organizado" },
+		{ "en": "Project management", "es": "Gestion de proyectos", "eo": "Projekta mastrumado" },
+		{ "en": "Sponsorship acquisition", "es": "Obtencion de patrocinios", "eo": "Akiro de patrocinioj" }
 	]
 }
