@@ -1,18 +1,18 @@
 {
-  "name": "Petweby.com",
-  "url": "https://petweby.com",
-  "image": "petweby.com.png",
-  "order": 5,
-  "description": {
-    "en": "Petweby is a pet health tracker and management platform for tutors and veterinarians.",
-    "es": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios."
-  },
-  "skills": [
-    { "en": "Astro", "es": "Astro" },
-    { "en": "React", "es": "React" },
-    { "en": "bknd", "es": "bknd" },
-    { "en": "Cloudflare", "es": "Cloudflare" },
-    { "en": "Bun", "es": "Bun" },
-    { "en": "TailwindCSS", "es": "TailwindCSS" }
-  ]
+	"name": "Petweby.com",
+	"url": "https://petweby.com",
+	"image": "petweby.com.png",
+	"order": 5,
+	"description": {
+		"en": "Petweby is a pet health tracker and management platform for tutors and veterinarians.",
+		"es": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios."
+	},
+	"skills": [
+		{ "en": "Astro", "es": "Astro" },
+		{ "en": "React", "es": "React" },
+		{ "en": "bknd", "es": "bknd" },
+		{ "en": "Cloudflare", "es": "Cloudflare" },
+		{ "en": "Bun", "es": "Bun" },
+		{ "en": "TailwindCSS", "es": "TailwindCSS" }
+	]
 }

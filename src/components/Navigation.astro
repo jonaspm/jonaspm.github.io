@@ -1,25 +1,25 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-import ThemeToggle from "./ThemeToggle.astro";
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import ThemeToggle from './ThemeToggle.astro'
 
 interface Props {
-  currentLanguage: "en" | "es";
-  navigation: {
-    brand: string;
-    items: Array<{
-      id: string;
-      label: string;
-    }>;
-    ariaLabel: string;
-    languageLabel: string;
-  };
+	currentLanguage: 'en' | 'es'
+	navigation: {
+		brand: string
+		items: Array<{
+			id: string
+			label: string
+		}>
+		ariaLabel: string
+		languageLabel: string
+	}
 }
 
-const { currentLanguage, navigation } = Astro.props;
-const { brand, items, ariaLabel, languageLabel } = navigation;
-const alternateLanguage = currentLanguage === "en" ? "es" : "en";
-const homeUrl = getRelativeLocaleUrl(currentLanguage, "");
-const alternateLanguageUrl = getRelativeLocaleUrl(alternateLanguage, "");
+const { currentLanguage, navigation } = Astro.props
+const { brand, items, ariaLabel, languageLabel } = navigation
+const alternateLanguage = currentLanguage === 'en' ? 'es' : 'en'
+const homeUrl = getRelativeLocaleUrl(currentLanguage, '')
+const alternateLanguageUrl = getRelativeLocaleUrl(alternateLanguage, '')
 ---
 
 <header

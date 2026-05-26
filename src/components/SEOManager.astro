@@ -1,85 +1,104 @@
 ---
 export interface Props {
-  title?: string;
-  description?: string;
-  keywords?: string[];
-  image?: string;
-  imageAlt?: string;
-  url?: string;
-  type?: 'website' | 'article' | 'profile';
-  author?: string;
-  publishedTime?: string;
-  modifiedTime?: string;
-  section?: string;
-  tags?: string[];
-  twitterHandle?: string;
-  robots?: string;
-  canonical?: string;
-  siteName?: string;
-  locale?: string;
-  structuredData?: Record<string, any>;
-  language?: "en" | "es";
-  alternates?: Array<{
-    hrefLang: string;
-    href: string;
-  }>;
+	title?: string
+	description?: string
+	keywords?: string[]
+	image?: string
+	imageAlt?: string
+	url?: string
+	type?: 'website' | 'article' | 'profile'
+	author?: string
+	publishedTime?: string
+	modifiedTime?: string
+	section?: string
+	tags?: string[]
+	twitterHandle?: string
+	robots?: string
+	canonical?: string
+	siteName?: string
+	locale?: string
+	structuredData?: Record<string, any>
+	language?: 'en' | 'es'
+	alternates?: Array<{
+		hrefLang: string
+		href: string
+	}>
 }
 
 const {
-  title = 'Jonas Perusquia Morales - Chief Technology Officer',
-  description = 'Jonas Perusquia Morales - Chief Technology Officer and Software Engineer with expertise in full-stack development, cloud architecture, and team leadership.',
-  keywords = ['Jonas Perusquia Morales', 'CTO', 'Chief Technology Officer', 'Software Engineer', 'Web Developer', 'Full Stack Developer', 'Cloud Architecture', 'Team Leadership'],
-  image = '/profile.png',
-  imageAlt = 'Jonas Perusquia Morales - Professional Profile',
-  url = Astro.url.href,
-  type = 'website',
-  author = 'Jonas Perusquia Morales',
-  publishedTime,
-  modifiedTime,
-  section,
-  tags = [],
-  twitterHandle = '@jonaspm',
-  robots = 'index, follow',
-  canonical = url,
-  siteName = 'Jonas Perusquia Morales',
-  locale = 'en_US',
-  structuredData,
-  alternates = []
-} = Astro.props;
+	title = 'Jonas Perusquia Morales - Msc. Data Science & Software Engineer',
+	description = 'Jonas Perusquia Morales - Msc. Data Science & Software Engineer and Chief Technology Officer with expertise in full-stack development, cloud architecture, and team leadership.',
+	keywords = [
+		'Jonas Perusquia Morales',
+		'CTO',
+		'Chief Technology Officer',
+		'Msc',
+		'Data Science',
+		'Msc. Data Science',
+		'Software Engineer',
+		'Web Developer',
+		'Full Stack Developer',
+		'Cloud Architecture',
+		'Team Leadership',
+	],
+	image = '/profile.png',
+	imageAlt = 'Jonas Perusquia Morales - Professional Profile',
+	url = Astro.url.href,
+	type = 'website',
+	author = 'Jonas Perusquia Morales',
+	publishedTime,
+	modifiedTime,
+	section,
+	tags = [],
+	twitterHandle = '@jonaspm',
+	robots = 'index, follow',
+	canonical = url,
+	siteName = 'Jonas Perusquia Morales',
+	locale = 'en_US',
+	structuredData,
+	alternates = [],
+} = Astro.props
 
 // Ensure absolute URLs for image and canonical
-const absoluteImage = image?.startsWith('http') ? image : new URL(image || '/profile.png', Astro.site || Astro.url.origin).href;
-const absoluteCanonical = canonical?.startsWith('http') ? canonical : new URL(canonical || Astro.url.pathname, Astro.site || Astro.url.origin).href;
-const absoluteUrl = url?.startsWith('http') ? url : new URL(url || Astro.url.pathname, Astro.site || Astro.url.origin).href;
+const absoluteImage = image?.startsWith('http')
+	? image
+	: new URL(image || '/profile.png', Astro.site || Astro.url.origin).href
+const absoluteCanonical = canonical?.startsWith('http')
+	? canonical
+	: new URL(canonical || Astro.url.pathname, Astro.site || Astro.url.origin)
+			.href
+const absoluteUrl = url?.startsWith('http')
+	? url
+	: new URL(url || Astro.url.pathname, Astro.site || Astro.url.origin).href
 
 // Default structured data for Jonas
 const defaultStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Jonas Perusquia Morales",
-  "jobTitle": "Chief Technology Officer",
-  "description": description,
-  "url": absoluteUrl,
-  "image": absoluteImage,
-  "sameAs": [
-    "https://linkedin.com/in/jonaspm",
-    "https://github.com/jonaspm",
-    "https://twitter.com/jonaspm"
-  ],
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Technology Companies"
-  },
-  "knowsAbout": [
-    "Software Engineering",
-    "Web Development",
-    "Cloud Architecture",
-    "Team Leadership",
-    "Full Stack Development"
-  ]
-};
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Jonas Perusquia Morales',
+	jobTitle: 'Msc. Data Science & Software Engineer',
+	description: description,
+	url: absoluteUrl,
+	image: absoluteImage,
+	sameAs: [
+		'https://linkedin.com/in/jonaspm',
+		'https://github.com/jonaspm',
+		'https://twitter.com/jonaspm',
+	],
+	worksFor: {
+		'@type': 'Organization',
+		name: 'Technology Companies',
+	},
+	knowsAbout: [
+		'Software Engineering',
+		'Web Development',
+		'Cloud Architecture',
+		'Team Leadership',
+		'Full Stack Development',
+	],
+}
 
-const finalStructuredData = structuredData || defaultStructuredData;
+const finalStructuredData = structuredData || defaultStructuredData
 ---
 
 <!-- Primary Meta Tags -->

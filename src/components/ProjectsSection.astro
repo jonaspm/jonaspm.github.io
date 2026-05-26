@@ -1,34 +1,34 @@
 ---
-import { Image } from "astro:assets";
-import sorteosClickImage from "@/assets/images/sorteos.click.png";
-import autosolutionsImage from "@/assets/images/autosolutions.mx.png";
-import enerlinqImage from "@/assets/images/enerlinq.com.png";
-import gerardoAncerImage from "@/assets/images/gerardoancer.com.png";
-import hackcuuImage from "@/assets/images/hackcuu.com.png";
-import petwebyImage from "@/assets/images/petweby.com.png";
-import type { ProjectViewModel } from "@/utils/i18n";
+import { Image } from 'astro:assets'
+import autosolutionsImage from '@/assets/images/autosolutions.mx.png'
+import enerlinqImage from '@/assets/images/enerlinq.com.png'
+import gerardoAncerImage from '@/assets/images/gerardoancer.com.png'
+import hackcuuImage from '@/assets/images/hackcuu.com.png'
+import petwebyImage from '@/assets/images/petweby.com.png'
+import sorteosClickImage from '@/assets/images/sorteos.click.png'
+import type { ProjectViewModel } from '@/utils/i18n'
 
 interface Props {
-  title: string;
-  projects: ProjectViewModel[];
+	title: string
+	projects: ProjectViewModel[]
 }
 
-const { title, projects } = Astro.props;
+const { title, projects } = Astro.props
 
 // Map image filenames to imported images
 const imageMap = {
-  "enerlinq.com.png": enerlinqImage,
-  "autosolutions.mx.png": autosolutionsImage,
-  "sorteos.click.png": sorteosClickImage,
-  "gerardoancer.com.png": gerardoAncerImage,
-  "hackcuu.com.png": hackcuuImage,
-  "petweby.com.png": petwebyImage,
-};
+	'enerlinq.com.png': enerlinqImage,
+	'autosolutions.mx.png': autosolutionsImage,
+	'sorteos.click.png': sorteosClickImage,
+	'gerardoancer.com.png': gerardoAncerImage,
+	'hackcuu.com.png': hackcuuImage,
+	'petweby.com.png': petwebyImage,
+}
 
 const resolvedProjects = projects.map((project) => ({
-  ...project,
-  image: imageMap[project.image as keyof typeof imageMap],
-}));
+	...project,
+	image: imageMap[project.image as keyof typeof imageMap],
+}))
 ---
 
 <section id="projects" class="py-8 scroll-mt-20 opacity-0">

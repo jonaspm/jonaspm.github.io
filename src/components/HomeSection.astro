@@ -1,18 +1,19 @@
 ---
-import socialNetworks from "@/assets/data/social-networks.json";
-import { Image } from "astro:assets";
-import profilePicture from "@/assets/images/profile.png";
+import { Image } from 'astro:assets'
+import socialNetworks from '@/assets/data/social-networks.json'
+import profilePicture from '@/assets/images/profile.png'
 
 interface Props {
-  content: {
-    title: string;
-    role: string;
-    description: string;
-    scrollToBioLabel: string;
-  };
+	content: {
+		title: string
+		role: string
+		subtitle: string
+		description: string
+		scrollToBioLabel: string
+	}
 }
 
-const { content } = Astro.props;
+const { content } = Astro.props
 ---
 
 <section id="home" class="py-8 scroll-mt-20 opacity-0 gsap-fade-up-noreverse">
@@ -21,9 +22,12 @@ const { content } = Astro.props;
       <h1 class="mb-4 text-5xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-hero-stagger transition-colors duration-300">
         {content.title}
       </h1>
-      <h2 class="mb-6 text-2xl font-light text-blue-500 dark:text-blue-300 gsap-hero-stagger transition-colors duration-300">
+      <h2 class="mb-2 text-2xl font-light text-blue-500 dark:text-blue-300 gsap-hero-stagger transition-colors duration-300">
         {content.role}
       </h2>
+      <h3 class="mb-6 text-lg font-light text-grayblue-500 dark:text-grayblue-400 gsap-hero-stagger transition-colors duration-300">
+        {content.subtitle}
+      </h3>
       <p class="max-w-2xl text-xl text-grayblue-600 dark:text-grayblue-300 gsap-hero-stagger transition-colors duration-300">
         {content.description}
       </p>

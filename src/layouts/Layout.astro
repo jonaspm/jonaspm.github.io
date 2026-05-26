@@ -1,42 +1,42 @@
 ---
-import type { Translations } from "@/utils/i18n";
+import type { Translations } from '@/utils/i18n'
 
 export interface Props {
-  title?: string;
-  description?: string;
-  keywords?: string[];
-  image?: string;
-  imageAlt?: string;
-  type?: "website" | "article" | "profile";
-  author?: string;
-  publishedTime?: string;
-  modifiedTime?: string;
-  section?: string;
-  tags?: string[];
-  twitterHandle?: string;
-  robots?: string;
-  canonical?: string;
-  siteName?: string;
-  locale?: string;
-  structuredData?: Record<string, any>;
-  language?: "en" | "es";
-  navigation?: Translations["navigation"];
-  footer?: string;
+	title?: string
+	description?: string
+	keywords?: string[]
+	image?: string
+	imageAlt?: string
+	type?: 'website' | 'article' | 'profile'
+	author?: string
+	publishedTime?: string
+	modifiedTime?: string
+	section?: string
+	tags?: string[]
+	twitterHandle?: string
+	robots?: string
+	canonical?: string
+	siteName?: string
+	locale?: string
+	structuredData?: Record<string, any>
+	language?: 'en' | 'es'
+	navigation?: Translations['navigation']
+	footer?: string
 }
 
 const {
-  title = "Jonas Perusquia Morales",
-  language = "en",
-  navigation,
-  footer = "Made with love from Chihuahua, Mexico.",
-  ...seoProps
-} = Astro.props;
+	title = 'Jonas Perusquia Morales',
+	language = 'en',
+	navigation,
+	footer = 'Made with love from Chihuahua, Mexico.',
+	...seoProps
+} = Astro.props
 
-import "@/styles/global.css";
-import Navigation from "@/components/Navigation.astro";
-import SEOManager from "@/components/SEOManager.astro";
-import Analytics from "@/components/Analytics.astro";
-import { ClientRouter } from "astro:transitions";
+import '@/styles/global.css'
+import { ClientRouter } from 'astro:transitions'
+import Analytics from '@/components/Analytics.astro'
+import Navigation from '@/components/Navigation.astro'
+import SEOManager from '@/components/SEOManager.astro'
 ---
 
 <!doctype html>

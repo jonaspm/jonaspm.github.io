@@ -1,19 +1,19 @@
 {
-  "name": "Enerlinq",
-  "url": "https://enerlinq.com",
-  "image": "enerlinq.com.png",
-  "order": 0,
-  "description": {
-    "en": "IT and digital transformation consulting company.",
-    "es": "Consultora de TI y transformacion digital."
-  },
-  "skills": [
-    { "en": "ERPNext", "es": "ERPNext" },
-    { "en": "ServiceNow", "es": "ServiceNow" },
-    { "en": "Node.js", "es": "Node.js" },
-    { "en": "Software development", "es": "Desarrollo de software" },
-    { "en": "AI Agents", "es": "Agentes de IA" },
-    { "en": "Cloud Computing", "es": "Computacion en la nube" },
-    { "en": "Project management", "es": "Gestion de proyectos" }
-  ]
+	"name": "Enerlinq",
+	"url": "https://enerlinq.com",
+	"image": "enerlinq.com.png",
+	"order": 0,
+	"description": {
+		"en": "IT and digital transformation consulting company.",
+		"es": "Consultora de TI y transformacion digital."
+	},
+	"skills": [
+		{ "en": "ERPNext", "es": "ERPNext" },
+		{ "en": "ServiceNow", "es": "ServiceNow" },
+		{ "en": "Node.js", "es": "Node.js" },
+		{ "en": "Software development", "es": "Desarrollo de software" },
+		{ "en": "AI Agents", "es": "Agentes de IA" },
+		{ "en": "Cloud Computing", "es": "Computacion en la nube" },
+		{ "en": "Project management", "es": "Gestion de proyectos" }
+	]
 }

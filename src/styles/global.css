@@ -1,6 +1,6 @@
 @charset "utf-8";
-@import 'tailwindcss';
-@import '@material-symbols/font-400/rounded' layer(utilities);
+@import "tailwindcss";
+@import "@material-symbols/font-400/rounded" layer(utilities);
 
 /* Configure dark mode for Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -316,61 +316,61 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 /* Dark mode styles */
 :root {
-  --bg-primary: var(--color-grayblue-50);
-  --bg-secondary: var(--color-grayblue-100);
-  --bg-tertiary: var(--color-grayblue-200);
-  --text-primary: var(--color-grayblue-900);
-  --text-secondary: var(--color-grayblue-700);
-  --text-tertiary: var(--color-grayblue-500);
+	--bg-primary: var(--color-grayblue-50);
+	--bg-secondary: var(--color-grayblue-100);
+	--bg-tertiary: var(--color-grayblue-200);
+	--text-primary: var(--color-grayblue-900);
+	--text-secondary: var(--color-grayblue-700);
+	--text-tertiary: var(--color-grayblue-500);
 }
 
 html.dark {
-  --bg-primary: var(--color-grayblue-900);
-  --bg-secondary: var(--color-grayblue-800);
-  --bg-tertiary: var(--color-grayblue-700);
-  --text-primary: var(--color-grayblue-100);
-  --text-secondary: var(--color-grayblue-300);
-  --text-tertiary: var(--color-grayblue-400);
+	--bg-primary: var(--color-grayblue-900);
+	--bg-secondary: var(--color-grayblue-800);
+	--bg-tertiary: var(--color-grayblue-700);
+	--text-primary: var(--color-grayblue-100);
+	--text-secondary: var(--color-grayblue-300);
+	--text-tertiary: var(--color-grayblue-400);
 }
 
 .scale-image:hover {
-  & img {
-    @apply scale-110;
-  }
+	& img {
+		@apply scale-110;
+	}
 }
 
 /* Theme toggle icon animation */
 .theme-icon-rotate {
-  animation: rotate-theme-icon 300ms ease-in-out;
+	animation: rotate-theme-icon 300ms ease-in-out;
 }
 
 @keyframes rotate-theme-icon {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.1);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(180deg) scale(1.1);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 #mobile-menu {
-  interpolate-size: allow-keywords;
+	interpolate-size: allow-keywords;
 }
