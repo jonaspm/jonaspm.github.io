@@ -15,7 +15,7 @@ const { content } = Astro.props
   <div class="mx-auto bg-white dark:bg-grayblue-800 p-8 rounded-lg shadow-lg border border-grayblue-200 dark:border-grayblue-700 gsap-fade-up transition-colors duration-300">
     {
       content.paragraphs.map((paragraph, index) => (
-        <p class={`text-lg leading-relaxed text-grayblue-700 dark:text-grayblue-300 gsap-fade-up transition-colors duration-300${index > 0 ? " mt-4" : ""}`}>
+        <p class={`text-lg leading-relaxed text-grayblue-700 dark:text-grayblue-300 transition-colors duration-300${index > 0 ? " mt-4" : ""}`}>
           {paragraph}
         </p>
       ))

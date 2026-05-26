@@ -79,7 +79,7 @@
 
   --color-red-50: oklch(0.971 0.013 17.38);
   --color-red-100: oklch(0.936 0.032 17.717);
-  --color-red-200: #fbbf24;
+	--color-red-200: #fecaca;
   --color-red-300: #f87171;
   --color-red-400: #ef4444;
   --color-red-500: #dc2626;
@@ -292,7 +292,7 @@
   --color-grayblue-800: #1e293b;
   --color-grayblue-900: #0f172a;
 
-  --color-gold-200: #f9fafb;
+	--color-gold-200: #fde68a;
   --color-gold-300: #f9c74f;
   --color-gold-400: #f59e0b;
 
@@ -329,25 +329,6 @@ html {
 	scroll-behavior: smooth;
 }
 
-/* Dark mode styles */
-:root {
-	--bg-primary: var(--color-grayblue-50);
-	--bg-secondary: var(--color-grayblue-100);
-	--bg-tertiary: var(--color-grayblue-200);
-	--text-primary: var(--color-grayblue-900);
-	--text-secondary: var(--color-grayblue-700);
-	--text-tertiary: var(--color-grayblue-500);
-}
-
-html.dark {
-	--bg-primary: var(--color-grayblue-900);
-	--bg-secondary: var(--color-grayblue-800);
-	--bg-tertiary: var(--color-grayblue-700);
-	--text-primary: var(--color-grayblue-100);
-	--text-secondary: var(--color-grayblue-300);
-	--text-tertiary: var(--color-grayblue-400);
-}
-
 .scale-image:hover {
 	& img {
 		@apply scale-110;
@@ -369,8 +350,4 @@ html.dark {
 	100% {
 		transform: rotate(360deg);
 	}
-}
-
-#mobile-menu {
-	interpolate-size: allow-keywords;
 }

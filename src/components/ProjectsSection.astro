@@ -42,12 +42,12 @@ const resolvedProjects = projects.map((project) => ({
           href={project.url}
           class="rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 gsap-fade-up transition-colors duration-300 hover:shadow-xl"
         >
-          <div id="project-info" class="flex flex-col gap-3 gsap-fade-up">
-            <h3 class="text-xl font-semibold text-blue-500 dark:text-blue-300 gsap-fade-up transition-colors duration-300">
+          <div id="project-info" class="flex flex-col gap-3">
+            <h3 class="text-xl font-semibold text-blue-500 dark:text-blue-300 transition-colors duration-300">
               {project.name}
             </h3>
-            <p class="text-grayblue-600 dark:text-grayblue-300 gsap-fade-up transition-colors duration-300">{project.description}</p>
-            <div class="flex flex-wrap gap-2 mt-2 gsap-fade-up">
+            <p class="text-grayblue-600 dark:text-grayblue-300 transition-colors duration-300">{project.description}</p>
+            <div class="flex flex-wrap gap-2 mt-2">
               {project.skills.map((skill) => (
                 <span class="px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-600/20 text-blue-600 dark:text-blue-200 rounded-full border border-blue-200 dark:border-blue-600/30 transition-colors duration-300">
                   {skill}
@@ -55,8 +55,8 @@ const resolvedProjects = projects.map((project) => ({
               ))}
             </div>
           </div>
-          <div class="project-image self-center gsap-fade-up">
-            <div class="overflow-hidden aspect-video rounded-lg gsap-fade-up">
+          <div class="project-image self-center">
+            <div class="overflow-hidden aspect-video rounded-lg">
               <Image
                 src={project.image}
                 alt={project.name}
