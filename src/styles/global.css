@@ -351,3 +351,115 @@ html {
 		transform: rotate(360deg);
 	}
 }
+
+.portfolio-prose {
+	color: var(--color-grayblue-600);
+}
+
+.dark .portfolio-prose {
+	color: var(--color-grayblue-300);
+}
+
+.portfolio-prose h1,
+.portfolio-prose h2,
+.portfolio-prose h3,
+.portfolio-prose h4 {
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
+	font-weight: 600;
+	color: var(--color-grayblue-900);
+	transition: color 300ms;
+}
+
+.dark .portfolio-prose h1,
+.dark .portfolio-prose h2,
+.dark .portfolio-prose h3,
+.dark .portfolio-prose h4 {
+	color: var(--color-grayblue-100);
+}
+
+.portfolio-prose h2 {
+	font-size: 1.5rem;
+}
+
+.portfolio-prose h3 {
+	font-size: 1.25rem;
+}
+
+.portfolio-prose p {
+	margin-bottom: 1rem;
+	line-height: 1.75;
+}
+
+.portfolio-prose a {
+	color: var(--color-blue-500);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	transition: color 300ms;
+}
+
+.dark .portfolio-prose a {
+	color: var(--color-blue-300);
+}
+
+.portfolio-prose ul,
+.portfolio-prose ol {
+	margin: 0 0 1rem 1.5rem;
+}
+
+.portfolio-prose ul {
+	list-style: disc;
+}
+
+.portfolio-prose ol {
+	list-style: decimal;
+}
+
+.portfolio-prose li {
+	margin-bottom: 0.5rem;
+}
+
+.portfolio-prose code {
+	padding: 0.15rem 0.35rem;
+	border-radius: 0.25rem;
+	background: var(--color-grayblue-100);
+	color: var(--color-grayblue-800);
+	font-size: 0.875em;
+}
+
+.dark .portfolio-prose code {
+	background: var(--color-grayblue-700);
+	color: var(--color-grayblue-100);
+}
+
+.portfolio-prose pre {
+	margin-bottom: 1rem;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	background: var(--color-grayblue-900);
+	color: var(--color-grayblue-100);
+}
+
+.portfolio-prose pre code {
+	padding: 0;
+	background: transparent;
+	color: inherit;
+}
+
+.portfolio-prose img {
+	border-radius: 0.5rem;
+	margin: 1rem 0;
+}
+
+.portfolio-prose blockquote {
+	margin: 0 0 1rem;
+	padding: 0.5rem 1rem;
+	border-left: 4px solid var(--color-blue-500);
+	background: var(--color-grayblue-100);
+	border-radius: 0 0.375rem 0.375rem 0;
+}
+
+.dark .portfolio-prose blockquote {
+	background: var(--color-grayblue-700);
+}

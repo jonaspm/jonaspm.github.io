@@ -1,0 +1,62 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import PortfolioListing, {
+	type PortfolioPost,
+} from '@/components/PortfolioListing.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getTranslations, type Language } from '@/utils/i18n'
+import { getPageSEO } from '@/utils/seo'
+import { SDKCoreJs, runSDK } from 'studiocms:sdk'
+
+export const prerender = false
+
+const language: Language = 'eo'
+const translations = getTranslations(language)
+const baseUrl = getRelativeLocaleUrl(language, 'portfolio')
+
+const categoryParam = Astro.url.searchParams.get('category')
+const activeCategory =
+	categoryParam === 'project' || categoryParam === 'article'
+		? categoryParam
+		: 'all'
+
+const pages = await runSDK(SDKCoreJs.GET.pages(false, true))
+
+const posts: PortfolioPost[] = pages
+	.filter(
+		(post) =>
+			activeCategory === 'all' ||
+			post.categories.some((category) => category.slug === activeCategory),
+	)
+	.sort(
+		(left, right) =>
+			new Date(right.publishedAt).getTime() -
+			new Date(left.publishedAt).getTime(),
+	)
+	.map((post) => ({
+		slug: post.slug,
+		title: post.title,
+		description: post.description,
+		publishedAt: String(post.publishedAt),
+		heroImage: post.heroImage ?? null,
+		tags: post.tags.map((tag) => tag.name),
+		categories: post.categories.map((category) => category.name),
+	}))
+
+const seoConfig = getPageSEO('portfolio', language, {
+	title: `${translations.portfolio.title} - Jonas Perusquia Morales`,
+	description: `${translations.portfolio.title} - Jonas Perusquia Morales`,
+	canonical: baseUrl,
+})
+---
+
+<Layout {...seoConfig} language={language} navigation={translations.navigation} footer={translations.footer}>
+  <PortfolioListing
+    title={translations.portfolio.title}
+    t={translations.portfolio}
+    posts={posts}
+    activeCategory={activeCategory}
+    baseUrl={baseUrl}
+    locale={translations.locale}
+  />
+</Layout>

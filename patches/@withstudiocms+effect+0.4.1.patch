@@ -1,0 +1,10 @@
+diff --git a/node_modules/@withstudiocms/effect/dist/astro/context-utils.js b/node_modules/@withstudiocms/effect/dist/astro/context-utils.js
+index 48205e54e4ef03dee0fbaea936062dc5fbceef3d..a85e75b2fe61fa95ed20d9111ad98dfb9eebe941 100644
+--- a/node_modules/@withstudiocms/effect/dist/astro/context-utils.js
++++ b/node_modules/@withstudiocms/effect/dist/astro/context-utils.js
+@@ -1,4 +1,4 @@
+-import { Data, Effect, Schema } from "../effect.js";
++import { Data, Effect, Schema } from "effect";
+ class AstroAPIContextError extends Data.TaggedError("AstroAPIContextError") {
+ }
+ const readAPIContextJson = ({ request }) => Effect.tryPromise({

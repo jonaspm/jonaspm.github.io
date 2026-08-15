@@ -1,0 +1,22 @@
+diff --git a/node_modules/@withstudiocms/internal_helpers/dist/pathResolver.js b/node_modules/@withstudiocms/internal_helpers/dist/pathResolver.js
+index 2dd1380..2f06d96 100644
+--- a/node_modules/@withstudiocms/internal_helpers/dist/pathResolver.js
++++ b/node_modules/@withstudiocms/internal_helpers/dist/pathResolver.js
+@@ -1,5 +1,8 @@
+ import * as path from "node:path";
+ import { fileURLToPath, pathToFileURL } from "node:url";
++function toModulePath(p) {
++  return p.replace(/\\/g, "/");
++}
+ function createPathResolver(baseOption) {
+   let baseDir;
+   if (baseOption.startsWith("file://")) {
+@@ -15,7 +18,7 @@ function createPathResolver(baseOption) {
+      * @param segments - Path segments to resolve.
+      * @returns The resolved absolute filesystem path.
+      */
+-    resolve: (...segments) => path.resolve(baseDir, ...segments),
++    resolve: (...segments) => toModulePath(path.resolve(baseDir, ...segments)),
+     /**
+      * Resolve path segments against the base directory and return a file URL.
+      *

@@ -1,0 +1,54 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import PortfolioPost from '@/components/PortfolioPost.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getTranslations, type Language } from '@/utils/i18n'
+import { mergeSEOConfig } from '@/utils/seo'
+import { SDKCoreJs, runSDK } from 'studiocms:sdk'
+
+export const prerender = false
+
+const language: Language = 'en'
+const translations = getTranslations(language)
+const baseUrl = getRelativeLocaleUrl(language, 'portfolio')
+
+const post = await runSDK(SDKCoreJs.GET.page.bySlug(Astro.params.slug ?? ''))
+
+if (!post || post.draft) {
+	return new Response(null, { status: 404 })
+}
+
+const postView = {
+	title: post.title,
+	description: post.description,
+	publishedAt: String(post.publishedAt),
+	heroImage: post.heroImage ?? null,
+	categories: post.categories.map((category) => ({
+		name: category.name,
+		slug: category.slug,
+	})),
+	tags: post.tags.map((tag) => ({ name: tag.name, slug: tag.slug })),
+	content: post.defaultContent?.content ?? '',
+}
+
+const seoConfig = mergeSEOConfig(language, {
+	title: `${post.title} - Jonas Perusquia Morales`,
+	description: post.description,
+	type: 'article',
+	locale: translations.locale,
+	canonical: getRelativeLocaleUrl(language, `portfolio/${post.slug}`),
+	publishedTime: String(post.publishedAt),
+	modifiedTime: String(post.updatedAt),
+	section: 'Portfolio',
+	tags: postView.tags.map((tag) => tag.name),
+})
+---
+
+<Layout {...seoConfig} language={language} navigation={translations.navigation} footer={translations.footer}>
+  <PortfolioPost
+    t={translations.portfolio}
+    post={postView}
+    baseUrl={baseUrl}
+    locale={translations.locale}
+  />
+</Layout>

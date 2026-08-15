@@ -1,0 +1,10 @@
+diff --git a/node_modules/@withstudiocms/kysely/dist/drivers/libsql.js b/node_modules/@withstudiocms/kysely/dist/drivers/libsql.js
+index e28140afa61c08e069c1bcb5716b79356f1e2a51..2d130a0035d3c945fad7138b2a0983670ac73e4f 100644
+--- a/node_modules/@withstudiocms/kysely/dist/drivers/libsql.js
++++ b/node_modules/@withstudiocms/kysely/dist/drivers/libsql.js
+@@ -1,4 +1,4 @@
+-import { createClient } from "@libsql/client/node";
++import { createClient } from "@libsql/client/web";
+ import { Config, Effect, Redacted } from "effect";
+ import { LibSQLDialect } from "kysely-turso/libsql";
+ class LibSQLEnvConfig {

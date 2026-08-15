@@ -3,12 +3,13 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 import ThemeToggle from './ThemeToggle.astro'
 
 interface Props {
-	currentLanguage: 'en' | 'es'
+	currentLanguage: 'en' | 'es' | 'eo'
 	navigation: {
 		brand: string
 		items: Array<{
 			id: string
 			label: string
+			url?: string
 		}>
 		ariaLabel: string
 		languageLabel: string
@@ -89,7 +90,7 @@ const languages = [
           items.map((item) => (
             <li>
               <a
-                href={`#${item.id}`}
+                href={item.url ? getRelativeLocaleUrl(currentLanguage, item.url) : `#${item.id}`}
                 class="text-sm font-light uppercase tracking-wider transition-colors text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300"
               >
                 {item.label}
@@ -122,7 +123,7 @@ const languages = [
         items.map((item) => (
           <li class="text-center">
             <a
-              href={`#${item.id}`}
+              href={item.url ? getRelativeLocaleUrl(currentLanguage, item.url) : `#${item.id}`}
               data-mobile-menu-link
               class="block text-sm font-light uppercase tracking-wider transition-colors text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300"
             >

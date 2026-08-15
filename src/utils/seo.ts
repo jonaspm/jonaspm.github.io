@@ -53,7 +53,10 @@ function getDefaultSEO(language: Language): SEOConfig {
 	}
 }
 
-function getPageConfig(page: 'home', language: Language): Partial<SEOConfig> {
+function getPageConfig(
+	page: 'home' | 'portfolio',
+	language: Language,
+): Partial<SEOConfig> {
 	const translations = getTranslations(language)
 
 	if (page === 'home') {
@@ -101,6 +104,14 @@ function getPageConfig(page: 'home', language: Language): Partial<SEOConfig> {
 		}
 	}
 
+	if (page === 'portfolio') {
+		return {
+			type: 'website',
+			locale: translations.locale,
+			canonical: getRelativeLocaleUrl(language, 'portfolio'),
+		}
+	}
+
 	return {}
 }
 
@@ -124,6 +135,13 @@ export function mergeSEOConfig(
 /**
  * Get SEO config for a specific page
  */
-export function getPageSEO(page: 'home', language: Language): SEOConfig {
-	return mergeSEOConfig(language, getPageConfig(page, language))
+export function getPageSEO(
+	page: 'home' | 'portfolio',
+	language: Language,
+	overrides: Partial<SEOConfig> = {},
+): SEOConfig {
+	return mergeSEOConfig(language, {
+		...getPageConfig(page, language),
+		...overrides,
+	})
 }
