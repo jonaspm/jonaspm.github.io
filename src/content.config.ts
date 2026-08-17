@@ -8,19 +8,28 @@ const localizedString = z.object({
 	eo: z.string(),
 })
 
-const projects = defineCollection({
+export const postCategories = ['project', 'article'] as const
+export type PostCategory = (typeof postCategories)[number]
+
+const posts = defineCollection({
 	loader: glob({
-		base: './src/content/projects',
+		base: './src/content/posts',
 		pattern: '**/*.json',
 	}),
 	schema: z.object({
-		name: z.string(),
-		url: z.url(),
-		image: z.string(),
-		order: z.number().int().nonnegative(),
-		description: localizedString,
-		skills: z.array(localizedString),
+		title: z.string(),
+		slug: z.string().optional(),
+		category: z.enum(postCategories),
+		url: z.string().optional(),
+		image: z.string().optional(),
+		order: z.number().int().nonnegative().default(0),
+		date: z.string().datetime().optional(),
+		// Localized summary/excerpt shown on the listing.
+		summary: localizedString,
+		// Localized rich body for the detail page.
+		body: localizedString,
+		skills: z.array(localizedString).default([]),
 	}),
 })
 
-export const collections = { projects }
+export const collections = { posts }

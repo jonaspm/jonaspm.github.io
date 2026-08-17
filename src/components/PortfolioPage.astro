@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import BioSection from '@/components/BioSection.astro'
 import ContactSection from '@/components/ContactSection.astro'
 import HomeSection from '@/components/HomeSection.astro'
@@ -20,22 +21,24 @@ export interface Props {
 const { language } = Astro.props
 const translations = getTranslations(language)
 
-const projects = (await getCollection('projects'))
+const projects = (await getCollection('posts'))
+	.filter((post) => post.data.category === 'project')
 	.sort((left, right) => left.data.order - right.data.order)
-	.map((project): ProjectViewModel => localizeProject(project, language))
+	.map((post): ProjectViewModel => localizeProject(post, language))
 
 const seoConfig = getPageSEO('home', language)
+const portfolioUrl = getRelativeLocaleUrl(language, 'portfolio')
 
 function localizeProject(
-	project: CollectionEntry<'projects'>,
+	post: CollectionEntry<'posts'>,
 	currentLanguage: Language,
 ): ProjectViewModel {
 	return {
-		name: project.data.name,
-		url: project.data.url,
-		image: project.data.image,
-		description: project.data.description[currentLanguage],
-		skills: project.data.skills.map((skill) => skill[currentLanguage]),
+		name: post.data.title,
+		url: post.data.url ?? '',
+		image: post.data.image ?? '',
+		description: post.data.summary[currentLanguage],
+		skills: post.data.skills.map((skill) => skill[currentLanguage]),
 	}
 }
 ---
@@ -45,7 +48,7 @@ function localizeProject(
     <HomeSection content={translations.home} />
     <BioSection content={translations.bio} />
     <SkillsSection title={translations.skills.title} />
-    <ProjectsSection title={translations.projects.title} projects={projects} />
+    <ProjectsSection title={translations.projects.title} projects={projects} viewAllHref={portfolioUrl} viewAllLabel={translations.portfolio.title} />
     <ContactSection title={translations.contact.title} />
   </div>
 </Layout>

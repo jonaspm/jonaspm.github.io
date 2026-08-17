@@ -1,9 +1,17 @@
 {
-	"name": "Autosolutions",
+	"title": "Autosolutions",
+	"slug": "autosolutions",
+	"category": "project",
 	"url": "https://autosolutions.mx",
 	"image": "autosolutions.mx.png",
 	"order": 1,
-	"description": {
+	"date": "2025-02-01T00:00:00.000Z",
+	"summary": {
+		"en": "On-demand auto parts for your vehicle and more.",
+		"es": "Autopartes bajo demanda para tu vehiculo y mas.",
+		"eo": "Lauxpetaj auxtopartoj por via veturilo kaj pli."
+	},
+	"body": {
 		"en": "On-demand auto parts for your vehicle and more.",
 		"es": "Autopartes bajo demanda para tu vehiculo y mas.",
 		"eo": "Lauxpetaj auxtopartoj por via veturilo kaj pli."
@@ -14,7 +22,11 @@
 		{ "en": "Svelte", "es": "Svelte", "eo": "Svelte" },
 		{ "en": "Bun", "es": "Bun", "eo": "Bun" },
 		{ "en": "ERPNext", "es": "ERPNext", "eo": "ERPNext" },
-		{ "en": "Team leadership", "es": "Liderazgo de equipos", "eo": "Teama gvidado" },
+		{
+			"en": "Team leadership",
+			"es": "Liderazgo de equipos",
+			"eo": "Teama gvidado"
+		},
 		{ "en": "Shopify", "es": "Shopify", "eo": "Shopify" }
 	]
 }

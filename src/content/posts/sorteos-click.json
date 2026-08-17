@@ -1,9 +1,17 @@
 {
-	"name": "Sorteos Click",
+	"title": "Sorteos Click",
+	"slug": "sorteos-click",
+	"category": "project",
 	"url": "https://sorteos.click",
 	"image": "sorteos.click.png",
 	"order": 2,
-	"description": {
+	"date": "2025-03-10T00:00:00.000Z",
+	"summary": {
+		"en": "Create and manage your own raffles for free.",
+		"es": "Crea y administra tus propias rifas gratis.",
+		"eo": "Kreu kaj administru viajn proprajn loteriojn senpage."
+	},
+	"body": {
 		"en": "Create and manage your own raffles for free.",
 		"es": "Crea y administra tus propias rifas gratis.",
 		"eo": "Kreu kaj administru viajn proprajn loteriojn senpage."

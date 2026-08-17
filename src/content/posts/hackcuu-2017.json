@@ -1,0 +1,42 @@
+{
+	"title": "HackCUU 2017",
+	"slug": "hackcuu-2017",
+	"category": "project",
+	"url": "https://facebook.com/hackcuu2",
+	"image": "hackcuu.com.png",
+	"order": 4,
+	"date": "2017-11-01T00:00:00.000Z",
+	"summary": {
+		"en": "Lead organizer for the HackCUU 2017 MLH hackathon.",
+		"es": "Organizador principal del hackathon MLH HackCUU 2017.",
+		"eo": "CXefa organizanto de la HackCUU 2017 MLH hackatono."
+	},
+	"body": {
+		"en": "Lead organizer for the HackCUU 2017 MLH hackathon.",
+		"es": "Organizador principal del hackathon MLH HackCUU 2017.",
+		"eo": "CXefa organizanto de la HackCUU 2017 MLH hackatono."
+	},
+	"skills": [
+		{
+			"en": "Team leadership",
+			"es": "Liderazgo de equipos",
+			"eo": "Teama gvidado"
+		},
+		{ "en": "GitHub", "es": "GitHub", "eo": "GitHub" },
+		{
+			"en": "Event organization",
+			"es": "Organizacion de eventos",
+			"eo": "Eventa organizado"
+		},
+		{
+			"en": "Project management",
+			"es": "Gestion de proyectos",
+			"eo": "Projekta mastrumado"
+		},
+		{
+			"en": "Sponsorship acquisition",
+			"es": "Obtencion de patrocinios",
+			"eo": "Akiro de patrocinioj"
+		}
+	]
+}

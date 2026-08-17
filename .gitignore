@@ -7,4 +7,10 @@ build/
 dist/
 .vscode/
 .astro/
+.wrangler/
 package-lock.json
+
+# Local environment secrets
+.env
+.env.*
+!.env.example

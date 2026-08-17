@@ -3,6 +3,19 @@ export type Language = 'en' | 'es' | 'eo'
 export interface NavigationItem {
 	id: string
 	label: string
+	href?: string
+}
+
+export interface PostViewModel {
+	slug: string
+	title: string
+	category: 'project' | 'article'
+	url?: string
+	image?: string
+	date?: string
+	summary: string
+	body: string
+	skills: string[]
 }
 
 export interface ProjectViewModel {
@@ -39,6 +52,16 @@ export interface Translations {
 	projects: {
 		title: string
 	}
+	portfolio: {
+		title: string
+		description: string
+		filterAll: string
+		filterProjects: string
+		filterArticles: string
+		empty: string
+		backToHome: string
+		readMore: string
+	}
 	contact: {
 		title: string
 	}
@@ -63,7 +86,7 @@ const translations: Record<Language, Translations> = {
 				{ id: 'home', label: 'Home' },
 				{ id: 'bio', label: 'Bio' },
 				{ id: 'skills', label: 'Skills' },
-				{ id: 'projects', label: 'Projects' },
+				{ id: 'portfolio', label: 'Portfolio', href: '/portfolio' },
 				{ id: 'contact', label: 'Contact' },
 			],
 			ariaLabel: 'Main navigation',
@@ -90,6 +113,17 @@ const translations: Record<Language, Translations> = {
 		},
 		projects: {
 			title: 'Featured Projects',
+		},
+		portfolio: {
+			title: 'Portfolio',
+			description:
+				'A collection of projects, articles, and experiments I have worked on.',
+			filterAll: 'All',
+			filterProjects: 'Projects',
+			filterArticles: 'Articles',
+			empty: 'No posts found for this category.',
+			backToHome: 'Back to Home',
+			readMore: 'Read more',
 		},
 		contact: {
 			title: 'Get in Touch',
@@ -137,7 +171,11 @@ const translations: Record<Language, Translations> = {
 				{ id: 'home', label: 'Inicio' },
 				{ id: 'bio', label: 'Bio' },
 				{ id: 'skills', label: 'Habilidades' },
-				{ id: 'projects', label: 'Proyectos' },
+				{
+					id: 'portfolio',
+					label: 'Portafolio',
+					href: '/es/portfolio',
+				},
 				{ id: 'contact', label: 'Contacto' },
 			],
 			ariaLabel: 'Navegacion principal',
@@ -164,6 +202,17 @@ const translations: Record<Language, Translations> = {
 		},
 		projects: {
 			title: 'Proyectos destacados',
+		},
+		portfolio: {
+			title: 'Portafolio',
+			description:
+				'Una coleccion de proyectos, articulos y experimentos en los que he trabajado.',
+			filterAll: 'Todos',
+			filterProjects: 'Proyectos',
+			filterArticles: 'Articulos',
+			empty: 'No hay publicaciones para esta categoria.',
+			backToHome: 'Volver al inicio',
+			readMore: 'Leer mas',
 		},
 		contact: {
 			title: 'Ponte en contacto',
@@ -211,7 +260,7 @@ const translations: Record<Language, Translations> = {
 				{ id: 'home', label: 'Hejmo' },
 				{ id: 'bio', label: 'Biografio' },
 				{ id: 'skills', label: 'Kapabloj' },
-				{ id: 'projects', label: 'Projektoj' },
+				{ id: 'portfolio', label: 'Portfolio', href: '/eo/portfolio' },
 				{ id: 'contact', label: 'Kontakto' },
 			],
 			ariaLabel: 'Cxefa navigado',
@@ -238,6 +287,17 @@ const translations: Record<Language, Translations> = {
 		},
 		projects: {
 			title: 'Elstaraj Projektoj',
+		},
+		portfolio: {
+			title: 'Portfolio',
+			description:
+				'Kolekto de projektoj, artikoloj kaj eksperimentoj, kiujn mi faris.',
+			filterAll: 'Ĉiuj',
+			filterProjects: 'Projektoj',
+			filterArticles: 'Artikoloj',
+			empty: 'Neniu publikaĵo por ĉi tiu kategorio.',
+			backToHome: 'Reen al Hejmo',
+			readMore: 'Legi pli',
 		},
 		contact: {
 			title: 'Kontaktu min',

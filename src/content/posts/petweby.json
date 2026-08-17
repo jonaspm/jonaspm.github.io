@@ -1,9 +1,17 @@
 {
-	"name": "Petweby.com",
+	"title": "Petweby.com",
+	"slug": "petweby",
+	"category": "project",
 	"url": "https://petweby.com",
 	"image": "petweby.com.png",
 	"order": 5,
-	"description": {
+	"date": "2025-05-20T00:00:00.000Z",
+	"summary": {
+		"en": "Petweby is a pet health tracker and management platform for tutors and veterinarians.",
+		"es": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios.",
+		"eo": "Petweby estas san-spurado kaj mastrumada platformo por dorlotbestoj, por prizorgantoj kaj veterinaroj."
+	},
+	"body": {
 		"en": "Petweby is a pet health tracker and management platform for tutors and veterinarians.",
 		"es": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios.",
 		"eo": "Petweby estas san-spurado kaj mastrumada platformo por dorlotbestoj, por prizorgantoj kaj veterinaroj."

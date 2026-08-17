@@ -1,9 +1,17 @@
 {
-	"name": "Gerardo Ancer",
+	"title": "Gerardo Ancer",
+	"slug": "gerardo-ancer",
+	"category": "project",
 	"url": "https://gerardoancer.com",
 	"image": "gerardoancer.com.png",
 	"order": 3,
-	"description": {
+	"date": "2025-04-05T00:00:00.000Z",
+	"summary": {
+		"en": "Portfolio website for graphic designer Gerardo Ancer.",
+		"es": "Sitio de portafolio para el disenador grafico Gerardo Ancer.",
+		"eo": "Portfolia retejo por grafika dezajnisto Gerardo Ancer."
+	},
+	"body": {
 		"en": "Portfolio website for graphic designer Gerardo Ancer.",
 		"es": "Sitio de portafolio para el disenador grafico Gerardo Ancer.",
 		"eo": "Portfolia retejo por grafika dezajnisto Gerardo Ancer."
@@ -12,6 +20,10 @@
 		{ "en": "Astro", "es": "Astro", "eo": "Astro" },
 		{ "en": "Cloudflare", "es": "Cloudflare", "eo": "Cloudflare" },
 		{ "en": "TailwindCSS", "es": "TailwindCSS", "eo": "TailwindCSS" },
-		{ "en": "Web development", "es": "Desarrollo web", "eo": "Reteja disvolvigo" }
+		{
+			"en": "Web development",
+			"es": "Desarrollo web",
+			"eo": "Reteja disvolvigo"
+		}
 	]
 }

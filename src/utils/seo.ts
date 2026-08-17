@@ -53,8 +53,21 @@ function getDefaultSEO(language: Language): SEOConfig {
 	}
 }
 
-function getPageConfig(page: 'home', language: Language): Partial<SEOConfig> {
+function getPageConfig(
+	page: 'home' | 'portfolio',
+	language: Language,
+): Partial<SEOConfig> {
 	const translations = getTranslations(language)
+
+	if (page === 'portfolio') {
+		return {
+			title: `${translations.portfolio.title} - Jonas Perusquia Morales`,
+			description: translations.portfolio.description,
+			type: 'website',
+			locale: translations.locale,
+			canonical: getRelativeLocaleUrl(language, 'portfolio'),
+		}
+	}
 
 	if (page === 'home') {
 		return {
@@ -124,6 +137,9 @@ export function mergeSEOConfig(
 /**
  * Get SEO config for a specific page
  */
-export function getPageSEO(page: 'home', language: Language): SEOConfig {
+export function getPageSEO(
+	page: 'home' | 'portfolio',
+	language: Language,
+): SEOConfig {
 	return mergeSEOConfig(language, getPageConfig(page, language))
 }
