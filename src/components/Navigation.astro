@@ -90,7 +90,7 @@ const languages = [
           items.map((item) => (
             <li>
               <a
-                href={item.href ?? `#${item.id}`}
+                href={item.href ?? `${homeUrl}#${item.id}`}
                 class="text-sm font-light uppercase tracking-wider transition-colors text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300"
               >
                 {item.label}
@@ -123,7 +123,7 @@ const languages = [
         items.map((item) => (
           <li class="text-center">
             <a
-              href={item.href ?? `#${item.id}`}
+              href={item.href ?? `${homeUrl}#${item.id}`}
               data-mobile-menu-link
               class="block text-sm font-light uppercase tracking-wider transition-colors text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300"
             >
