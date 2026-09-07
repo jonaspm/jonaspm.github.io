@@ -23,6 +23,8 @@
   }
 
   // Theme management functionality
+  type Theme = 'dark' | 'light'
+
   class ThemeManager {
     storageKey = 'theme-preference';
     mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -33,9 +35,13 @@
       this.hydrate();
     }
     
-    getPreferredTheme() {
+    getPreferredTheme(): Theme {
       const savedTheme = localStorage.getItem(this.storageKey);
-      return savedTheme || (this.mediaQuery.matches ? 'dark' : 'light');
+      return savedTheme === 'dark' || savedTheme === 'light'
+        ? savedTheme
+        : this.mediaQuery.matches
+          ? 'dark'
+          : 'light';
     }
 
     hydrate() {
@@ -72,8 +78,8 @@
     }
     
     toggleTheme() {
-      const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const currentTheme: Theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme: Theme = currentTheme === 'dark' ? 'light' : 'dark';
       
       // Add rotation animation to all theme icons
       const themeIcons = document.querySelectorAll('[data-theme-icon]');
@@ -90,7 +96,7 @@
       localStorage.setItem(this.storageKey, newTheme);
     }
     
-    setTheme(theme) {
+    setTheme(theme: Theme) {
       const root = document.documentElement;
       const themeIcons = document.querySelectorAll('[data-theme-icon]');
       

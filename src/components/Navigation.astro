@@ -138,6 +138,10 @@ const languages = [
 
 <script>
   class NavigationController {
+    boundClickHandler: (event: Event) => void;
+    boundScrollHandler: () => void;
+    initialized: boolean;
+
     constructor() {
       this.boundClickHandler = this.handleDocumentClick.bind(this);
       this.boundScrollHandler = this.syncHeaderState.bind(this);
@@ -161,7 +165,7 @@ const languages = [
       this.syncHeaderState();
     }
 
-    handleDocumentClick(event) {
+    handleDocumentClick(event: Event) {
       const target = event.target;
       if (!(target instanceof Element)) {
         return;

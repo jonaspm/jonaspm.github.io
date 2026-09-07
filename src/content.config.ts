@@ -23,7 +23,7 @@ const posts = defineCollection({
 		url: z.string().optional(),
 		image: z.string().optional(),
 		order: z.number().int().nonnegative().default(0),
-		date: z.string().datetime().optional(),
+		date: z.iso.datetime().optional(),
 		// Localized summary/excerpt shown on the listing.
 		summary: localizedString,
 		// Localized rich body for the detail page.
