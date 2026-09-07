@@ -47,7 +47,7 @@ function localizeProject(
   <div class="flex flex-col gap-y-18">
     <HomeSection content={translations.home} />
     <BioSection content={translations.bio} />
-    <SkillsSection title={translations.skills.title} />
+    <SkillsSection title={translations.skills.title} language={language} />
     <ProjectsSection title={translations.projects.title} projects={projects} viewAllHref={portfolioUrl} viewAllLabel={translations.portfolio.title} />
     <ContactSection title={translations.contact.title} />
   </div>

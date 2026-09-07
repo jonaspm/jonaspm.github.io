@@ -1,18 +1,46 @@
 [
-	"Web Design",
-	"Full Stack",
-	"ServiceNOW",
-	"Version Control",
-	"Agile Methodologies",
-	"Project Management",
-	"Cloud Computing",
-	"CI/CD",
-	"Svelte",
-	"React",
-	"Bun",
-	"Next.js",
-	"Astro",
-	"Node.js",
-	"SQL",
-	"NoSQL"
+	{
+		"id": "frontend",
+		"accent": "sky",
+		"icon": "web_asset",
+		"name": {
+			"en": "Frontend Development",
+			"es": "Desarrollo Frontend",
+			"eo": "Fronta Disvolvigo"
+		},
+		"skills": ["Web Design", "React", "Next.js", "Svelte", "Astro"]
+	},
+	{
+		"id": "backend",
+		"accent": "violet",
+		"icon": "storage",
+		"name": {
+			"en": "Backend & Data",
+			"es": "Backend y Datos",
+			"eo": "Backend kaj Datumbazoj"
+		},
+		"skills": ["Full Stack", "Node.js", "Bun", "SQL", "NoSQL"]
+	},
+	{
+		"id": "cloud",
+		"accent": "emerald",
+		"icon": "cloud",
+		"name": {
+			"en": "Cloud & DevOps",
+			"es": "Nube y DevOps",
+			"eo": "Nubo kaj DevOps"
+		},
+		"skills": ["Cloud Computing", "CI/CD", "ServiceNow", "Version Control"]
+	},
+	{
+		"id": "delivery",
+		"accent": "amber",
+		"icon": "flag",
+		"name": {
+			"en": "Delivery & Leadership",
+			"es": "Entrega y Liderazgo",
+			"eo": "Livero kaj Gvidado"
+		},
+		"skills": ["Agile Methodologies", "Project Management"]
+	}
 ]

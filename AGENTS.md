@@ -32,6 +32,7 @@ bun run cloudflare # CI build: frozen install + build
 - **Content**: Astro content collections (`src/content.config.ts`). Only collection is `projects` — glob-loaded JSON files in `src/content/projects/`
 - **Utils**: `src/utils/i18n.ts` (translations), `src/utils/seo.ts` (page SEO configs)
 - **Static data**: `src/assets/data/` for `skills.json` and `social-networks.json`
+  - `skills.json` is an array of category groups: `{ id, accent, icon, name: { en, es, eo }, skills: string[] }`. `accent` must be one of the keys in the `accents` map of `SkillsSection.astro` (Tailwind classes are looked up there, so dynamic class strings are not generated).
 - **Scripts**: `src/scripts/gsap-animations.js` — animations bootstrapped via `astro:page-load` event
 
 ### i18n

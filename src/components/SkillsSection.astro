@@ -1,18 +1,87 @@
 ---
 import skills from '@/assets/data/skills.json'
+import type { Language } from '@/utils/i18n'
 
 interface Props {
 	title: string
+	language: Language
 }
 
-const { title } = Astro.props
+const { title, language } = Astro.props
+
+/**
+ * Static Tailwind classes per accent color. Tailwind scans the source for
+ * literal class names, so accents are mapped to complete class strings
+ * instead of being interpolated (`bg-${accent}-100` would never be emitted).
+ */
+const accents = {
+	sky: {
+		icon: 'bg-sky-500/10 text-sky-600 dark:text-sky-300 ring-sky-500/20',
+		bar: 'from-sky-400 to-cyan-400',
+		heading: 'text-sky-700 dark:text-sky-300',
+		card: 'hover:border-sky-300 dark:hover:border-sky-500/50',
+		pill: 'bg-sky-50 text-sky-700 border-sky-200 hover:bg-sky-100 dark:bg-sky-500/10 dark:text-sky-200 dark:border-sky-500/25 dark:hover:bg-sky-500/20',
+		count: 'bg-sky-500/10 text-sky-600 dark:text-sky-300',
+	},
+	violet: {
+		icon: 'bg-violet-500/10 text-violet-600 dark:text-violet-300 ring-violet-500/20',
+		bar: 'from-violet-400 to-fuchsia-400',
+		heading: 'text-violet-700 dark:text-violet-300',
+		card: 'hover:border-violet-300 dark:hover:border-violet-500/50',
+		pill: 'bg-violet-50 text-violet-700 border-violet-200 hover:bg-violet-100 dark:bg-violet-500/10 dark:text-violet-200 dark:border-violet-500/25 dark:hover:bg-violet-500/20',
+		count: 'bg-violet-500/10 text-violet-600 dark:text-violet-300',
+	},
+	emerald: {
+		icon: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 ring-emerald-500/20',
+		bar: 'from-emerald-400 to-teal-400',
+		heading: 'text-emerald-700 dark:text-emerald-300',
+		card: 'hover:border-emerald-300 dark:hover:border-emerald-500/50',
+		pill: 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-200 dark:border-emerald-500/25 dark:hover:bg-emerald-500/20',
+		count: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300',
+	},
+	amber: {
+		icon: 'bg-amber-500/10 text-amber-600 dark:text-amber-300 ring-amber-500/20',
+		bar: 'from-amber-400 to-gold-400',
+		heading: 'text-amber-700 dark:text-amber-300',
+		card: 'hover:border-amber-300 dark:hover:border-amber-500/50',
+		pill: 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100 dark:bg-amber-500/10 dark:text-amber-200 dark:border-amber-500/25 dark:hover:bg-amber-500/20',
+		count: 'bg-amber-500/10 text-amber-600 dark:text-amber-300',
+	},
+} as const
+
+type Accent = keyof typeof accents
+
+const groups = skills.map((group) => ({
+	...group,
+	label: group.name[language] ?? group.name.en,
+	classes: accents[group.accent as Accent] ?? accents.sky,
+}))
 ---
+
 <section id="skills" class="py-8 scroll-mt-20 opacity-0">
   <h2 class="mb-12 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">{title}</h2>
-  <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-    {skills.map((skill: string) => (
-      <div class="skill-card rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 text-center shadow-lg transition-all duration-300 hover:bg-grayblue-50 dark:hover:bg-grayblue-700 hover:scale-110 flex items-center justify-center">
-        <p class="text-lg text-center wrap-break-word hyphens-auto font-medium text-grayblue-800 dark:text-grayblue-200">{skill}</p>
+  <div class="grid gap-6 md:grid-cols-2">
+    {groups.map((group) => (
+      <div class={`skill-card relative overflow-hidden rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl flex flex-col gap-4 ${group.classes.card}`}>
+        <span class={`pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${group.classes.bar}`} aria-hidden="true"></span>
+        <div class="flex items-center gap-3">
+          <span class={`shrink-0 grid place-items-center size-10 rounded-lg ring-1 transition-colors duration-300 ${group.classes.icon}`} aria-hidden="true">
+            <span class="material-symbols-rounded text-xl">{group.icon}</span>
+          </span>
+          <h3 class={`text-lg font-semibold leading-tight transition-colors duration-300 ${group.classes.heading}`}>
+            {group.label}
+          </h3>
+          <span class={`ml-auto shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium tabular-nums transition-colors duration-300 ${group.classes.count}`}>
+            {group.skills.length}
+          </span>
+        </div>
+        <ul class="flex flex-wrap gap-2">
+          {group.skills.map((skill) => (
+            <li class={`rounded-full border px-3 py-1 text-sm font-medium wrap-break-word hyphens-auto transition-colors duration-300 ${group.classes.pill}`}>
+              {skill}
+            </li>
+          ))}
+        </ul>
       </div>
     ))}
   </div>
