@@ -1,6 +1,6 @@
 import cloudflare from '@astrojs/cloudflare'
 import tailwindcss from '@tailwindcss/vite'
-import { defineConfig } from 'astro/config'
+import { defineConfig, envField } from 'astro/config'
 
 import mcp from 'astro-mcp'
 
@@ -8,6 +8,11 @@ import mcp from 'astro-mcp'
 export default defineConfig({
 	site: 'https://jonasperusquia.com',
 	adapter: cloudflare(),
+	env: {
+		schema: {
+			CLARITY_ID: envField.string({ context: 'client', access: 'public' }),
+		},
+	},
 	i18n: {
 		locales: ['en', 'es', 'eo'],
 		defaultLocale: 'en',

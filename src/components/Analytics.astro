@@ -1,10 +1,11 @@
 ---
+import { CLARITY_ID } from 'astro:env/client'
+
 const isDev = import.meta.env.DEV
 ---
 
-<script is:inline>
+<script define:vars={{ clarityId: CLARITY_ID }}>
     (() => {
-        const clarityId = "l5tvca8qee";
         const claritySrc = `https://www.clarity.ms/tag/${clarityId}`;
 
         if (document.querySelector(`script[data-clarity-id="${clarityId}"]`)) {
