@@ -7,7 +7,9 @@ import mcp from 'astro-mcp'
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://jonasperusquia.com',
-	adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: 'cloudflare'
+	}),
 	env: {
 		schema: {
 			CLARITY_ID: envField.string({ context: 'client', access: 'public' }),
