@@ -8,7 +8,7 @@ import mcp from 'astro-mcp'
 export default defineConfig({
 	site: 'https://jonasperusquia.com',
   adapter: cloudflare({
-    imageService: 'cloudflare'
+    imageService: 'compile'
 	}),
 	env: {
 		schema: {
