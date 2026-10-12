@@ -1,5 +1,4 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import BioSection from '@/components/BioSection.astro'
 import ContactSection from '@/components/ContactSection.astro'
@@ -8,10 +7,11 @@ import ProjectsSection from '@/components/ProjectsSection.astro'
 import SkillsSection from '@/components/SkillsSection.astro'
 import Layout from '@/layouts/Layout.astro'
 import {
-	getTranslations,
-	type Language,
-	type ProjectViewModel,
-} from '@/utils/i18n'
+	listPosts,
+	toPostViewModel,
+	toProjectViewModel,
+} from '@/utils/emdash-posts'
+import { getTranslations, type Language } from '@/utils/i18n'
 import { getPageSEO } from '@/utils/seo'
 
 export interface Props {
@@ -21,26 +21,15 @@ export interface Props {
 const { language } = Astro.props
 const translations = getTranslations(language)
 
-const projects = (await getCollection('posts'))
-	.filter((post) => post.data.category === 'project')
-	.sort((left, right) => left.data.order - right.data.order)
-	.map((post): ProjectViewModel => localizeProject(post, language))
+// Posts come from EmDash (already sorted by `sort_order`); classify through
+// the view-model mapper so home and listing agree on malformed rows, then map
+// the surviving entries to project cards.
+const projects = (await listPosts(language))
+	.filter((entry) => toPostViewModel(entry).category === 'project')
+	.map((entry) => toProjectViewModel(entry))
 
 const seoConfig = getPageSEO('home', language)
 const portfolioUrl = getRelativeLocaleUrl(language, 'portfolio')
-
-function localizeProject(
-	post: CollectionEntry<'posts'>,
-	currentLanguage: Language,
-): ProjectViewModel {
-	return {
-		name: post.data.title,
-		url: post.data.url ?? '',
-		image: post.data.image ?? '',
-		description: post.data.summary[currentLanguage],
-		skills: post.data.skills.map((skill) => skill[currentLanguage]),
-	}
-}
 ---
 
 <Layout {...seoConfig} language={language} navigation={translations.navigation} footer={translations.footer}>

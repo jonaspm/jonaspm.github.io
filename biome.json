@@ -1,5 +1,15 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+	"files": {
+		"includes": [
+			"**",
+			"!**/emdash-env.d.ts",
+			"!**/.emdash",
+			"!dist",
+			"!**/.astro",
+			"!**/.wrangler"
+		]
+	},
 	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"javascript": {
 		"formatter": {

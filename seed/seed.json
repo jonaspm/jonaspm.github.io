@@ -1,0 +1,682 @@
+{
+	"version": "1",
+	"defaultLocale": "en",
+	"meta": {
+		"name": "jonasperusquia.com",
+		"description": "Portfolio posts (projects & articles) with en/es/eo translations"
+	},
+	"settings": {
+		"title": "Jonas Perusquia Morales",
+		"tagline": "Msc. Data Science & Software Engineer"
+	},
+	"collections": [
+		{
+			"slug": "posts",
+			"label": "Posts",
+			"labelSingular": "Post",
+			"description": "Portfolio projects and articles",
+			"icon": "article",
+			"supports": ["drafts", "revisions", "preview", "scheduling"],
+			"urlPattern": "/portfolio/{slug}",
+			"routable": true,
+			"titleField": "title",
+			"dateField": "date",
+			"admin": {
+				"listColumns": ["date", "sort_order"],
+				"quickCreate": false
+			},
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"translatable": true
+				},
+				{
+					"slug": "url",
+					"label": "External URL",
+					"type": "url",
+					"required": false,
+					"translatable": false
+				},
+				{
+					"slug": "image",
+					"label": "Image",
+					"type": "image",
+					"required": false,
+					"translatable": false
+				},
+				{
+					"slug": "sort_order",
+					"label": "Order",
+					"type": "integer",
+					"required": false,
+					"translatable": false,
+					"indexed": true,
+					"defaultValue": 0
+				},
+				{
+					"slug": "date",
+					"label": "Date",
+					"type": "datetime",
+					"required": false,
+					"translatable": false
+				},
+				{
+					"slug": "summary",
+					"label": "Summary",
+					"type": "text",
+					"required": true,
+					"translatable": true,
+					"widget": "textarea"
+				},
+				{
+					"slug": "body",
+					"label": "Body",
+					"type": "text",
+					"required": true,
+					"translatable": true,
+					"widget": "textarea"
+				},
+				{
+					"slug": "skills",
+					"label": "Skills",
+					"type": "json",
+					"required": false,
+					"translatable": true
+				}
+			]
+		}
+	],
+	"taxonomies": [
+		{
+			"name": "category",
+			"label": "Categories",
+			"labelSingular": "Category",
+			"hierarchical": true,
+			"collections": ["posts"],
+			"terms": [
+				{
+					"id": "term:category:project:en",
+					"slug": "project",
+					"label": "Project"
+				},
+				{
+					"id": "term:category:article:en",
+					"slug": "article",
+					"label": "Article"
+				},
+				{
+					"id": "term:category:project:es",
+					"slug": "project",
+					"label": "Proyecto",
+					"locale": "es",
+					"translationOf": "term:category:project:en"
+				},
+				{
+					"id": "term:category:article:es",
+					"slug": "article",
+					"label": "Artículo",
+					"locale": "es",
+					"translationOf": "term:category:article:en"
+				},
+				{
+					"id": "term:category:project:eo",
+					"slug": "project",
+					"label": "Projekto",
+					"locale": "eo",
+					"translationOf": "term:category:project:en"
+				},
+				{
+					"id": "term:category:article:eo",
+					"slug": "article",
+					"label": "Artikolo",
+					"locale": "eo",
+					"translationOf": "term:category:article:en"
+				}
+			]
+		}
+	],
+	"content": {
+		"posts": [
+			{
+				"id": "post:enerlinq:en",
+				"slug": "enerlinq",
+				"status": "published",
+				"locale": "en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Enerlinq",
+					"url": "https://enerlinq.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/enerlinq.com.png",
+							"alt": "Enerlinq",
+							"filename": "enerlinq.com.png"
+						}
+					},
+					"sort_order": 0,
+					"date": "2025-01-15T00:00:00.000Z",
+					"summary": "IT and digital transformation consulting company.",
+					"body": "IT and digital transformation consulting company.",
+					"skills": [
+						"ERPNext",
+						"ServiceNow",
+						"Node.js",
+						"Software development",
+						"AI Agents",
+						"Cloud Computing",
+						"Project management"
+					]
+				}
+			},
+			{
+				"id": "post:enerlinq:es",
+				"slug": "enerlinq",
+				"status": "published",
+				"locale": "es",
+				"translationOf": "post:enerlinq:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Enerlinq",
+					"url": "https://enerlinq.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/enerlinq.com.png",
+							"alt": "Enerlinq",
+							"filename": "enerlinq.com.png"
+						}
+					},
+					"sort_order": 0,
+					"date": "2025-01-15T00:00:00.000Z",
+					"summary": "Consultora de TI y transformacion digital.",
+					"body": "Consultora de TI y transformacion digital.",
+					"skills": [
+						"ERPNext",
+						"ServiceNow",
+						"Node.js",
+						"Desarrollo de software",
+						"Agentes de IA",
+						"Computacion en la nube",
+						"Gestion de proyectos"
+					]
+				}
+			},
+			{
+				"id": "post:enerlinq:eo",
+				"slug": "enerlinq",
+				"status": "published",
+				"locale": "eo",
+				"translationOf": "post:enerlinq:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Enerlinq",
+					"url": "https://enerlinq.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/enerlinq.com.png",
+							"alt": "Enerlinq",
+							"filename": "enerlinq.com.png"
+						}
+					},
+					"sort_order": 0,
+					"date": "2025-01-15T00:00:00.000Z",
+					"summary": "IT kaj cifereca transforma konsilanta firmao.",
+					"body": "IT kaj cifereca transforma konsilanta firmao.",
+					"skills": [
+						"ERPNext",
+						"ServiceNow",
+						"Node.js",
+						"Programara disvolvigo",
+						"AI Agentoj",
+						"Nuba komputado",
+						"Projekta mastrumado"
+					]
+				}
+			},
+			{
+				"id": "post:autosolutions:en",
+				"slug": "autosolutions",
+				"status": "published",
+				"locale": "en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Autosolutions",
+					"url": "https://autosolutions.mx",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/autosolutions.mx.png",
+							"alt": "Autosolutions",
+							"filename": "autosolutions.mx.png"
+						}
+					},
+					"sort_order": 1,
+					"date": "2025-02-01T00:00:00.000Z",
+					"summary": "On-demand auto parts for your vehicle and more.",
+					"body": "On-demand auto parts for your vehicle and more.",
+					"skills": [
+						"Astro",
+						"MongoDB",
+						"Svelte",
+						"Bun",
+						"ERPNext",
+						"Team leadership",
+						"Shopify"
+					]
+				}
+			},
+			{
+				"id": "post:autosolutions:es",
+				"slug": "autosolutions",
+				"status": "published",
+				"locale": "es",
+				"translationOf": "post:autosolutions:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Autosolutions",
+					"url": "https://autosolutions.mx",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/autosolutions.mx.png",
+							"alt": "Autosolutions",
+							"filename": "autosolutions.mx.png"
+						}
+					},
+					"sort_order": 1,
+					"date": "2025-02-01T00:00:00.000Z",
+					"summary": "Autopartes bajo demanda para tu vehiculo y mas.",
+					"body": "Autopartes bajo demanda para tu vehiculo y mas.",
+					"skills": [
+						"Astro",
+						"MongoDB",
+						"Svelte",
+						"Bun",
+						"ERPNext",
+						"Liderazgo de equipos",
+						"Shopify"
+					]
+				}
+			},
+			{
+				"id": "post:autosolutions:eo",
+				"slug": "autosolutions",
+				"status": "published",
+				"locale": "eo",
+				"translationOf": "post:autosolutions:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Autosolutions",
+					"url": "https://autosolutions.mx",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/autosolutions.mx.png",
+							"alt": "Autosolutions",
+							"filename": "autosolutions.mx.png"
+						}
+					},
+					"sort_order": 1,
+					"date": "2025-02-01T00:00:00.000Z",
+					"summary": "Lauxpetaj auxtopartoj por via veturilo kaj pli.",
+					"body": "Lauxpetaj auxtopartoj por via veturilo kaj pli.",
+					"skills": [
+						"Astro",
+						"MongoDB",
+						"Svelte",
+						"Bun",
+						"ERPNext",
+						"Teama gvidado",
+						"Shopify"
+					]
+				}
+			},
+			{
+				"id": "post:sorteos-click:en",
+				"slug": "sorteos-click",
+				"status": "published",
+				"locale": "en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Sorteos Click",
+					"url": "https://sorteos.click",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/sorteos.click.png",
+							"alt": "Sorteos Click",
+							"filename": "sorteos.click.png"
+						}
+					},
+					"sort_order": 2,
+					"date": "2025-03-10T00:00:00.000Z",
+					"summary": "Create and manage your own raffles for free.",
+					"body": "Create and manage your own raffles for free.",
+					"skills": [
+						"Astro",
+						"Svelte",
+						"Turso",
+						"Cloudflare",
+						"TailwindCSS",
+						"DaisyUI",
+						"PagandoCheck"
+					]
+				}
+			},
+			{
+				"id": "post:sorteos-click:es",
+				"slug": "sorteos-click",
+				"status": "published",
+				"locale": "es",
+				"translationOf": "post:sorteos-click:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Sorteos Click",
+					"url": "https://sorteos.click",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/sorteos.click.png",
+							"alt": "Sorteos Click",
+							"filename": "sorteos.click.png"
+						}
+					},
+					"sort_order": 2,
+					"date": "2025-03-10T00:00:00.000Z",
+					"summary": "Crea y administra tus propias rifas gratis.",
+					"body": "Crea y administra tus propias rifas gratis.",
+					"skills": [
+						"Astro",
+						"Svelte",
+						"Turso",
+						"Cloudflare",
+						"TailwindCSS",
+						"DaisyUI",
+						"PagandoCheck"
+					]
+				}
+			},
+			{
+				"id": "post:sorteos-click:eo",
+				"slug": "sorteos-click",
+				"status": "published",
+				"locale": "eo",
+				"translationOf": "post:sorteos-click:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Sorteos Click",
+					"url": "https://sorteos.click",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/sorteos.click.png",
+							"alt": "Sorteos Click",
+							"filename": "sorteos.click.png"
+						}
+					},
+					"sort_order": 2,
+					"date": "2025-03-10T00:00:00.000Z",
+					"summary": "Kreu kaj administru viajn proprajn loteriojn senpage.",
+					"body": "Kreu kaj administru viajn proprajn loteriojn senpage.",
+					"skills": [
+						"Astro",
+						"Svelte",
+						"Turso",
+						"Cloudflare",
+						"TailwindCSS",
+						"DaisyUI",
+						"PagandoCheck"
+					]
+				}
+			},
+			{
+				"id": "post:gerardo-ancer:en",
+				"slug": "gerardo-ancer",
+				"status": "published",
+				"locale": "en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Gerardo Ancer",
+					"url": "https://gerardoancer.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/gerardoancer.com.png",
+							"alt": "Gerardo Ancer",
+							"filename": "gerardoancer.com.png"
+						}
+					},
+					"sort_order": 3,
+					"date": "2025-04-05T00:00:00.000Z",
+					"summary": "Portfolio website for graphic designer Gerardo Ancer.",
+					"body": "Portfolio website for graphic designer Gerardo Ancer.",
+					"skills": ["Astro", "Cloudflare", "TailwindCSS", "Web development"]
+				}
+			},
+			{
+				"id": "post:gerardo-ancer:es",
+				"slug": "gerardo-ancer",
+				"status": "published",
+				"locale": "es",
+				"translationOf": "post:gerardo-ancer:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Gerardo Ancer",
+					"url": "https://gerardoancer.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/gerardoancer.com.png",
+							"alt": "Gerardo Ancer",
+							"filename": "gerardoancer.com.png"
+						}
+					},
+					"sort_order": 3,
+					"date": "2025-04-05T00:00:00.000Z",
+					"summary": "Sitio de portafolio para el disenador grafico Gerardo Ancer.",
+					"body": "Sitio de portafolio para el disenador grafico Gerardo Ancer.",
+					"skills": ["Astro", "Cloudflare", "TailwindCSS", "Desarrollo web"]
+				}
+			},
+			{
+				"id": "post:gerardo-ancer:eo",
+				"slug": "gerardo-ancer",
+				"status": "published",
+				"locale": "eo",
+				"translationOf": "post:gerardo-ancer:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Gerardo Ancer",
+					"url": "https://gerardoancer.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/gerardoancer.com.png",
+							"alt": "Gerardo Ancer",
+							"filename": "gerardoancer.com.png"
+						}
+					},
+					"sort_order": 3,
+					"date": "2025-04-05T00:00:00.000Z",
+					"summary": "Portfolia retejo por grafika dezajnisto Gerardo Ancer.",
+					"body": "Portfolia retejo por grafika dezajnisto Gerardo Ancer.",
+					"skills": ["Astro", "Cloudflare", "TailwindCSS", "Reteja disvolvigo"]
+				}
+			},
+			{
+				"id": "post:hackcuu-2017:en",
+				"slug": "hackcuu-2017",
+				"status": "published",
+				"locale": "en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "HackCUU 2017",
+					"url": "https://facebook.com/hackcuu2",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/hackcuu.com.png",
+							"alt": "HackCUU 2017",
+							"filename": "hackcuu.com.png"
+						}
+					},
+					"sort_order": 4,
+					"date": "2017-11-01T00:00:00.000Z",
+					"summary": "Lead organizer for the HackCUU 2017 MLH hackathon.",
+					"body": "Lead organizer for the HackCUU 2017 MLH hackathon.",
+					"skills": [
+						"Team leadership",
+						"GitHub",
+						"Event organization",
+						"Project management",
+						"Sponsorship acquisition"
+					]
+				}
+			},
+			{
+				"id": "post:hackcuu-2017:es",
+				"slug": "hackcuu-2017",
+				"status": "published",
+				"locale": "es",
+				"translationOf": "post:hackcuu-2017:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "HackCUU 2017",
+					"url": "https://facebook.com/hackcuu2",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/hackcuu.com.png",
+							"alt": "HackCUU 2017",
+							"filename": "hackcuu.com.png"
+						}
+					},
+					"sort_order": 4,
+					"date": "2017-11-01T00:00:00.000Z",
+					"summary": "Organizador principal del hackathon MLH HackCUU 2017.",
+					"body": "Organizador principal del hackathon MLH HackCUU 2017.",
+					"skills": [
+						"Liderazgo de equipos",
+						"GitHub",
+						"Organizacion de eventos",
+						"Gestion de proyectos",
+						"Obtencion de patrocinios"
+					]
+				}
+			},
+			{
+				"id": "post:hackcuu-2017:eo",
+				"slug": "hackcuu-2017",
+				"status": "published",
+				"locale": "eo",
+				"translationOf": "post:hackcuu-2017:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "HackCUU 2017",
+					"url": "https://facebook.com/hackcuu2",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/hackcuu.com.png",
+							"alt": "HackCUU 2017",
+							"filename": "hackcuu.com.png"
+						}
+					},
+					"sort_order": 4,
+					"date": "2017-11-01T00:00:00.000Z",
+					"summary": "CXefa organizanto de la HackCUU 2017 MLH hackatono.",
+					"body": "CXefa organizanto de la HackCUU 2017 MLH hackatono.",
+					"skills": [
+						"Teama gvidado",
+						"GitHub",
+						"Eventa organizado",
+						"Projekta mastrumado",
+						"Akiro de patrocinioj"
+					]
+				}
+			},
+			{
+				"id": "post:petweby:en",
+				"slug": "petweby",
+				"status": "published",
+				"locale": "en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Petweby.com",
+					"url": "https://petweby.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/petweby.com.png",
+							"alt": "Petweby.com",
+							"filename": "petweby.com.png"
+						}
+					},
+					"sort_order": 5,
+					"date": "2025-05-20T00:00:00.000Z",
+					"summary": "Petweby is a pet health tracker and management platform for tutors and veterinarians.",
+					"body": "Petweby is a pet health tracker and management platform for tutors and veterinarians.",
+					"skills": [
+						"Astro",
+						"React",
+						"bknd",
+						"Cloudflare",
+						"Bun",
+						"TailwindCSS"
+					]
+				}
+			},
+			{
+				"id": "post:petweby:es",
+				"slug": "petweby",
+				"status": "published",
+				"locale": "es",
+				"translationOf": "post:petweby:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Petweby.com",
+					"url": "https://petweby.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/petweby.com.png",
+							"alt": "Petweby.com",
+							"filename": "petweby.com.png"
+						}
+					},
+					"sort_order": 5,
+					"date": "2025-05-20T00:00:00.000Z",
+					"summary": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios.",
+					"body": "Petweby es una plataforma de seguimiento y gestion de salud para mascotas, pensada para tutores y veterinarios.",
+					"skills": [
+						"Astro",
+						"React",
+						"bknd",
+						"Cloudflare",
+						"Bun",
+						"TailwindCSS"
+					]
+				}
+			},
+			{
+				"id": "post:petweby:eo",
+				"slug": "petweby",
+				"status": "published",
+				"locale": "eo",
+				"translationOf": "post:petweby:en",
+				"taxonomies": { "category": ["project"] },
+				"data": {
+					"title": "Petweby.com",
+					"url": "https://petweby.com",
+					"image": {
+						"$media": {
+							"url": "https://raw.githubusercontent.com/jonaspm/jonaspm.github.io/75853db37015ebb948cd6386d0e32b50d56278d6/src/assets/images/petweby.com.png",
+							"alt": "Petweby.com",
+							"filename": "petweby.com.png"
+						}
+					},
+					"sort_order": 5,
+					"date": "2025-05-20T00:00:00.000Z",
+					"summary": "Petweby estas san-spurado kaj mastrumada platformo por dorlotbestoj, por prizorgantoj kaj veterinaroj.",
+					"body": "Petweby estas san-spurado kaj mastrumada platformo por dorlotbestoj, por prizorgantoj kaj veterinaroj.",
+					"skills": [
+						"Astro",
+						"React",
+						"bknd",
+						"Cloudflare",
+						"Bun",
+						"TailwindCSS"
+					]
+				}
+			}
+		]
+	}
+}

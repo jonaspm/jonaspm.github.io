@@ -1,3 +1,5 @@
+import type { MediaValue } from 'emdash'
+
 export type Language = 'en' | 'es' | 'eo'
 
 export interface NavigationItem {
@@ -11,7 +13,8 @@ export interface PostViewModel {
 	title: string
 	category: 'project' | 'article'
 	url?: string
-	image?: string
+	// EmDash media shape; rendered through `PostImage` (never a raw URL here).
+	media?: MediaValue | null
 	date?: string
 	summary: string
 	body: string
@@ -21,7 +24,7 @@ export interface PostViewModel {
 export interface ProjectViewModel {
 	name: string
 	url: string
-	image: string
+	media: MediaValue | null
 	description: string
 	skills: string[]
 }

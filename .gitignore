@@ -14,3 +14,10 @@ package-lock.json
 .env
 .env.*
 !.env.example
+
+# D1 export artifacts (bun run db:export)
+backups/
+
+# EmDash generated migration manifest (rewritten by every build; not committed).
+# Keep the rest of .emdash/ trackable (e.g. .emdash/seed.json).
+.emdash/migrations.json

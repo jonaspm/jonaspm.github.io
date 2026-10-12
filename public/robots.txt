@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://jonasperusquia.com/sitemap.xml
