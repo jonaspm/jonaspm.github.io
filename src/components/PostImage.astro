@@ -1,0 +1,32 @@
+---
+/**
+ * Renders an EmDash `MediaValue` through EmDash's `<Image>`.
+ *
+ * Single place for image rendering so the listing, home cards and detail page
+ * stay identical: EmDash's component resolves the local media URL, requests
+ * runtime transforms via the `/_image` endpoint and lazy-loads by default.
+ * `placeholder={false}` keeps the previous astro:assets behaviour (no LQIP
+ * blur-up background) so the design does not change.
+ */
+import type { MediaValue } from 'emdash'
+import { Image } from 'emdash/ui'
+
+interface Props {
+	media: MediaValue | null | undefined
+	alt: string
+	class?: string
+	loading?: 'lazy' | 'eager'
+}
+
+const { media, alt, class: className, loading = 'lazy' } = Astro.props
+---
+
+{media && (
+  <Image
+    image={media}
+    alt={alt}
+    class={className}
+    loading={loading}
+    placeholder={false}
+  />
+)}

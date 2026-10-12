@@ -1,0 +1,34 @@
+---
+// Localized not-found page.
+//
+// Required target for the `Astro.rewrite('/404')` calls in the portfolio
+// detail wrappers. Astro's error route renders with a 404 status by default.
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import Layout from '@/layouts/Layout.astro'
+import { getTranslations, type Language } from '@/utils/i18n'
+
+// The detail-page wrappers rewrite to `/404`, so the request URL no longer
+// carries the locale. `Astro.originPathname` keeps the original path, which is
+// what we classify (`/es/...` → es, `/eo/...` → eo, everything else → en).
+const localeSegment = Astro.originPathname.split('/')[1]
+const language: Language =
+	localeSegment === 'es' || localeSegment === 'eo' ? localeSegment : 'en'
+const translations = getTranslations(language)
+
+const homeUrl = getRelativeLocaleUrl(language, '')
+---
+
+<Layout language={language} navigation={translations.navigation} footer={translations.footer}>
+  <section class="py-16 text-center">
+    <h1 class="mb-8 text-6xl font-medium text-blue-500 dark:text-blue-300 transition-colors duration-300">
+      404
+    </h1>
+    <a
+      href={homeUrl}
+      class="inline-flex items-center gap-1 text-sm font-medium text-blue-500 dark:text-blue-300 hover:underline transition-colors duration-300"
+    >
+      <span class="material-symbols-rounded text-base!">arrow_back</span>
+      {translations.portfolio.backToHome}
+    </a>
+  </section>
+</Layout>
