@@ -7,15 +7,33 @@
 	"main": "./src/worker.ts",
 	"compatibility_date": "2026-02-24",
 	"compatibility_flags": ["nodejs_compat"],
-	// D1 + R2 are auto-provisioned on first `wrangler deploy` (binding without id).
-	// If the CLI/account refuses, run `wrangler d1 create` / `wrangler r2 bucket create`
-	// and pin `database_id` / `bucket_name` here (see docs/EMDASH_MIGRATION.md §8.5).
-	"d1_databases": [{ "binding": "DB", "database_name": "jonasperusquia-com" }],
+	// D1 + KV were provisioned by the first deploy attempt; IDs are pinned so
+	// later deploys reconnect deterministically (the adapter skips its own
+	// SESSION binding when one is declared here).
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "jonasperusquia-com",
+			"database_id": "d69c71ae-a2c1-4852-8dac-7b17f4b40212"
+		}
+	],
+	// R2 is NOT auto-provisioned: create the bucket first (`wrangler r2 bucket
+	// create jonasperusquia-media`, see docs/EMDASH_MIGRATION.md §8.5).
 	"r2_buckets": [{ "binding": "MEDIA", "bucket_name": "jonasperusquia-media" }],
-	"kv_namespaces": [{ "binding": "CACHE" }],
+	"kv_namespaces": [
+		{ "binding": "SESSION", "id": "a04783c9fde54481a3b46356f858e665" },
+		{ "binding": "CACHE", "id": "b77f647bc7834632a4b769ed393bae1d" }
+	],
 	// Scheduled publishing / maintenance sweep. * * * * * matches EmDash's
 	// documented cadence (Node scheduler caps its poll at 60s for the same reason).
 	"triggers": { "crons": ["* * * * *"] },
+	// Production hostnames. Attaching requires the Pages project to release
+	// them first (see docs/EMDASH_MIGRATION.md §8.3). www is attached only so
+	// the Worker can 301 it to the apex (see src/worker.ts).
+	"routes": [
+		{ "pattern": "jonasperusquia.com", "custom_domain": true },
+		{ "pattern": "www.jonasperusquia.com", "custom_domain": true }
+	],
 	// Optional: run the isolate near D1's region. Safe to omit.
 	"placement": { "mode": "targeted" },
 	"observability": { "enabled": true }
