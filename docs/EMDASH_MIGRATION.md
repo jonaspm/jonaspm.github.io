@@ -1,6 +1,6 @@
 # EmDash CMS migration — design doc
 
-- **Status:** **deployed to production 2026-10-12** — `jonasperusquia.com` runs on the Worker (D1 + R2 + KV), setup wizard complete, public pages + cron verified. Resolved at approval: repo `jonaspm/jonaspm.github.io` is public → commit-pinned raw GitHub URLs seed the media; `www.jonasperusquia.com` → 301 redirect to apex; KV object cache, code-level SEO (Phase 1) and plain-text `body` adopted as recommended.
+- **Status:** **deployed to production 2026-10-12** — `jonasperusquia.com` runs on the Worker (D1 + R2 + KV), setup wizard complete, public pages + cron verified. Resolved at approval: repo `jonaspm/jonasperusquia-site` is public → commit-pinned raw GitHub URLs seed the media; `www.jonasperusquia.com` → 301 redirect to apex; KV object cache, code-level SEO (Phase 1) and plain-text `body` adopted as recommended.
 - **Target:** `jonasperusquia.com` (Astro 7 → EmDash 1.2 managed content, Cloudflare Pages → Workers SSR + D1 + R2)
 - **Date:** 2026-10-12
 - **Evidence base:** every API/behaviour claim below was verified against the *published packages* (`emdash@1.2.0`, `@emdash-cms/cloudflare@1.2.0`, `astro@7.3.8`, `@astrojs/cloudflare@14.3.4`, `@astrojs/react@7.0.1`) downloaded from the npm registry and read from disk, plus the docs index. Sources are named inline where it matters (e.g. `loader.ts:1700`).

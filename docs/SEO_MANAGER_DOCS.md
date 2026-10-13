@@ -160,7 +160,7 @@ The SEO Manager automatically generates appropriate structured data based on the
   "name": "Jonas Perusquia Morales",
   "jobTitle": "Chief Technology Officer",
   "description": "...",
-  "url": "https://jonaspm.github.io",
+  "url": "https://jonasperusquia.com",
   "image": "/profile.png",
   "sameAs": ["..."],
   "worksFor": {...},
