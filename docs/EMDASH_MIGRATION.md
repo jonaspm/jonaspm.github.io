@@ -1,6 +1,6 @@
 # EmDash CMS migration — design doc
 
-- **Status:** approved + **implemented and locally verified 2026-10-12** (all §9.1 checks pass; production deploy is a separate, explicitly confirmed step). Resolved at approval: repo `jonaspm/jonaspm.github.io` is public → commit-pinned raw GitHub URLs seed the media; `www.jonasperusquia.com` → 301 redirect to apex; KV object cache, code-level SEO (Phase 1) and plain-text `body` adopted as recommended.
+- **Status:** **deployed to production 2026-10-12** — `jonasperusquia.com` runs on the Worker (D1 + R2 + KV), setup wizard complete, public pages + cron verified. Resolved at approval: repo `jonaspm/jonaspm.github.io` is public → commit-pinned raw GitHub URLs seed the media; `www.jonasperusquia.com` → 301 redirect to apex; KV object cache, code-level SEO (Phase 1) and plain-text `body` adopted as recommended.
 - **Target:** `jonasperusquia.com` (Astro 7 → EmDash 1.2 managed content, Cloudflare Pages → Workers SSR + D1 + R2)
 - **Date:** 2026-10-12
 - **Evidence base:** every API/behaviour claim below was verified against the *published packages* (`emdash@1.2.0`, `@emdash-cms/cloudflare@1.2.0`, `astro@7.3.8`, `@astrojs/cloudflare@14.3.4`, `@astrojs/react@7.0.1`) downloaded from the npm registry and read from disk, plus the docs index. Sources are named inline where it matters (e.g. `loader.ts:1700`).
@@ -681,13 +681,13 @@ wrangler secret put EMDASH_ENCRYPTION_KEY     # required; value from .env (never
 # CLARITY_ID stays an Astro env var (public, inlined at build time) — no Worker secret needed.
 ```
 
-### 8.3 Custom domain (replaces the Pages domain)
+### 8.3 Custom domains (replaces the Pages domain)
 
-Order matters: attach the domain **before** running the production setup wizard (passkeys bind to the hostname; `emdash:site_url` is written once).
+Order matters: attach the domains **before** running the production setup wizard (passkeys bind to the hostname; `emdash:site_url` is written once).
 
-1. Cloudflare dashboard → Workers & Pages → the new Worker → Settings → Domains & Routes → add custom domain `jonasperusquia.com` (and, if you want `www` to keep working, `www.jonasperusquia.com`, then add a redirect rule www → apex; `www` is already in `allowedOrigins` for passkey assertions).
-2. Remove the custom domain from the **Pages** project only after the Worker answers correctly (see rollback below). Until then the Pages project keeps serving the domain.
-3. If the zone runs through Cloudflare, the DNS record for the apex is managed by the Worker route.
+1. Declare both hostnames in `wrangler.jsonc` `routes` with `custom_domain: true` (apex + `www`) and `bun run cloudflare`. Wrangler creates the proxied DNS records and claims the hostnames; once claimed, the Pages project stops serving them (its custom-domain entries become inert — remove them at leisure).
+2. `www` exists only to redirect: `src/worker.ts` 301s `www.jonasperusquia.com` to the apex (path + query preserved) before the Astro handler runs — no zone redirect rule needed. `www` stays in `allowedOrigins` for passkey assertions.
+3. With a `routes` entry present, `workers_dev` defaults to disabled; set `"workers_dev": true` only if a workers.dev address is wanted alongside the custom domains.
 
 ### 8.4 Cron
 
@@ -696,13 +696,16 @@ Order matters: attach the domain **before** running the production setup wizard 
 - Even without the cron, scheduled entries become visible at query time (EmDash resolves `scheduled_at` in reads) — the sweep is what flips metadata and purges caches. With the KV object cache at `defaultTtl: 300`, worst-case visibility for a due entry is ~5 minutes on a cache hit. Lower `defaultTtl` if you want tighter scheduling.
 - Optional Phase 2 (Workers Cache): add `cache: { provider: cacheCloudflare() }` (from `@astrojs/cloudflare/cache`) + `routeRules` for the **public routes only** (`'/'`, `'/es'`, `'/eo'`, `'/portfolio'`, `'/es/portfolio'`, `'/eo/portfolio'`, `'/portfolio/[...slug]'`, `'/es/portfolio/[...slug]'`, `'/eo/portfolio/[...slug]'` — never a catch-all, or `/_emdash/*` responses could be cached) and pass EmDash's `cacheHint` into `Astro.cache.set()`. Only do this after proving publish invalidation (`cache.purge` / `provider.invalidate({ tags })`) — with static route tags, a publish can otherwise serve stale HTML for `maxAge`.
 
-### 8.5 If D1/R2 auto-provisioning is refused
+### 8.5 Provisioning reality (learned on the first deploy)
+
+- **D1 + KV auto-provision** on the first `wrangler deploy` (KV namespaces `jonasperusquia-com-session` / `jonasperusquia-com-cache`). Pin the printed IDs in `wrangler.jsonc` right after, so later deploys reconnect deterministically. Pinning a `SESSION` KV binding also makes the Astro adapter skip injecting its own.
+- **R2 does not auto-provision.** The bucket must exist first. On an account where R2 was never enabled, enable it in the Cloudflare dashboard (a payment method is required even for the free tier), then:
 
 ```sh
-wrangler d1 create jonasperusquia-com
 wrangler r2 bucket create jonasperusquia-media
-# paste the printed database_id / bucket_name into wrangler.jsonc, redeploy
 ```
+
+- EmDash core migrations apply on the Worker's first request (default `auto` mode). Debugging note: the D1 options table is `options` (columns `name` / `value`), not `_emdash_options`.
 
 ### 8.6 Backups and rollback
 
