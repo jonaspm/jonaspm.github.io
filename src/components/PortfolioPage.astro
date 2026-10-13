@@ -2,6 +2,8 @@
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import BioSection from '@/components/BioSection.astro'
 import ContactSection from '@/components/ContactSection.astro'
+import CredentialsSection from '@/components/CredentialsSection.astro'
+import ExperienceSection from '@/components/ExperienceSection.astro'
 import HomeSection from '@/components/HomeSection.astro'
 import ProjectsSection from '@/components/ProjectsSection.astro'
 import SkillsSection from '@/components/SkillsSection.astro'
@@ -34,10 +36,12 @@ const portfolioUrl = getRelativeLocaleUrl(language, 'portfolio')
 
 <Layout {...seoConfig} language={language} navigation={translations.navigation} footer={translations.footer}>
   <div class="flex flex-col gap-y-18">
-    <HomeSection content={translations.home} />
+    <HomeSection content={translations.home} portfolioUrl={portfolioUrl} />
     <BioSection content={translations.bio} />
     <SkillsSection title={translations.skills.title} language={language} />
-    <ProjectsSection title={translations.projects.title} projects={projects} viewAllHref={portfolioUrl} viewAllLabel={translations.portfolio.title} />
-    <ContactSection title={translations.contact.title} />
+    <ExperienceSection title={translations.experience.title} presentLabel={translations.experience.present} language={language} />
+    <CredentialsSection title={translations.credentials.title} labels={translations.credentials} language={language} />
+    <ProjectsSection title={translations.projects.title} projects={projects} viewAllHref={portfolioUrl} viewAllLabel={translations.portfolio.title} language={language} externalLabel={translations.projects.external} />
+    <ContactSection content={translations.contact} />
   </div>
 </Layout>

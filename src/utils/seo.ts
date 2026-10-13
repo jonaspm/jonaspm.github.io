@@ -33,11 +33,13 @@ function getDefaultSEO(language: Language): SEOConfig {
 	const translations = getTranslations(language)
 
 	return {
-		title: 'Jonas Perusquia Morales - Msc. Data Science & Software Engineer',
+		// Locale-consistent `<title>` fallback (was hardcoded English).
+		title: translations.seo.home.title,
 		description: translations.seo.home.description,
 		keywords: translations.seo.home.keywords,
-		image: '/profile.png',
-		imageAlt: 'Jonas Perusquia Morales - Professional Profile',
+		// Absolute URL so social scrapers resolve the image without extra work.
+		image: 'https://jonasperusquia.com/profile.png',
+		imageAlt: 'Jonás Perusquía Morales — ServiceNow Developer & Technical Lead',
 		type: 'website',
 		author: 'Jonas Perusquia Morales',
 		twitterHandle: '@jonaspm',
@@ -80,11 +82,11 @@ function getPageConfig(
 			structuredData: {
 				'@context': 'https://schema.org',
 				'@type': 'Person',
-				name: 'Jonas Perusquia Morales',
-				jobTitle: 'Msc. Data Science & Software Engineer',
+				name: 'Jonás Perusquía Morales',
+				jobTitle: 'ServiceNow Developer & Technical Lead',
 				description: translations.seo.home.structuredDescription,
 				url: 'https://jonasperusquia.com',
-				image: '/profile.png',
+				image: 'https://jonasperusquia.com/profile.png',
 				sameAs: [
 					'https://linkedin.com/in/jonaspm',
 					'https://github.com/jonaspm',
@@ -92,18 +94,32 @@ function getPageConfig(
 				],
 				worksFor: {
 					'@type': 'Organization',
-					name: 'Technology Companies',
+					name: 'Blueway Group',
 				},
 				knowsAbout: [
-					'Software Engineering',
-					'Web Development',
-					'Cloud Architecture',
-					'Team Leadership',
-					'Full Stack Development',
-					'JavaScript',
+					'ServiceNow',
+					'ServiceNow Development',
+					'ServiceNow Architecture',
+					'Solution Architecture',
+					'Technical Leadership',
+					'Full-Stack Development',
 					'TypeScript',
-					'React',
-					'Node.js',
+					'Cloud & DevOps',
+					'Applied Data Science',
+				],
+				hasCredential: [
+					{
+						'@type': 'EducationalOccupationalCredential',
+						name: 'ServiceNow Certified System Administrator (CSA)',
+						recognizedBy: { '@type': 'Organization', name: 'ServiceNow' },
+					},
+				],
+				alumniOf: [
+					{ '@type': 'CollegeOrUniversity', name: 'IEXE Universidad' },
+					{
+						'@type': 'CollegeOrUniversity',
+						name: 'Universidad Autónoma de Chihuahua',
+					},
 				],
 				address: {
 					'@type': 'PostalAddress',

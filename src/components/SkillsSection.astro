@@ -1,6 +1,7 @@
 ---
 import skills from '@/assets/data/skills.json'
 import type { Language } from '@/utils/i18n'
+import { pick } from '@/utils/resume'
 
 interface Props {
 	title: string
@@ -47,22 +48,35 @@ const accents = {
 		pill: 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100 dark:bg-amber-500/10 dark:text-amber-200 dark:border-amber-500/25 dark:hover:bg-amber-500/20',
 		count: 'bg-amber-500/10 text-amber-600 dark:text-amber-300',
 	},
+	// 5th resume category (Business Platforms & AI) — secondary accent.
+	gold: {
+		icon: 'bg-gold-500/10 text-gold-700 dark:text-gold-200 ring-gold-500/20',
+		bar: 'from-gold-300 to-amber-400',
+		heading: 'text-gold-700 dark:text-gold-300',
+		card: 'hover:border-gold-300 dark:hover:border-gold-500/50',
+		pill: 'bg-gold-50 text-gold-700 border-gold-200 hover:bg-gold-100 dark:bg-gold-500/10 dark:text-gold-200 dark:border-gold-500/25 dark:hover:bg-gold-500/20',
+		count: 'bg-gold-500/10 text-gold-700 dark:text-gold-200',
+	},
 } as const
 
 type Accent = keyof typeof accents
 
+// `skills` entries are `string | LocalizedString` (proper nouns stay plain,
+// phrase-like skills translate) — resolve group names and pill labels alike
+// via `pick()`.
 const groups = skills.map((group) => ({
 	...group,
-	label: group.name[language] ?? group.name.en,
+	label: pick(group.name, language),
+	skills: group.skills.map((skill) => pick(skill, language)),
 	classes: accents[group.accent as Accent] ?? accents.sky,
 }))
 ---
 
 <section id="skills" class="py-8 scroll-mt-20 opacity-0">
-  <h2 class="mb-12 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">{title}</h2>
+  <h2 class="mb-12 text-center font-display text-3xl font-semibold tracking-tight text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">{title}</h2>
   <div class="grid gap-6 md:grid-cols-2">
     {groups.map((group) => (
-      <div class={`skill-card relative overflow-hidden rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl flex flex-col gap-4 ${group.classes.card}`}>
+      <div class={`skill-card relative overflow-hidden rounded-card bg-white/80 dark:bg-grayblue-800/70 backdrop-blur-sm border border-grayblue-200/80 dark:border-grayblue-700/60 p-6 shadow-soft flex flex-col gap-4 transition-[transform,box-shadow,border-color] duration-300 ease-out-soft hover:shadow-lift hover:-translate-y-1 ${group.classes.card}`}>
         <span class={`pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${group.classes.bar}`} aria-hidden="true"></span>
         <div class="flex items-center gap-3">
           <span class={`shrink-0 grid place-items-center size-10 rounded-lg ring-1 transition-colors duration-300 ${group.classes.icon}`} aria-hidden="true">

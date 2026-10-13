@@ -1,38 +1,106 @@
 ---
+import socialNetworks from '@/assets/data/social-networks.json'
+
 interface Props {
-	title: string
+	content: {
+		title: string
+		fallbackIntro: string
+		emailLabel: string
+		bookingLabel: string
+		embedError: string
+	}
 }
 
-const { title } = Astro.props
+const { content } = Astro.props
+
+// Static contact channels (from the resume) — these make the section work
+// even when the TidyCal embed cannot load.
+const emailHref = 'mailto:jperusm@outlook.com'
+const bookingHref = 'https://tidycal.com/jperusm/15-minute-meeting'
+
+// Same curated trio as the hero social row.
+const curatedSocials = socialNetworks.filter((social) =>
+	['LinkedIn', 'GitHub', 'Email'].includes(social.name),
+)
 ---
 
 <section id="contact" class="py-8 scroll-mt-20 opacity-0">
-  <h2 class="mb-12 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">{title}</h2>
+  <h2 class="mb-12 text-center font-display text-3xl font-semibold tracking-tight text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">{content.title}</h2>
   <div class="flex justify-center gsap-fade-up-noreverse">
     <div class="tidycal-embed" data-tidycal-placeholder data-path="jperusm/15-minute-meeting"></div>
     <script is:inline>
       (() => {
         const tidycalSrc = "https://asset-tidycal.b-cdn.net/js/embed.js";
+        // How long the embed gets before the static fallback is promoted.
+        const embedTimeoutMs = 3500;
 
         class TidyCalEmbedManager {
           constructor() {
             this.loaderPromise = null;
-            this.boundHydrate = this.hydrate.bind(this);
+            this.boundObserve = this.observe.bind(this);
             this.initialized = false;
           }
 
           init() {
             if (!this.initialized) {
-              document.addEventListener("astro:page-load", this.boundHydrate);
-              document.addEventListener("astro:after-swap", this.boundHydrate);
+              document.addEventListener("astro:page-load", this.boundObserve);
+              document.addEventListener("astro:after-swap", this.boundObserve);
               this.initialized = true;
             }
 
-            this.hydrate();
+            this.observe();
+          }
+
+          // Lazy embed: the booking widget (third-party script + iframe) sits
+          // below the fold, so nothing downloads until the placeholder
+          // approaches the viewport. Falls back to immediate hydration when
+          // IntersectionObserver is unavailable.
+          observe() {
+            const placeholder = this.getPlaceholder();
+            if (!(placeholder instanceof HTMLDivElement)) {
+              return;
+            }
+
+            // One observer per placeholder: the immediate `init()` call and the
+            // `astro:page-load`/`astro:after-swap` listeners can land close
+            // together and must not both hydrate.
+            if (placeholder.dataset.tidycalObserved) {
+              return;
+            }
+            placeholder.dataset.tidycalObserved = "true";
+
+            if (!("IntersectionObserver" in window)) {
+              this.hydrate();
+              return;
+            }
+
+            const observer = new IntersectionObserver(
+              (entries) => {
+                if (!entries.some((entry) => entry.isIntersecting)) {
+                  return;
+                }
+                observer.disconnect();
+                this.hydrate();
+              },
+              // Start loading slightly before the section scrolls into view so
+              // the embed is ready by the time the user reaches it.
+              { rootMargin: "200px 0px" },
+            );
+            observer.observe(placeholder);
           }
 
           getPlaceholder() {
             return document.querySelector(".tidycal-embed[data-tidycal-placeholder]");
+          }
+
+          // Promote the always-visible fallback: hide the (empty) placeholder
+          // and reveal the embed-error line inside the fallback panel.
+          showFallbackError(placeholder) {
+            placeholder.style.display = "none";
+            const errorLine = document.querySelector("[data-tidycal-error]");
+            if (errorLine instanceof HTMLElement) {
+              errorLine.classList.remove("hidden");
+            }
           }
 
           async hydrate() {
@@ -41,9 +109,15 @@ const { title } = Astro.props
               return;
             }
 
-            await this.ensureScriptLoaded();
+            try {
+              await this.ensureScriptLoaded();
+            } catch {
+              this.showFallbackError(placeholder);
+              return;
+            }
 
             if (!window.TidyCal?.init) {
+              this.showFallbackError(placeholder);
               return;
             }
 
@@ -51,7 +125,78 @@ const { title } = Astro.props
               return;
             }
 
-            window.TidyCal.init(placeholder);
+            // Per-placeholder init guard: the immediate `init()` call and the
+            // `astro:page-load`/`astro:after-swap` listeners can land close
+            // together — without this flag the embed script would init the
+            // same placeholder twice.
+            if (placeholder.dataset.tidycalInit) {
+              return;
+            }
+            placeholder.dataset.tidycalInit = "true";
+
+            // Watch and stamp BEFORE init: TidyCal replaces the placeholder
+            // node synchronously inside init() and its resize plumbing can
+            // throw mid-render, so the observer must already be watching when
+            // the iframe lands.
+            this.markInjectedIframesLazy(placeholder);
+
+            try {
+              window.TidyCal.init(placeholder);
+            } catch {
+              // TidyCal's script may throw after it has already inserted the
+              // iframe (its own iframe-resizer plumbing). Only fall back to
+              // the static links when no embed actually appeared.
+              if (!document.querySelector("iframe.tidycal-embed")) {
+                this.showFallbackError(placeholder);
+                return;
+              }
+            }
+
+            // Watchdog: when the embed script still has not replaced the
+            // placeholder after a few seconds (blocked request, silent
+            // failure), fall back to the static links. Armed once per
+            // placeholder so repeated hydrations do not stack timers.
+            if (!placeholder.dataset.tidycalWatchdog) {
+              placeholder.dataset.tidycalWatchdog = "true";
+              window.setTimeout(() => {
+                if (placeholder.hasAttribute("data-tidycal-placeholder")) {
+                  this.showFallbackError(placeholder);
+                }
+              }, embedTimeoutMs);
+            }
+          }
+
+          // TidyCal builds its iframe on its own schedule (and may swap the
+          // placeholder node for it), so watch the parent subtree briefly and
+          // mark every injected iframe lazy. Harmless if the iframe already
+          // carries the attribute.
+          markInjectedIframesLazy(placeholder) {
+            const stamp = (node) => {
+              if (node instanceof HTMLIFrameElement) {
+                node.loading = "lazy";
+              }
+            };
+
+            const scope = placeholder.parentElement ?? document.body;
+            scope.querySelectorAll("iframe").forEach(stamp);
+
+            if (!("MutationObserver" in window)) {
+              return;
+            }
+
+            const mutationObserver = new MutationObserver((records) => {
+              for (const record of records) {
+                for (const node of record.addedNodes) {
+                  stamp(node);
+                  if (node instanceof Element) {
+                    node.querySelectorAll("iframe").forEach(stamp);
+                  }
+                }
+              }
+            });
+            mutationObserver.observe(scope, { childList: true, subtree: true });
+            // Stop watching once the embed has had time to settle.
+            window.setTimeout(() => mutationObserver.disconnect(), embedTimeoutMs);
           }
 
           ensureScriptLoaded() {
@@ -88,5 +233,48 @@ const { title } = Astro.props
         window.tidycalEmbedManager.init();
       })();
     </script>
+  </div>
+
+  {/* Always-visible fallback panel (design §3.7): works even if the embed
+      never loads — no JS guessing required. The `data-tidycal-error` line is
+      revealed by the watchdog above when the embed fails. */}
+  <div class="mx-auto mt-10 max-w-2xl rounded-card-lg bg-white/80 dark:bg-grayblue-800/70 backdrop-blur-sm border border-grayblue-200/80 dark:border-grayblue-700/60 p-8 lg:p-10 shadow-soft text-center gsap-fade-up-noreverse">
+    <p data-tidycal-error class="hidden mb-6 text-sm italic text-grayblue-500 dark:text-grayblue-400">
+      {content.embedError}
+    </p>
+    <p class="text-base lg:text-lg leading-relaxed text-grayblue-700 dark:text-grayblue-300">
+      {content.fallbackIntro}
+    </p>
+    <div class="mt-6 flex flex-wrap justify-center gap-4">
+      <a
+        href={emailHref}
+        class="rounded-full bg-blue-600 text-white px-6 py-3 text-sm font-medium shadow-glow-blue transition-colors duration-300 hover:bg-blue-700"
+      >
+        {content.emailLabel}
+      </a>
+      <a
+        href={bookingHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full border border-blue-500/60 text-blue-600 dark:text-blue-300 px-6 py-3 text-sm font-medium transition-colors duration-300 hover:bg-blue-600 hover:text-white"
+      >
+        {content.bookingLabel}
+      </a>
+    </div>
+    <div class="mt-6 flex justify-center gap-4">
+      {
+        curatedSocials.map((socialNetwork) => (
+          <a
+            aria-label={socialNetwork.name}
+            href={socialNetwork.url}
+            class="text-grayblue-600 dark:text-grayblue-300 hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-300 hover:scale-110"
+          >
+            <div class="h-6 w-6">
+              <Fragment set:html={socialNetwork.image} />
+            </div>
+          </a>
+        ))
+      }
+    </div>
   </div>
 </section>

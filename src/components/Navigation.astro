@@ -27,14 +27,14 @@ const languages = [
 ]
 ---
 
+{/* No `role="banner"` — implicit on top-level `<header>`. */}
 <header
   id="main-header"
   data-main-header
-  role="banner"
-  class="fixed top-0 left-0 right-0 z-20 bg-white/90 dark:bg-grayblue-800/90 backdrop-blur-md transition-all duration-300 ease-in-out border-b border-grayblue-200 dark:border-grayblue-700"
+  class="fixed top-0 left-0 right-0 z-20 bg-white/70 dark:bg-grayblue-900/60 backdrop-blur-xl transition-all duration-300 ease-in-out border-b border-grayblue-200/70 dark:border-grayblue-700/50"
 >
+  {/* No `role="navigation"` — implicit on `<nav>`. */}
   <nav
-    role="navigation"
     aria-label={ariaLabel}
     class="container mx-auto px-6 py-4"
   >
@@ -42,7 +42,7 @@ const languages = [
     <div class="flex items-center justify-between md:hidden">
       <a
         href={`${homeUrl}#home`}
-        class="text-grayblue-900 dark:text-grayblue-100 font-medium text-lg"
+        class="text-grayblue-900 dark:text-grayblue-100 font-display font-semibold text-lg"
         >{brand.split(" ")[0]}
         <span class="text-blue-500 dark:text-blue-300"
           >{brand.split(" ")[1]}</span
@@ -77,7 +77,7 @@ const languages = [
       <div class="flex-1">
         <a
           href={`${homeUrl}#home`}
-          class="text-grayblue-900 dark:text-grayblue-100 font-medium text-lg"
+          class="text-grayblue-900 dark:text-grayblue-100 font-display font-semibold text-lg"
         >
           {brand.split(" ")[0]}
           <span class="text-blue-500 dark:text-blue-300"
@@ -228,14 +228,9 @@ const languages = [
         return;
       }
 
-      if (window.scrollY > 50) {
-        header.classList.add("bg-white/80", "dark:bg-grayblue-800/80");
-        header.classList.remove("bg-white/90", "dark:bg-grayblue-800/90");
-        return;
-      }
-
-      header.classList.remove("bg-white/80", "dark:bg-grayblue-800/80");
-      header.classList.add("bg-white/90", "dark:bg-grayblue-800/90");
+      // Glass bar gains depth only while scrolled (design §1.4); the base
+      // opacity/blur stay constant so the ambient layer reads through.
+      header.classList.toggle("shadow-soft", window.scrollY > 50);
     }
   }
 

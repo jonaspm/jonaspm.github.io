@@ -1,0 +1,70 @@
+---
+import experience from '@/assets/data/experience.json'
+import type { Language } from '@/utils/i18n'
+import { type ExperienceEntry, formatDateRange, pick } from '@/utils/resume'
+
+interface Props {
+	title: string
+	/** UI string for open-ended roles (`end: null`) — from `i18n.ts`. */
+	presentLabel: string
+	language: Language
+}
+
+const { title, presentLabel, language } = Astro.props
+
+// Newest first in the JSON; dates render through Intl for the active locale
+// ("Jun 2026 – Present" / "jun 2026 – Actualidad" / "jun 2026 – Nun").
+const entries = (experience as ExperienceEntry[]).map((entry) => ({
+	...entry,
+	titleLabel: pick(entry.title, language),
+	locationLabel: pick(entry.location, language),
+	noteLabel: entry.note ? pick(entry.note, language) : null,
+	dateRange: formatDateRange(entry.start, entry.end, language, presentLabel),
+}))
+---
+
+<section id="experience" class="py-8 scroll-mt-20 opacity-0">
+  <h2 class="mb-12 text-center font-display text-3xl font-semibold tracking-tight text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">{title}</h2>
+  <ol class="experience-timeline flex flex-col gap-10">
+    {entries.map((entry) => (
+      <li class="grid gap-4 lg:grid-cols-[10rem_1fr] lg:gap-8 gsap-fade-up">
+        {/* Date rail: sticky on large screens so the range stays visible
+            while its card scrolls past. Mobile shows it above the card. */}
+        <div class="self-start lg:sticky lg:top-24 lg:text-right">
+          <p class="tabular-nums text-sm text-grayblue-500 dark:text-grayblue-400">
+            {entry.dateRange}
+          </p>
+          <p class="tabular-nums text-sm text-grayblue-500 dark:text-grayblue-400">
+            {entry.locationLabel}
+          </p>
+        </div>
+
+        {/* Spine + dot + content card. The dot is pure utilities (a
+            `.timeline-dot` CSS class would duplicate them); `-left-[7px]`
+            centers the 12px dot on the 2px spine border. */}
+        <div class="relative border-l-2 border-grayblue-200 dark:border-grayblue-700 pl-6">
+          <span
+            class="timeline-dot absolute -left-[7px] top-2 size-3 rounded-full bg-blue-500 ring-4 ring-blue-500/15"
+            aria-hidden="true"
+          ></span>
+          <div class="rounded-card bg-white/80 dark:bg-grayblue-800/70 backdrop-blur-sm border border-grayblue-200/80 dark:border-grayblue-700/60 p-6 shadow-soft transition-[transform,box-shadow,border-color] duration-300 ease-out-soft hover:shadow-lift hover:-translate-y-1">
+            <h3 class="font-display text-xl font-semibold text-grayblue-900 dark:text-grayblue-100">
+              {entry.titleLabel}
+            </h3>
+            <p class="mt-1 text-blue-600 dark:text-blue-300">
+              {entry.company}
+              {entry.noteLabel && (
+                <span class="text-grayblue-500 dark:text-grayblue-400"> ({entry.noteLabel})</span>
+              )}
+            </p>
+            <ul class="mt-4 list-disc pl-5 text-grayblue-600 dark:text-grayblue-300">
+              {entry.bullets.map((bullet) => (
+                <li class="mt-2 first:mt-0">{pick(bullet, language)}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

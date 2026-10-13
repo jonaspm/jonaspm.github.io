@@ -7,7 +7,9 @@
 			"!**/.emdash",
 			"!dist",
 			"!**/.astro",
-			"!**/.wrangler"
+			"!**/.wrangler",
+			"!**/src/styles/global.css",
+			"!**/skills-lock.json"
 		]
 	},
 	"assist": { "actions": { "source": { "organizeImports": "on" } } },
@@ -20,7 +22,8 @@
 		}
 	},
 	"formatter": {
-		"enabled": true
+		"enabled": true,
+		"lineEnding": "crlf"
 	},
 	"linter": {
 		"enabled": true,

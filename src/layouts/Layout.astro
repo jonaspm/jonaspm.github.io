@@ -32,15 +32,23 @@ const {
 	...seoProps
 } = Astro.props
 
+// Self-hosted webfonts as Vite side-effect imports (robust with the Tailwind
+// v4 Vite plugin; no third-party font request at runtime). Import order puts
+// `global.css` last so theme tokens win over the font packages' base styles.
+import '@fontsource-variable/fraunces'
+import '@fontsource-variable/instrument-sans'
 import '@/styles/global.css'
 import { ClientRouter } from 'astro:transitions'
+import AmbientBackground from '@/components/AmbientBackground.astro'
 import Analytics from '@/components/Analytics.astro'
 import Navigation from '@/components/Navigation.astro'
 import SEOManager from '@/components/SEOManager.astro'
 ---
 
 <!doctype html>
-<html lang={language} class="min-h-dvh bg-cover bg-center bg-no-repeat bg-fixed">
+<!-- Dead `bg-cover bg-center bg-no-repeat bg-fixed` classes removed: no
+    background was ever set for them. Body keeps the base paint. -->
+<html lang={language} class="min-h-dvh">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -86,13 +94,16 @@ import SEOManager from '@/components/SEOManager.astro'
   <body
     class="min-h-screen h-full bg-white dark:bg-grayblue-900 text-grayblue-900 dark:text-grayblue-100 transition-colors duration-300"
   >
+    {/* Decorative aurora/grain layer; main + footer stack above it (z-10). */}
+    <AmbientBackground />
     {navigation && <Navigation transition:name="navigation" transition:persist currentLanguage={language} navigation={navigation} />}
-    <main id="main" role="main" class="max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
+    {/* No `role="main"` — implicit on `<main>`. */}
+    <main id="main" class="relative z-10 max-w-7xl mx-auto px-6 pt-14 xs:pt-20">
       <slot />
     </main>
+    {/* No `role="contentinfo"` — implicit on `<footer>`. */}
     <footer
-      role="contentinfo"
-      class="bg-grayblue-100 dark:bg-grayblue-800 py-6 text-center text-sm text-grayblue-600 dark:text-grayblue-400 transition-colors duration-300"
+      class="relative z-10 bg-transparent border-t border-grayblue-200/70 dark:border-grayblue-700/50 py-6 text-center text-sm text-grayblue-600 dark:text-grayblue-400 transition-colors duration-300"
     >
       <p>{footer}</p>
     </footer>

@@ -1,7 +1,10 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n'
 import PostImage from '@/components/PostImage.astro'
-import { listPosts, toPostViewModel } from '@/utils/emdash-posts'
+import {
+	listPosts,
+	portfolioDetailPath,
+	toPostViewModel,
+} from '@/utils/emdash-posts'
 import {
 	getTranslations,
 	type Language,
@@ -19,16 +22,10 @@ const translations = getTranslations(language)
 const posts = (await listPosts(language)).map(
 	(entry): PostViewModel => toPostViewModel(entry),
 )
-
-const portfolioUrl = getRelativeLocaleUrl(language, 'portfolio')
-// `getRelativeLocaleUrl` appends a trailing slash; strip it before joining
-// the slug so card links are `/portfolio/{slug}`, not `/portfolio//{slug}`.
-const detailPathFor = (slug: string) =>
-	`${portfolioUrl.replace(/\/$/, '')}/${slug}`
 ---
 
 <section class="py-8">
-  <h1 class="mb-4 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 transition-colors duration-300">
+  <h1 class="mb-4 text-center font-display text-3xl font-semibold tracking-tight text-grayblue-900 dark:text-grayblue-100 transition-colors duration-300">
     {translations.portfolio.title}
   </h1>
   <p class="mb-10 text-center text-lg text-grayblue-600 dark:text-grayblue-300 transition-colors duration-300">
@@ -67,9 +64,9 @@ const detailPathFor = (slug: string) =>
       posts.map((post) => (
         <article
           data-category={post.category}
-          class="rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 shadow-lg flex flex-col transition-colors duration-300 hover:shadow-xl"
+          class="rounded-card bg-white/80 dark:bg-grayblue-800/70 backdrop-blur-sm border border-grayblue-200/80 dark:border-grayblue-700/60 p-6 shadow-soft flex flex-col transition-[transform,box-shadow,border-color] duration-300 ease-out-soft hover:shadow-lift hover:-translate-y-1"
         >
-          <a href={detailPathFor(post.slug)} class="flex flex-col gap-4 grow">
+          <a href={portfolioDetailPath(language, post.slug)} class="flex flex-col gap-4 grow">
             {post.media && (
               <div class="overflow-hidden aspect-video rounded-lg">
                 <PostImage
@@ -82,7 +79,7 @@ const detailPathFor = (slug: string) =>
             )}
             <div class="flex flex-col gap-3 grow">
               <div class="flex items-center justify-between gap-3">
-                <h2 class="text-xl font-semibold text-blue-500 dark:text-blue-300 transition-colors duration-300">
+                <h2 class="font-display text-xl font-semibold text-blue-600 dark:text-blue-300 transition-colors duration-300">
                   {post.title}
                 </h2>
                 <span
