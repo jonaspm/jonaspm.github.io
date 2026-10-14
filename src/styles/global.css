@@ -292,9 +292,19 @@
   --color-grayblue-800: #1e293b;
   --color-grayblue-900: #0f172a;
 
-	--color-gold-200: #fde68a;
+  /* gold scale — secondary accent (also fixes the article badges that
+     referenced gold-100/600/700 before those tokens existed) */
+  --color-gold-50: oklch(0.987 0.022 95.277);
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
   --color-gold-300: #f9c74f;
   --color-gold-400: #f59e0b;
+  --color-gold-500: oklch(0.769 0.188 70.08);
+  --color-gold-600: #d97706;
+  --color-gold-700: #b45309;
+  --color-gold-800: oklch(0.473 0.137 46.201);
+  --color-gold-900: oklch(0.414 0.112 45.904);
+  --color-gold-950: oklch(0.279 0.077 45.635);
 
   --breakpoint-*: initial;
   --breakpoint-xs: 475px;
@@ -304,7 +314,24 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
 
-  --font-sans: Inter, sans-serif;
+  /* shape */
+  --radius-card: 1rem;
+  --radius-card-lg: 1.5rem;
+
+  /* depth */
+  --shadow-soft: 0 1px 2px rgb(15 23 42 / 0.05), 0 10px 24px -12px rgb(15 23 42 / 0.12);
+  --shadow-lift: 0 2px 6px rgb(15 23 42 / 0.07), 0 22px 44px -16px rgb(15 23 42 / 0.22);
+  --shadow-glow-blue: 0 0 0 1px rgb(37 99 235 / 0.18), 0 12px 40px -12px rgb(37 99 235 / 0.45);
+
+  /* motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* fonts — Instrument Sans (body/UI) + Fraunces (display serif) are
+     self-hosted via @fontsource imports in `Layout.astro`. The
+     `@fontsource-variable/*` packages register their families as
+     "<Name> Variable", so that is the name the tokens must reference. */
+  --font-sans: "Instrument Sans Variable", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", "Fraunces", ui-serif, Georgia, serif;
 }
 
 /*
@@ -323,10 +350,51 @@
 	::file-selector-button {
 		border-color: var(--color-gray-200, currentColor);
 	}
+
+	/* Visible keyboard focus everywhere (WCAG 2.2 AA). Elements that already
+	   carry a radius utility keep it — utilities layer wins over base. */
+	:focus-visible {
+		outline: 2px solid var(--color-blue-500);
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+}
+
+/* Semantic effect/glass vars — plain CSS (not @theme) because they are only
+   consumed by the ambient background + glass recipes below. Low-alpha tints
+   are chosen so body text keeps its contrast over the effects in both themes. */
+:root {
+	--aura-blue: rgb(37 99 235 / 0.16);
+	--aura-sky: rgb(14 165 233 / 0.13);
+	--aura-gold: rgb(245 158 11 / 0.12);
+	--grid-line: rgb(15 23 42 / 0.05);
+	--noise-opacity: 0.035;
+	--glass-bg: rgb(255 255 255 / 0.72);
+	--glass-border: rgb(15 23 42 / 0.08);
+}
+html.dark {
+	--aura-blue: rgb(59 130 246 / 0.2);
+	--aura-sky: rgb(56 189 248 / 0.14);
+	--aura-gold: rgb(245 158 11 / 0.11);
+	--grid-line: rgb(226 232 240 / 0.06);
+	--noise-opacity: 0.05;
+	--glass-bg: rgb(15 23 42 / 0.55);
+	--glass-border: rgb(226 232 240 / 0.1);
 }
 
 html {
 	scroll-behavior: smooth;
+	/* Decorative bleed elements (`.hero-glow` is 56rem wide and centered) extend
+	   past narrow viewports. `clip` (unlike `hidden`) does NOT create a scroll
+	   container — `position: sticky` rails and smooth scrolling keep working —
+	   it just prevents the horizontal document overflow that made the page
+	   look shifted left on mobile. */
+	overflow-x: clip;
+}
+
+body {
+	/* Same clip on body for browsers where root overflow propagation differs. */
+	overflow-x: clip;
 }
 
 .scale-image:hover {
@@ -349,5 +417,121 @@ html {
 	}
 	100% {
 		transform: rotate(360deg);
+	}
+}
+
+/* ==========================================================================
+   "Aurora & Grain" ambient background (pure CSS, zero JS).
+   Fixed decorative layer rendered once from `AmbientBackground.astro`:
+   three slow-drifting radial-gradient orbs + faint dot-grid + SVG film grain.
+   No `filter: blur()` — soft-stop gradients are inherently smooth and animate
+   fully composited on `transform` only (no layout thrash, no CLS).
+   ========================================================================== */
+.ambient-bg {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+.ambient-orb {
+	position: absolute;
+	width: 56vmax;
+	height: 56vmax;
+	border-radius: 50%;
+	will-change: transform; /* only the orbs — never noise/grid */
+}
+.ambient-orb--blue {
+	top: -18vmax;
+	left: -12vmax;
+	background: radial-gradient(circle at 50% 50%, var(--aura-blue), transparent 62%);
+	animation: aurora-drift-a 52s ease-in-out infinite alternate;
+}
+.ambient-orb--sky {
+	top: 28vh;
+	right: -20vmax;
+	background: radial-gradient(circle at 50% 50%, var(--aura-sky), transparent 62%);
+	animation: aurora-drift-b 64s ease-in-out infinite alternate;
+}
+.ambient-orb--gold {
+	bottom: -22vmax;
+	left: 20vw;
+	background: radial-gradient(circle at 50% 50%, var(--aura-gold), transparent 62%);
+	animation: aurora-drift-c 76s ease-in-out infinite alternate;
+}
+.ambient-grid {
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+	background-size: 28px 28px;
+	mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 75%);
+	-webkit-mask-image: radial-gradient(
+		ellipse 90% 70% at 50% 0%,
+		#000 20%,
+		transparent 75%
+	);
+}
+.ambient-noise {
+	position: absolute;
+	inset: 0;
+	opacity: var(--noise-opacity);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+	background-size: 180px 180px;
+}
+
+/* Hero glow (rendered inside `HomeSection.astro`): a stronger treatment for
+   the hero only. Breathe = opacity + scale around the centered position. */
+.hero-glow {
+	will-change: transform;
+	animation: hero-breathe 14s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift-a {
+	from {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+	to {
+		transform: translate3d(6vw, 4vh, 0) scale(1.12);
+	}
+}
+@keyframes aurora-drift-b {
+	from {
+		transform: translate3d(0, 0, 0) scale(1.05);
+	}
+	to {
+		transform: translate3d(-5vw, -6vh, 0) scale(1);
+	}
+}
+@keyframes aurora-drift-c {
+	from {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+	to {
+		transform: translate3d(4vw, -5vh, 0) scale(1.1);
+	}
+}
+/* NOTE (deviation from design §2.2): the translate3d here is 0, not -50%.
+   Tailwind v4's `-translate-x-1/2` (kept on `.hero-glow`) centers the element
+   through the standalone `translate` property; the two would compose to a
+   -100% shift. Scale/opacity breathe behavior is unchanged. */
+@keyframes hero-breathe {
+	from {
+		transform: translate3d(0, 0, 0) scale(1);
+		opacity: 0.85;
+	}
+	to {
+		transform: translate3d(0, 0, 0) scale(1.06);
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	/* Gradients stay (static depth), only the motion goes away. */
+	.ambient-orb,
+	.hero-glow {
+		animation: none;
+	}
+	html {
+		scroll-behavior: auto;
 	}
 }

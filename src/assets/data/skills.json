@@ -1,46 +1,169 @@
 [
 	{
-		"id": "frontend",
+		"id": "servicenow",
 		"accent": "sky",
-		"icon": "web_asset",
+		"icon": "deployed_code",
 		"name": {
-			"en": "Frontend Development",
-			"es": "Desarrollo Frontend",
-			"eo": "Fronta Disvolvigo"
+			"en": "ServiceNow",
+			"es": "ServiceNow",
+			"eo": "ServiceNow"
 		},
-		"skills": ["Web Design", "React", "Next.js", "Svelte", "Astro"]
+		"skills": [
+			{
+				"en": "Custom development",
+				"es": "Desarrollo personalizado",
+				"eo": "Personaligita disvolvigo"
+			},
+			{
+				"en": "Customizations & plugins",
+				"es": "Personalizaciones y plugins",
+				"eo": "Personaĵoj kaj kromaĵoj"
+			},
+			{
+				"en": "Platform administration (CSA)",
+				"es": "Administración de plataforma (CSA)",
+				"eo": "Administrado de platformo (CSA)"
+			},
+			{
+				"en": "Application development (CAD)",
+				"es": "Desarrollo de aplicaciones (CAD)",
+				"eo": "Aplikaĵa disvolvigo (CAD)"
+			},
+			{
+				"en": "Solution architecture",
+				"es": "Arquitectura de soluciones",
+				"eo": "Solva arkitekturo"
+			},
+			{
+				"en": "Implementation",
+				"es": "Implementación",
+				"eo": "Efektivigo"
+			},
+			{
+				"en": "Client consulting & advisory",
+				"es": "Consultoría y asesoría a clientes",
+				"eo": "Klienta konsultado kaj konsilado"
+			},
+			{
+				"en": "Recruiting ServiceNow developers",
+				"es": "Reclutamiento de desarrolladores ServiceNow",
+				"eo": "Rekrutado de ServiceNow-disvolvistoj"
+			}
+		]
 	},
 	{
-		"id": "backend",
+		"id": "leadership",
+		"accent": "amber",
+		"icon": "groups",
+		"name": {
+			"en": "Leadership & Delivery",
+			"es": "Liderazgo y Entrega",
+			"eo": "Gvidado kaj Liverado"
+		},
+		"skills": [
+			{
+				"en": "Technical direction",
+				"es": "Dirección técnica",
+				"eo": "Teknika direkto"
+			},
+			{
+				"en": "Project management",
+				"es": "Gestión de proyectos",
+				"eo": "Projekta estrado"
+			},
+			{
+				"en": "Team leadership",
+				"es": "Liderazgo de equipos",
+				"eo": "Teama gvidado"
+			},
+			{
+				"en": "Stakeholder collaboration",
+				"es": "Colaboración con partes interesadas",
+				"eo": "Kunlaboro kun interesatoj"
+			},
+			{
+				"en": "Developer onboarding",
+				"es": "Incorporación de desarrolladores",
+				"eo": "Enkonduko de disvolvistoj"
+			},
+			"Agile/Scrum"
+		]
+	},
+	{
+		"id": "fullstack",
 		"accent": "violet",
-		"icon": "storage",
+		"icon": "code",
 		"name": {
-			"en": "Backend & Data",
-			"es": "Backend y Datos",
-			"eo": "Backend kaj Datumbazoj"
+			"en": "Full-Stack Development",
+			"es": "Desarrollo Full-Stack",
+			"eo": "Plen-Staka Disvolvigo"
 		},
-		"skills": ["Full Stack", "Node.js", "Bun", "SQL", "NoSQL"]
+		"skills": [
+			"TypeScript",
+			"JavaScript",
+			"Node.js",
+			"Bun",
+			"React",
+			"Next.js",
+			"Svelte",
+			"Astro",
+			"Tailwind CSS",
+			"DaisyUI",
+			{
+				"en": "Web design",
+				"es": "Diseño web",
+				"eo": "Reteja dezajno"
+			},
+			"UI/UX"
+		]
 	},
 	{
-		"id": "cloud",
+		"id": "data-cloud",
 		"accent": "emerald",
 		"icon": "cloud",
 		"name": {
-			"en": "Cloud & DevOps",
-			"es": "Nube y DevOps",
-			"eo": "Nubo kaj DevOps"
+			"en": "Data, Cloud & DevOps",
+			"es": "Datos, Nube y DevOps",
+			"eo": "Datumoj, Nubo kaj DevOps"
 		},
-		"skills": ["Cloud Computing", "CI/CD", "ServiceNow", "Version Control"]
+		"skills": [
+			"SQL",
+			"NoSQL",
+			"MongoDB",
+			"Turso",
+			{
+				"en": "Cloud computing",
+				"es": "Computación en la nube",
+				"eo": "Nuba komputado"
+			},
+			"Cloudflare",
+			"Docker",
+			"CI/CD",
+			"Git"
+		]
 	},
 	{
-		"id": "delivery",
-		"accent": "amber",
-		"icon": "flag",
+		"id": "business-ai",
+		"accent": "gold",
+		"icon": "smart_toy",
 		"name": {
-			"en": "Delivery & Leadership",
-			"es": "Entrega y Liderazgo",
-			"eo": "Livero kaj Gvidado"
+			"en": "Business Platforms & AI",
+			"es": "Plataformas de Negocio e IA",
+			"eo": "Negocaj Platformoj kaj AI"
 		},
-		"skills": ["Agile Methodologies", "Project Management"]
+		"skills": [
+			"ERPNext",
+			"Shopify",
+			{
+				"en": "AI agents",
+				"es": "Agentes de IA",
+				"eo": "AI-agentoj"
+			},
+			{
+				"en": "Applied data science",
+				"es": "Ciencia de datos aplicada",
+				"eo": "Aplika datumscienco"
+			}
+		]
 	}
 ]

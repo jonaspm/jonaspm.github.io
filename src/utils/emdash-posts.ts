@@ -10,6 +10,7 @@
  * gracefully: an EmDash error is logged and turned into an empty result, so a
  * public page renders today's empty state instead of throwing a 500.
  */
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import {
 	type ContentEntry,
 	getEmDashCollection,
@@ -207,7 +208,8 @@ export function toPostViewModel(
 /**
  * Map one EmDash entry to the home-page project card view model. `order` is
  * presentation-only, so it stays in the query (`orderBy`) and never surfaces
- * here.
+ * here. `slug` (same resolution as `toPostViewModel`) lets the card link to
+ * the local detail page via `portfolioDetailPath`.
  */
 export function toProjectViewModel(
 	entry: ContentEntry<PostEntryData>,
@@ -215,10 +217,21 @@ export function toProjectViewModel(
 	const { data } = entry
 
 	return {
+		slug: data.slug ?? entry.id.split('/').pop() ?? entry.id,
 		name: data.title,
 		url: data.url ?? '',
 		media: postMedia(entry),
 		description: data.summary ?? '',
 		skills: data.skills ?? [],
 	}
+}
+
+/**
+ * Locale-aware path to a portfolio detail page (`/portfolio/{slug}`).
+ * `getRelativeLocaleUrl` appends a trailing slash; strip it before joining
+ * the slug so links are `/portfolio/{slug}`, not `/portfolio//{slug}`.
+ */
+export function portfolioDetailPath(language: Language, slug: string): string {
+	const portfolioUrl = getRelativeLocaleUrl(language, 'portfolio')
+	return `${portfolioUrl.replace(/\/$/, '')}/${slug}`
 }

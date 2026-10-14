@@ -1,0 +1,195 @@
+[
+	{
+		"id": "blueway-group",
+		"company": "Blueway Group",
+		"title": {
+			"en": "Chief Technology Officer",
+			"es": "Director de Tecnología (CTO)",
+			"eo": "Ĉefo pri Teknologio (CTO)"
+		},
+		"start": "2026-06",
+		"end": null,
+		"location": {
+			"en": "Chihuahua, Mexico",
+			"es": "Chihuahua, México",
+			"eo": "Chihuahua, Meksiko"
+		},
+		"note": null,
+		"bullets": [
+			{
+				"en": "Delivers IT and ServiceNow consulting to clients: architecture, implementation and advisory.",
+				"es": "Brinda consultoría de TI y ServiceNow a clientes: arquitectura, implementación y asesoría.",
+				"eo": "Liveras IT- kaj ServiceNow-konsultadon al klientoj: arkitekturo, efektivigo kaj konsilado."
+			},
+			{
+				"en": "Sets technical direction and leads delivery across client engagements, managing projects end to end.",
+				"es": "Define la dirección técnica y lidera la entrega en los proyectos de los clientes, gestionándolos de principio a fin.",
+				"eo": "Fiksas teknikan direkton kaj gvidas liveradon en klientaj projektoj, estrante ilin de komenco ĝis fino."
+			},
+			{
+				"en": "Tech lead for the development team while contributing hands-on full-stack work.",
+				"es": "Líder técnico del equipo de desarrollo, con participación activa en desarrollo full-stack.",
+				"eo": "Teknika gvidanto de la disvolva teamo, kun aktiva partopreno en plen-staka disvolvigo."
+			}
+		]
+	},
+	{
+		"id": "enerlinq",
+		"company": "Enerlinq Innovations",
+		"title": {
+			"en": "Chief Technology Officer",
+			"es": "Director de Tecnología (CTO)",
+			"eo": "Ĉefo pri Teknologio (CTO)"
+		},
+		"start": "2023-07",
+		"end": "2026-05",
+		"location": "Chihuahua, Mexico",
+		"note": null,
+		"bullets": [
+			{
+				"en": "Provided IT and ServiceNow consulting and led delivery across engagements built on ServiceNow, ERPNext, Node.js, AI agents and cloud technologies.",
+				"es": "Brindó consultoría de TI y ServiceNow y lideró la entrega de proyectos basados en ServiceNow, ERPNext, Node.js, agentes de IA y tecnologías en la nube.",
+				"eo": "Providis IT- kaj ServiceNow-konsultadon kaj gvidis liveradon de projektoj bazitaj sur ServiceNow, ERPNext, Node.js, AI-agentoj kaj nubaj teknologioj."
+			},
+			{
+				"en": "Recruited and hired ServiceNow developers to build out the company's ServiceNow delivery capability.",
+				"es": "Reclutó y contrató desarrolladores de ServiceNow para fortalecer la capacidad de entrega de ServiceNow de la empresa.",
+				"eo": "Rekruitis kaj dungis ServiceNow-disvolvistojn por konstrui la ServiceNow-liveran kapablon de la kompanio."
+			},
+			{
+				"en": "Managed projects end to end and served as tech lead, with hands-on full-stack work (including an Odoo → ERPNext data migration script).",
+				"es": "Gestionó proyectos de principio a fin y fungió como líder técnico, con trabajo práctico full-stack (incluido un script de migración de datos de Odoo a ERPNext).",
+				"eo": "Estris projektojn de komenco ĝis fino kaj servis kiel teknika gvidanto, kun praktika plen-staka laboro (inklude skripton por migri datumojn de Odoo al ERPNext)."
+			}
+		]
+	},
+	{
+		"id": "concentrix-catalyst",
+		"company": "Concentrix Catalyst",
+		"title": {
+			"en": "Senior Software Associate",
+			"es": "Asociado de Software Senior",
+			"eo": "Seniora Programara Asociito"
+		},
+		"start": "2022-01",
+		"end": "2023-06",
+		"location": {
+			"en": "Chihuahua, Mexico",
+			"es": "Chihuahua, México",
+			"eo": "Chihuahua, Meksiko"
+		},
+		"note": null,
+		"bullets": [
+			{
+				"en": "Delivered ServiceNow custom development and consulting for enterprise clients, producing high-quality customizations and plugins.",
+				"es": "Desarrolló soluciones personalizadas de ServiceNow y brindó consultoría a clientes empresariales, produciendo personalizaciones y plugins de alta calidad.",
+				"eo": "Liveris ServiceNow-personaligitan disvolvigon kaj konsultadon por entreprenaj klientoj, kreante altkvalitajn personaĵojn kaj kromaĵojn."
+			},
+			{
+				"en": "Collaborated with stakeholders to deliver software products that fulfilled business needs.",
+				"es": "Colaboró con las partes interesadas para entregar productos de software que cubrían las necesidades del negocio.",
+				"eo": "Kunlaboris kun interesatoj por liveri programarajn produktojn, kiuj plenumis bezonojn de la entrepreno."
+			},
+			{
+				"en": "Improved development processes and developer onboarding, and Dockerized customer applications for faster, cleaner CI/CD.",
+				"es": "Mejoró los procesos de desarrollo y la incorporación de nuevos desarrolladores, y contenedorizó aplicaciones de clientes con Docker para un CI/CD más rápido y limpio.",
+				"eo": "Plibonigis disvolvajn procezojn kaj enkondukon de novaj disvolvistoj, kaj dockerizis klientajn aplikaĵojn por pli rapida kaj pura CI/CD."
+			}
+		]
+	},
+	{
+		"id": "prokarma",
+		"company": "ProKarma",
+		"title": {
+			"en": "Software Associate",
+			"es": "Asociado de Software",
+			"eo": "Programara Asociito"
+		},
+		"start": "2019-10",
+		"end": "2022-01",
+		"location": {
+			"en": "Chihuahua, Mexico",
+			"es": "Chihuahua, México",
+			"eo": "Chihuahua, Meksiko"
+		},
+		"note": {
+			"en": "acquired by Concentrix",
+			"es": "adquirida por Concentrix",
+			"eo": "akirita de Concentrix"
+		},
+		"bullets": [
+			{
+				"en": "Delivered ServiceNow custom development and consulting for clients, including high-quality customizations and plugins.",
+				"es": "Desarrolló soluciones personalizadas de ServiceNow y brindó consultoría a clientes, incluyendo personalizaciones y plugins de alta calidad.",
+				"eo": "Liveris ServiceNow-personaligitan disvolvigon kaj konsultadon por klientoj, inkluzive de altkvalitaj personaĵoj kaj kromaĵoj."
+			},
+			{
+				"en": "Tech lead on a mobile video game project: improved UI/UX, code quality and CI for iOS games and published them to the Apple App Store.",
+				"es": "Líder técnico en un proyecto de videojuego móvil: mejoró la UI/UX, la calidad del código y el CI de juegos para iOS, y los publicó en la Apple App Store.",
+				"eo": "Teknika gvidanto en movebla videoluda projekto: plibonigis UI/UX, kodkvaliton kaj CI por iOS-ludoj kaj publikigis ilin en la Apple App Store."
+			}
+		]
+	},
+	{
+		"id": "gamma-partners",
+		"company": "Gamma Partners",
+		"title": {
+			"en": "Software Developer",
+			"es": "Desarrollador de Software",
+			"eo": "Programara Disvolvisto"
+		},
+		"start": "2019-03",
+		"end": "2019-10",
+		"location": {
+			"en": "Mexico",
+			"es": "México",
+			"eo": "Meksiko"
+		},
+		"note": {
+			"en": "acquired by ProKarma · previously Intern, Oct 2018 – Mar 2019",
+			"es": "adquirida por ProKarma · antes pasante, oct 2018 – mar 2019",
+			"eo": "akirita de ProKarma · antaŭe stagianto, okt 2018 – mar 2019"
+		},
+		"bullets": [
+			{
+				"en": "Delivered ServiceNow custom development and consulting for clients, building customizations and plugins; began as an intern collaborating with stakeholders on business requirements.",
+				"es": "Desarrolló soluciones personalizadas de ServiceNow y brindó consultoría a clientes, creando personalizaciones y plugins; comenzó como pasante colaborando con las partes interesadas en los requisitos del negocio.",
+				"eo": "Liveris ServiceNow-personaligitan disvolvigon kaj konsultadon por klientoj, kreante personaĵojn kaj kromaĵojn; komencis kiel stagianto kunlaborante kun interesatoj pri negocaj bezonoj."
+			},
+			{
+				"en": "Tech lead on a mobile video game project for iOS: improved UI/UX, code quality and CI, and handled Apple App Store publishing.",
+				"es": "Líder técnico en un proyecto de videojuego móvil para iOS: mejoró la UI/UX, la calidad del código y el CI, y gestionó la publicación en la Apple App Store.",
+				"eo": "Teknika gvidanto en movebla videoluda projekto por iOS: plibonigis UI/UX, kodkvaliton kaj CI, kaj prizorgis publikigon en la Apple App Store."
+			}
+		]
+	},
+	{
+		"id": "black-labs",
+		"company": "Black Labs",
+		"title": {
+			"en": "Student Intern",
+			"es": "Pasante",
+			"eo": "Studenta Stagiulo"
+		},
+		"start": "2018-01",
+		"end": "2018-10",
+		"location": {
+			"en": "Mexico",
+			"es": "México",
+			"eo": "Meksiko"
+		},
+		"note": null,
+		"bullets": [
+			{
+				"en": "Full-stack development with modern web frameworks in a Scrum team.",
+				"es": "Desarrollo full-stack con frameworks web modernos en un equipo Scrum.",
+				"eo": "Plen-staka disvolvigo per modernaj retejaj framoj en Scrum-teamo."
+			},
+			{
+				"en": "Improved the UI of the Pagando business admin dashboard, plus testing and product documentation.",
+				"es": "Mejoró la interfaz del panel de administración empresarial Pagando, además de pruebas y documentación del producto.",
+				"eo": "Plibonigis la uzinterfacon de la administra panelo Pagando, plus testado kaj produkta dokumentado."
+			}
+		]
+	}
+]

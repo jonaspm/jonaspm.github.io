@@ -1,32 +1,56 @@
 ---
 import PostImage from '@/components/PostImage.astro'
-import type { ProjectViewModel } from '@/utils/i18n'
+import { portfolioDetailPath } from '@/utils/emdash-posts'
+import type { Language, ProjectViewModel } from '@/utils/i18n'
 
 interface Props {
 	title: string
 	projects: ProjectViewModel[]
 	viewAllHref?: string
 	viewAllLabel?: string
+	language: Language
+	/** Label for the external-link pill ("Live site") — from `i18n.ts`. */
+	externalLabel: string
 }
 
-const { title, projects, viewAllHref, viewAllLabel } = Astro.props
+const { title, projects, viewAllHref, viewAllLabel, language, externalLabel } =
+	Astro.props
 ---
 
 <section id="projects" class="py-8 scroll-mt-20 opacity-0">
-  <h2 class="mb-12 text-center text-3xl font-medium text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">
+  <h2 class="mb-12 text-center font-display text-3xl font-semibold tracking-tight text-grayblue-900 dark:text-grayblue-100 gsap-fade-up transition-colors duration-300">
     {title}
   </h2>
   <div class="grid gap-8 md:grid-cols-2">
     {
       projects.map((project) => (
-        <a
-          href={project.url || '#'}
-          class="rounded-lg bg-white dark:bg-grayblue-800 border border-grayblue-200 dark:border-grayblue-700 p-6 shadow-lg scale-image grid md:grid-cols-2 gap-4 gsap-fade-up transition-colors duration-300 hover:shadow-xl"
-        >
-          <div id="project-info" class="flex flex-col gap-3">
-            <h3 class="text-xl font-semibold text-blue-500 dark:text-blue-300 transition-colors duration-300">
-              {project.name}
-            </h3>
+        // Card body navigates to the local detail page via the stretched
+        // link below; the external "Live site" pill sits above it (`relative
+        // z-10`) so exactly one action wins per pixel.
+        <article class="group relative grid gap-4 rounded-card bg-white/80 dark:bg-grayblue-800/70 backdrop-blur-sm border border-grayblue-200/80 dark:border-grayblue-700/60 p-6 shadow-soft scale-image md:grid-cols-2 transition-[transform,box-shadow,border-color] duration-300 ease-out-soft hover:shadow-lift hover:-translate-y-1 gsap-fade-up">
+          <div class="flex flex-col gap-3">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="font-display text-xl font-semibold text-blue-600 dark:text-blue-300 transition-colors duration-300">
+                {/* Stretched link: its ::after covers the whole card. */}
+                <a
+                  href={portfolioDetailPath(language, project.slug)}
+                  class="after:absolute after:inset-0 after:content-['']"
+                >
+                  {project.name}
+                </a>
+              </h3>
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="relative z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-blue-200 dark:border-blue-600/30 bg-blue-100 dark:bg-blue-600/20 px-3 py-1 text-xs font-medium text-blue-600 dark:text-blue-200 transition-colors duration-300 hover:border-blue-500 hover:bg-blue-600 hover:text-white"
+                >
+                  {externalLabel}
+                  <span class="material-symbols-rounded text-sm!" aria-hidden="true">open_in_new</span>
+                </a>
+              )}
+            </div>
             <p class="text-grayblue-600 dark:text-grayblue-300 transition-colors duration-300">{project.description}</p>
             <div class="flex flex-wrap gap-2 mt-2">
               {project.skills.map((skill) => (
@@ -46,7 +70,7 @@ const { title, projects, viewAllHref, viewAllLabel } = Astro.props
               />
             </div>
           </div>
-        </a>
+        </article>
       ))
     }
   </div>
@@ -54,7 +78,7 @@ const { title, projects, viewAllHref, viewAllLabel } = Astro.props
     <div class="mt-10 flex justify-center">
       <a
         href={viewAllHref}
-        class="px-6 py-3 rounded-full text-sm font-medium border border-blue-500 text-blue-500 dark:text-blue-300 transition-colors duration-300 hover:bg-blue-500 hover:text-white"
+        class="px-6 py-3 rounded-full text-sm font-medium border border-blue-500/60 text-blue-600 dark:text-blue-300 transition-colors duration-300 hover:bg-blue-600 hover:text-white"
       >
         {viewAllLabel ?? title}
       </a>

@@ -22,6 +22,8 @@ export interface PostViewModel {
 }
 
 export interface ProjectViewModel {
+	/** Bare post slug; joined into `/portfolio/{slug}` via `portfolioDetailPath`. */
+	slug: string
 	name: string
 	url: string
 	media: MediaValue | null
@@ -43,6 +45,8 @@ export interface Translations {
 		role: string
 		subtitle: string
 		description: string
+		ctaPrimary: string
+		ctaSecondary: string
 		scrollToBioLabel: string
 	}
 	bio: {
@@ -52,8 +56,21 @@ export interface Translations {
 	skills: {
 		title: string
 	}
+	experience: {
+		title: string
+		present: string
+	}
+	credentials: {
+		title: string
+		certifications: string
+		education: string
+		honors: string
+		languages: string
+		community: string
+	}
 	projects: {
 		title: string
+		external: string
 	}
 	portfolio: {
 		title: string
@@ -67,6 +84,10 @@ export interface Translations {
 	}
 	contact: {
 		title: string
+		fallbackIntro: string
+		emailLabel: string
+		bookingLabel: string
+		embedError: string
 	}
 	footer: string
 	seo: {
@@ -87,8 +108,10 @@ const translations: Record<Language, Translations> = {
 			brand: 'Jonas PM',
 			items: [
 				{ id: 'home', label: 'Home' },
-				{ id: 'bio', label: 'Bio' },
+				{ id: 'bio', label: 'About' },
 				{ id: 'skills', label: 'Skills' },
+				{ id: 'experience', label: 'Experience' },
+				{ id: 'credentials', label: 'Credentials' },
 				{ id: 'portfolio', label: 'Portfolio', href: '/portfolio' },
 				{ id: 'contact', label: 'Contact' },
 			],
@@ -96,26 +119,42 @@ const translations: Record<Language, Translations> = {
 			languageLabel: 'Language',
 		},
 		home: {
-			title: 'Jonas Perusquia Morales',
-			role: 'Msc. Data Science & Software Engineer',
-			subtitle: 'Chief Technology Officer',
+			title: 'Jonás Perusquía Morales',
+			role: 'ServiceNow Developer & Technical Lead',
+			subtitle: 'Chief Technology Officer @ Blueway Group',
 			description:
-				'Innovative tech leader with a passion for building scalable solutions and fostering high-performing teams.',
-			scrollToBioLabel: 'Scroll to Bio Section',
+				'I lead IT and ServiceNow consulting at Blueway Group — architecture, implementation and advisory — backed by 8+ years of full-stack development, cloud projects, and an MSc in Applied Data Science.',
+			ctaPrimary: 'Get in Touch',
+			ctaSecondary: 'View Portfolio',
+			scrollToBioLabel: 'Scroll to About Section',
 		},
 		bio: {
 			title: 'About Me',
 			paragraphs: [
-				"With a passion for technology and over eight years of experience in web development, I've dedicated myself to adopting and implementing the latest industry trends and tools. My portfolio includes a diverse range of cloud projects spanning websites, mobile applications, and desktop software.",
-				'As a self-taught perfectionist and natural leader, I bring strong problem-solving abilities to every project I undertake. My consistently positive, motivating, and inclusive approach enables me to thrive in collaborative environments where knowledge sharing is valued.',
-				'Beyond the professional realm, I find balance through music, sports, and quality time with family.',
+				"ServiceNow developer and technical leader with hands-on ServiceNow custom development and consulting experience since 2018. Today I'm the Chief Technology Officer at Blueway Group, leading IT and ServiceNow consulting — architecture, implementation and advisory — across client engagements.",
+				'Before Blueway I built ServiceNow customizations and plugins for enterprise clients at Concentrix Catalyst, ProKarma and Gamma Partners, and later led delivery and hired ServiceNow developers at Enerlinq Innovations. Along the way: 8+ years of full-stack web development, cloud projects spanning web, mobile and desktop, and an MSc in Applied Data Science.',
+				'Self-taught and problem-solving by nature, I set technical direction, manage projects end to end, and build collaborative teams where knowledge sharing is the norm.',
+				'Beyond the screen, I find balance in music, sports, and quality time with my family.',
 			],
 		},
 		skills: {
 			title: 'Skills & Expertise',
 		},
+		experience: {
+			title: 'Experience',
+			present: 'Present',
+		},
+		credentials: {
+			title: 'Credentials',
+			certifications: 'Certifications',
+			education: 'Education',
+			honors: 'Honors & Awards',
+			languages: 'Languages',
+			community: 'Community & Speaking',
+		},
 		projects: {
 			title: 'Featured Projects',
+			external: 'Live site',
 		},
 		portfolio: {
 			title: 'Portfolio',
@@ -130,38 +169,37 @@ const translations: Record<Language, Translations> = {
 		},
 		contact: {
 			title: 'Get in Touch',
+			fallbackIntro: 'Or reach me directly — happy to chat over email:',
+			emailLabel: 'Email me',
+			bookingLabel: 'Book a 15-minute meeting',
+			embedError:
+				"The scheduling widget couldn't load. Use the links below instead.",
 		},
 		footer: 'Made with love from Chihuahua, Mexico.',
 		seo: {
 			home: {
 				title:
-					'Jonas Perusquia Morales - Msc. Data Science & Software Engineer',
+					'Jonás Perusquía Morales — ServiceNow Developer & Technical Lead',
 				description:
-					'Welcome to the portfolio of Jonas Perusquia Morales, a Msc. Data Science & Software Engineer and Chief Technology Officer specializing in full-stack development, cloud architecture, and leading high-performing engineering teams.',
+					'Portfolio of Jonás Perusquía Morales, ServiceNow Developer & Technical Lead and CTO at Blueway Group: ServiceNow architecture, implementation and advisory, full-stack development, and technical leadership.',
 				keywords: [
+					'Jonás Perusquía Morales',
 					'Jonas Perusquia Morales',
+					'ServiceNow',
+					'ServiceNow Developer',
+					'ServiceNow CSA',
+					'Technical Lead',
 					'CTO',
-					'Chief Technology Officer',
-					'Msc',
-					'Data Science',
-					'Msc. Data Science',
-					'Software Engineer',
-					'Web Developer',
-					'Full Stack Developer',
-					'Cloud Architecture',
-					'Team Leadership',
-					'JavaScript',
+					'Blueway Group',
+					'Solution Architecture',
+					'Full-Stack Development',
 					'TypeScript',
-					'React',
-					'Node.js',
-					'Astro',
+					'Cloudflare',
 					'Portfolio',
-					'Personal Website',
-					'Technology Leadership',
-					'Software Development',
+					'Chihuahua',
 				],
 				structuredDescription:
-					'Msc. Data Science & Software Engineer and Chief Technology Officer with expertise in full-stack development, cloud architecture, and team leadership.',
+					'ServiceNow Developer & Technical Lead and Chief Technology Officer at Blueway Group, specializing in ServiceNow architecture, implementation and advisory since 2018.',
 			},
 		},
 	},
@@ -172,8 +210,10 @@ const translations: Record<Language, Translations> = {
 			brand: 'Jonas PM',
 			items: [
 				{ id: 'home', label: 'Inicio' },
-				{ id: 'bio', label: 'Bio' },
+				{ id: 'bio', label: 'Sobre mí' },
 				{ id: 'skills', label: 'Habilidades' },
+				{ id: 'experience', label: 'Experiencia' },
+				{ id: 'credentials', label: 'Credenciales' },
 				{
 					id: 'portfolio',
 					label: 'Portafolio',
@@ -185,26 +225,42 @@ const translations: Record<Language, Translations> = {
 			languageLabel: 'Idioma',
 		},
 		home: {
-			title: 'Jonas Perusquia Morales',
-			role: 'MSc. en Ciencia de Datos e Ingeniero de Software',
-			subtitle: 'Chief Technology Officer',
+			title: 'Jonás Perusquía Morales',
+			role: 'Desarrollador de ServiceNow y Líder Técnico',
+			subtitle: 'Director de Tecnología (CTO) @ Blueway Group',
 			description:
-				'Lider tecnologico enfocado en construir soluciones escalables y en impulsar equipos de alto desempeno.',
+				'Lidero la consultoría de TI y ServiceNow en Blueway Group — arquitectura, implementación y asesoría — con más de 8 años de desarrollo full-stack, proyectos en la nube y una maestría en Ciencia de Datos Aplicada.',
+			ctaPrimary: 'Ponte en contacto',
+			ctaSecondary: 'Ver portafolio',
 			scrollToBioLabel: 'Ir a la seccion de bio',
 		},
 		bio: {
 			title: 'Sobre mi',
 			paragraphs: [
-				'Con una fuerte pasion por la tecnologia y mas de ocho anos de experiencia en desarrollo web, me he dedicado a adoptar e implementar las tendencias y herramientas mas recientes de la industria. Mi portafolio incluye una amplia variedad de proyectos en la nube que abarcan sitios web, aplicaciones moviles y software de escritorio.',
-				'Como perfeccionista autodidacta y lider natural, aporto una gran capacidad de resolucion de problemas a cada proyecto en el que participo. Mi enfoque positivo, motivador e inclusivo me permite rendir bien en entornos colaborativos donde compartir conocimiento es parte del trabajo.',
-				'Fuera del trabajo, encuentro equilibrio en la musica, el deporte y el tiempo de calidad con mi familia.',
+				'Desarrollador de ServiceNow y líder técnico con experiencia práctica en desarrollo personalizado y consultoría de ServiceNow desde 2018. Hoy soy Director de Tecnología (CTO) en Blueway Group, donde lidero la consultoría de TI y ServiceNow — arquitectura, implementación y asesoría — para diversos clientes.',
+				'Antes de Blueway desarrollé personalizaciones y plugins de ServiceNow para clientes empresariales en Concentrix Catalyst, ProKarma y Gamma Partners, y más tarde lideré la entrega y contraté desarrolladores de ServiceNow en Enerlinq Innovations. En el camino: más de 8 años de desarrollo web full-stack, proyectos en la nube para web, móvil y escritorio, y una maestría en Ciencia de Datos Aplicada.',
+				'Autodidacta y resolutivo por naturaleza, fijo la dirección técnica, gestiono proyectos de principio a fin y construyo equipos colaborativos donde compartir conocimiento es la norma.',
+				'Fuera de la pantalla, encuentro equilibrio en la música, el deporte y el tiempo de calidad con mi familia.',
 			],
 		},
 		skills: {
 			title: 'Habilidades y experiencia',
 		},
+		experience: {
+			title: 'Experiencia',
+			present: 'Actualidad',
+		},
+		credentials: {
+			title: 'Credenciales',
+			certifications: 'Certificaciones',
+			education: 'Educación',
+			honors: 'Honores y Premios',
+			languages: 'Idiomas',
+			community: 'Comunidad y Charlas',
+		},
 		projects: {
 			title: 'Proyectos destacados',
+			external: 'Sitio en vivo',
 		},
 		portfolio: {
 			title: 'Portafolio',
@@ -219,38 +275,37 @@ const translations: Record<Language, Translations> = {
 		},
 		contact: {
 			title: 'Ponte en contacto',
+			fallbackIntro: 'O escríbeme directamente — con gusto platico por correo:',
+			emailLabel: 'Envíame un correo',
+			bookingLabel: 'Agenda una reunión de 15 minutos',
+			embedError:
+				'No se pudo cargar el widget de agenda. Usa los enlaces de abajo.',
 		},
 		footer: 'Hecho con amor desde Chihuahua, Mexico.',
 		seo: {
 			home: {
 				title:
-					'Jonas Perusquia Morales - MSc. en Ciencia de Datos e Ingeniero de Software',
+					'Jonás Perusquía Morales — Desarrollador de ServiceNow y Líder Técnico',
 				description:
-					'Bienvenido al portafolio de Jonas Perusquia Morales, MSc. en Ciencia de Datos e Ingeniero de Software y Chief Technology Officer enfocado en desarrollo full stack, arquitectura en la nube y liderazgo de equipos de alto desempeno.',
+					'Portafolio de Jonás Perusquía Morales, Desarrollador de ServiceNow y Líder Técnico y CTO de Blueway Group: arquitectura, implementación y asesoría de ServiceNow, desarrollo full-stack y liderazgo técnico.',
 				keywords: [
+					'Jonás Perusquía Morales',
 					'Jonas Perusquia Morales',
+					'ServiceNow',
+					'Desarrollador de ServiceNow',
+					'ServiceNow CSA',
+					'Líder Técnico',
 					'CTO',
-					'Chief Technology Officer',
-					'MSc',
-					'Ciencia de Datos',
-					'MSc. Ciencia de Datos',
-					'Ingeniero de Software',
-					'Desarrollador Web',
-					'Desarrollador Full Stack',
-					'Arquitectura en la nube',
-					'Liderazgo tecnico',
-					'JavaScript',
+					'Blueway Group',
+					'Arquitectura de soluciones',
+					'Desarrollo Full-Stack',
 					'TypeScript',
-					'React',
-					'Node.js',
-					'Astro',
+					'Cloudflare',
 					'Portafolio',
-					'Sitio personal',
-					'Liderazgo tecnologico',
-					'Desarrollo de software',
+					'Chihuahua',
 				],
 				structuredDescription:
-					'MSc. en Ciencia de Datos e Ingeniero de Software y Chief Technology Officer con experiencia en desarrollo full stack, arquitectura en la nube y liderazgo de equipos.',
+					'Desarrollador de ServiceNow y Líder Técnico, Director de Tecnología (CTO) de Blueway Group, especializado en arquitectura, implementación y asesoría de ServiceNow desde 2018.',
 			},
 		},
 	},
@@ -261,8 +316,10 @@ const translations: Record<Language, Translations> = {
 			brand: 'Jonas PM',
 			items: [
 				{ id: 'home', label: 'Hejmo' },
-				{ id: 'bio', label: 'Biografio' },
+				{ id: 'bio', label: 'Pri mi' },
 				{ id: 'skills', label: 'Kapabloj' },
+				{ id: 'experience', label: 'Sperto' },
+				{ id: 'credentials', label: 'Kvalifikoj' },
 				{ id: 'portfolio', label: 'Portfolio', href: '/eo/portfolio' },
 				{ id: 'contact', label: 'Kontakto' },
 			],
@@ -270,26 +327,42 @@ const translations: Record<Language, Translations> = {
 			languageLabel: 'Lingvo',
 		},
 		home: {
-			title: 'Jonas Perusquia Morales',
-			role: 'MSc. Datumscienco & Programara Ingeniero',
-			subtitle: 'Chief Technology Officer',
+			title: 'Jonás Perusquía Morales',
+			role: 'ServiceNow-Disvolvisto kaj Teknika Gvidanto',
+			subtitle: 'Ĉefo pri Teknologio (CTO) @ Blueway Group',
 			description:
-				'Nova teknologia gvidanto kun pasio por konstrui skaleblajn solvojn kaj kreskigi alt-efikecajn teamojn.',
+				'Mi gvidas IT- kaj ServiceNow-konsultadon ĉe Blueway Group — arkitekturo, efektivigo kaj konsilado — kun pli ol 8 jaroj da plen-staka disvolvigo, nubaj projektoj kaj magistro pri Aplika Datumscienco.',
+			ctaPrimary: 'Kontaktu min',
+			ctaSecondary: 'Vidi portfolion',
 			scrollToBioLabel: 'Rulumu al Biografio',
 		},
 		bio: {
 			title: 'Pri mi',
 			paragraphs: [
-				'Kun pasio por teknologio kaj pli ol ok jaroj da sperto en reteja disvolvigo, mi dedicxis min al adoptado kaj efektivigado de la plej novaj industriaj tendencoj kaj iloj. Mia portfolio inkluzivas diversan gamon da nubaj projektoj, inkluzive de retejoj, moveblaj aplikaĵoj kaj labortabla programaro.',
-				'Kiel memlernanta perfektisto kaj natura gvidanto, mi alportas fortajn problem-solvantajn kapablojn al ĉiu projekto. Mia konstante pozitiva, motiviga kaj inkluziva aliro ebligas min prosperi en kunlaboraj medioj kie dividi scion estas aprezata.',
-				'Ekster la profesia sfero, mi trovas ekvilibron per muziko, sporto kaj kvalita tempo kun familio.',
+				'ServiceNow-disvolvisto kaj teknika gvidanto kun praktika sperto pri ServiceNow-personaligita disvolvigo kaj konsultado depost 2018. Hodiaŭ mi estas Ĉefo pri Teknologio (CTO) ĉe Blueway Group, gvidante IT- kaj ServiceNow-konsultadon — arkitekturo, efektivigo kaj konsilado — por klientoj.',
+				'Antaŭ Blueway mi konstruis ServiceNow-personaĵojn kaj kromaĵojn por entreprenaj klientoj ĉe Concentrix Catalyst, ProKarma kaj Gamma Partners, kaj poste gvidis liveradon kaj dungis ServiceNow-disvolvistojn ĉe Enerlinq Innovations. Dumvoje: pli ol 8 jaroj da plen-staka reteja disvolvigo, nubaj projektoj por reto, poŝaparatoj kaj labortablo, kaj magistro pri Aplika Datumscienco.',
+				'Memlerna kaj nature problem-solvanta, mi fiksas teknikan direkton, estras projektojn de komenco ĝis fino kaj konstruas kunlaborajn teamojn, kie dividi scion estas la kutimo.',
+				'Ekster la ekrano, mi trovas ekvilibron en muziko, sportoj kaj kvalita tempo kun mia familio.',
 			],
 		},
 		skills: {
 			title: 'Kapabloj & Sperto',
 		},
+		experience: {
+			title: 'Sperto',
+			present: 'Nun',
+		},
+		credentials: {
+			title: 'Kvalifikoj',
+			certifications: 'Atestoj',
+			education: 'Eduko',
+			honors: 'Honoroj kaj Premioj',
+			languages: 'Lingvoj',
+			community: 'Komunumo kaj Paroladoj',
+		},
 		projects: {
 			title: 'Elstaraj Projektoj',
+			external: 'Retejo',
 		},
 		portfolio: {
 			title: 'Portfolio',
@@ -304,38 +377,37 @@ const translations: Record<Language, Translations> = {
 		},
 		contact: {
 			title: 'Kontaktu min',
+			fallbackIntro: 'Aŭ skribu al mi rekte — mi volonte babilas retpoŝte:',
+			emailLabel: 'Retpoŝtu min',
+			bookingLabel: 'Rezervu 15-minutan renkontiĝon',
+			embedError:
+				'La programeto por planado ne ŝarĝiĝis. Uzu la ligilojn sube.',
 		},
 		footer: 'Farita kun amo el Chihuahua, Meksiko.',
 		seo: {
 			home: {
 				title:
-					'Jonas Perusquia Morales - MSc. Datumscienco & Programara Ingeniero',
+					'Jonás Perusquía Morales — ServiceNow-Disvolvisto kaj Teknika Gvidanto',
 				description:
-					'Bonvenon al la portfolio de Jonas Perusquia Morales, MSc. Datumscienco & Programara Ingeniero kaj Chief Technology Officer specialigxanta pri plen-staka disvolvigo, nuba arkitekturo kaj gvidado de alt-efikecaj ingenieraj teamoj.',
+					'Portfolio de Jonás Perusquía Morales, ServiceNow-Disvolvisto kaj Teknika Gvidanto kaj CTO ĉe Blueway Group: ServiceNow-arkitekturo, efektivigo kaj konsilado, plen-staka disvolvigo kaj teknika gvidado.',
 				keywords: [
+					'Jonás Perusquía Morales',
 					'Jonas Perusquia Morales',
+					'ServiceNow',
+					'ServiceNow-Disvolvisto',
+					'ServiceNow CSA',
+					'Teknika Gvidanto',
 					'CTO',
-					'Chief Technology Officer',
-					'MSc',
-					'Datumscienco',
-					'MSc. Datumscienco',
-					'Programara Ingeniero',
-					'Reteja Disvolvisto',
-					'Plen-Staka Disvolvisto',
-					'Nuba Arkitekturo',
-					'Teama Gvidado',
-					'JavaScript',
+					'Blueway Group',
+					'Solva Arkitekturo',
+					'Plen-Staka Disvolvigo',
 					'TypeScript',
-					'React',
-					'Node.js',
-					'Astro',
+					'Cloudflare',
 					'Portfolio',
-					'Persona Retejo',
-					'Teknologia Gvidado',
-					'Programara Disvolvigo',
+					'Chihuahua',
 				],
 				structuredDescription:
-					'MSc. Datumscienco & Programara Ingeniero kaj Chief Technology Officer kun sperto pri plen-staka disvolvigo, nuba arkitekturo kaj teama gvidado.',
+					'ServiceNow-Disvolvisto kaj Teknika Gvidanto, Ĉefo pri Teknologio (CTO) ĉe Blueway Group, specialiĝinta pri ServiceNow-arkitekturo, efektivigo kaj konsilado depost 2018.',
 			},
 		},
 	},
