@@ -103,6 +103,7 @@
 			"JavaScript",
 			"Node.js",
 			"Bun",
+			"ElysiaJS",
 			"React",
 			"Next.js",
 			"Svelte",
@@ -129,13 +130,17 @@
 		"skills": [
 			"SQL",
 			"NoSQL",
+			"PostgreSQL",
 			"MongoDB",
-			"Turso",
+			"Turso/libSQL",
+			"MQTT",
 			{
 				"en": "Cloud computing",
 				"es": "Computación en la nube",
 				"eo": "Nuba komputado"
 			},
+			"AWS",
+			"Vercel",
 			"Cloudflare",
 			"Docker",
 			"CI/CD",
@@ -153,6 +158,7 @@
 		},
 		"skills": [
 			"ERPNext",
+			"Frappe",
 			"Shopify",
 			{
 				"en": "AI agents",
@@ -164,6 +170,22 @@
 				"es": "Ciencia de datos aplicada",
 				"eo": "Aplika datumscienco"
 			}
+		]
+	},
+	{
+		"id": "dev-tools",
+		"accent": "rose",
+		"icon": "terminal",
+		"name": {
+			"en": "Dev Tools & AI Coding",
+			"es": "Herramientas de Desarrollo y Programación con IA",
+			"eo": "Disvolvigaj Iloj kaj AI-Programado"
+		},
+		"skills": [
+			"OpenCode",
+			"Claude Code",
+			"Zed",
+			"Visual Studio Code"
 		]
 	}
 ]
