@@ -181,11 +181,6 @@
 			"es": "Herramientas de Desarrollo y Programación con IA",
 			"eo": "Disvolvigaj Iloj kaj AI-Programado"
 		},
-		"skills": [
-			"OpenCode",
-			"Claude Code",
-			"Zed",
-			"Visual Studio Code"
-		]
+		"skills": ["OpenCode", "Claude Code", "Zed", "Visual Studio Code"]
 	}
 ]
