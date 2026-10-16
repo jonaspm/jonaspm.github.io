@@ -57,6 +57,14 @@ const accents = {
 		pill: 'bg-gold-50 text-gold-700 border-gold-200 hover:bg-gold-100 dark:bg-gold-500/10 dark:text-gold-200 dark:border-gold-500/25 dark:hover:bg-gold-500/20',
 		count: 'bg-gold-500/10 text-gold-700 dark:text-gold-200',
 	},
+	rose: {
+		icon: 'bg-rose-500/10 text-rose-600 dark:text-rose-300 ring-rose-500/20',
+		bar: 'from-rose-400 to-pink-400',
+		heading: 'text-rose-700 dark:text-rose-300',
+		card: 'hover:border-rose-300 dark:hover:border-rose-500/50',
+		pill: 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100 dark:bg-rose-500/10 dark:text-rose-200 dark:border-rose-500/25 dark:hover:bg-rose-500/20',
+		count: 'bg-rose-500/10 text-rose-600 dark:text-rose-300',
+	},
 } as const
 
 type Accent = keyof typeof accents
